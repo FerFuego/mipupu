@@ -23,15 +23,15 @@
             <span><?php echo $product->Rubro; ?></span>
             <h6><a href="detalle.php?id=<?php echo $product->CodProducto; ?>"><?php echo $product->Nombre; ?></a></h6>
             <?php if ($general->showPrices()): ?>
-                <p class="text-danger"><?php echo 'Precio Lista: <strong>$ '. number_format(Productos::PreVtaFinal($product->PreVtaFinal1), 2,',','.') . '</strong>'; ?></p>
+                <p class="text-left"><?php echo '<strong>$ '. number_format(Productos::PreVtaFinal($product->PreVtaFinal1), 2,',','.') . '</strong>'; ?></p>
                 <form class="js-form-cart">
                     <input type="hidden" name="id_product" value="<?php echo $product->Id_Producto; ?>">
                     <input type="hidden" name="cod_product" value="<?php echo $product->CodProducto; ?>">
                     <input type="hidden" name="name_product" value="<?php echo $product->Nombre; ?>">
                     <input type="hidden" name="price_product" value="<?php echo number_format(Productos::PreVtaFinal($product->PreVtaFinal1), 2,',','.'); ?>">
-                    <div class="d-flex">
+                    <!-- <div class="d-flex">
                         <textarea type="text" name="nota" class="product__details__note" placeholder="Agregar Nota"></textarea>
-                    </div>
+                    </div> -->
 
                     <div class="product__details__quantity mb-2">
                         <div class="quantity">
