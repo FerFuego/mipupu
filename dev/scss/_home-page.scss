@@ -247,12 +247,13 @@
 
 .featured__item__text {
     text-align: center;
-    padding-top: 15px;
+    padding: 15px 10px 0;
     border: 1px solid #ebebeb;
 
     h6 {
         margin-bottom: 10px;
         font-weight: 700;
+        text-align: left;
 
         a {
             color: $heading-color-2;
