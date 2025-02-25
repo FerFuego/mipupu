@@ -26,7 +26,7 @@
             <div class="col-lg-4 col-md-12">
                 <div class="footer__widget">
                     <div class="footer__about__logo">
-                        <a href="/"><img src="<?php echo $general->logo; ?>" alt="logo"></a>
+                        <a href="/"><img src="<?php echo $general->logo; ?>" width="180" alt="logo"></a>
                     </div>
                     <br><br>
                     <?php if ($general->facebook || $general->instagram || $general->twitter) : ?>
