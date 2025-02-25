@@ -14,12 +14,16 @@
     }
 
     &__title {
+        color: $black-color;
         margin: 15px 0 5px;
         text-align: center;
         font-size: 21px;
+        font-weight: 700;
     }
 
     &__text {
        text-align: center;
+       color: $black-color;
+       line-height: 20px !important;
     }
 }
