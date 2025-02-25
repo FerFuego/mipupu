@@ -114,6 +114,7 @@
                     </ul>
                     <?php echo Polirubro::getResumenCart(); ?>
                 </nav>
+                <?php require_once('inc/parts/search.php'); ?>
             </div>
         </div>
         <div class="humberger__open">
