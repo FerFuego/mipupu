@@ -314,7 +314,7 @@
 }
 
 .product__item__pic {
-    height: 270px;
+    height: 350px;
     position: relative;
     overflow: hidden;
 }
@@ -374,6 +374,7 @@
 .product__item__text {
     text-align: center;
     padding: 15px 10px 0;
+    background-color: $white-color;
 
     h6 {
         margin-bottom: 10px;

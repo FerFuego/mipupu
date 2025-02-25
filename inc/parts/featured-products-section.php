@@ -5,15 +5,16 @@
         
         if ( $results->num_rows > 0 ) : ?>
 
-        <div class="container">
+        <div class="container-fluid">
             <div class="row">
                 <div class="col-lg-12">
                     <div class="section-title">
-                        <h2>Productos Destacados</h2>
+                        <h2>Indumentaria para todas las edades</h2>
+                        <p>Sumate a la onda TikTokers</p>
                     </div>
                 </div>
             </div>
-            <div class="row featured__filter">
+            <div class="row featured__filter owl-carousel">
                 <?php
                     while ( $product = $results->fetch_object() ) :
                         require 'inc/partials/product-card.php';

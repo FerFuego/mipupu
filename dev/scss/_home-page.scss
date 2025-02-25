@@ -172,7 +172,7 @@
 }
 
 .featured__item__pic {
-    height: 270px;
+    height: 350px;
     position: relative;
     overflow: hidden;
     background-position: center center;
@@ -249,6 +249,7 @@
     text-align: center;
     padding: 15px 10px 0;
     border: 1px solid #ebebeb;
+    background-color: $white-color;
 
     h6 {
         margin-bottom: 10px;
