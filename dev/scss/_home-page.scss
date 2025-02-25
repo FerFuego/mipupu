@@ -265,6 +265,11 @@
         font-weight: 600;
     }
 
+    p, strong {
+        color: $heading-color-2;
+        font-weight: 600;
+    }
+
     span {
         font-size: 14px;
         color: #b2b2b2;
@@ -370,6 +375,11 @@
     span {
         font-size: 18px;
         display: block;
+        color: $heading-color-2;
+        font-weight: 600;
+    }
+
+    p, strong {
         color: $heading-color-2;
         font-weight: 600;
     }

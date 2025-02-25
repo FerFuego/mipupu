@@ -389,6 +389,11 @@
         color: $heading-color-2;
         font-weight: 600;
     }
+
+    p, strong {
+        color: $heading-color-2;
+        font-weight: 600;
+    }
 }
 
 .product__pagination {
