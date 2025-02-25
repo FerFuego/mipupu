@@ -97,10 +97,10 @@
         <div class="row">
             <div class="col-lg-3">
                 <div class="header__logo">
-                    <a href="/"><img src="<?php echo $general->logo; ?>" alt="logo"></a>
+                    <a href="/"><img src="<?php echo $general->logo; ?>" width="180" alt="logo"></a>
                 </div>
             </div>
-            <div class="col-lg-7">
+            <div class="col-lg-9">
                 <nav class="header__menu">
                     <ul>
                         <li class="<?php echo (Polirubro::normalize_title() === '')? 'active':''?>"><a href="./">Inicio</a></li>
@@ -112,10 +112,8 @@
                             <li class="<?php echo (Polirubro::normalize_title() === 'CPanel')? 'active':''?>"><a href="./cpanel.php">Admin</a></li>
                         <?php endif; ?>
                     </ul>
+                    <?php echo Polirubro::getResumenCart(); ?>
                 </nav>
-            </div>
-            <div class="col-lg-2">
-                <?php echo Polirubro::getResumenCart(); ?>
             </div>
         </div>
         <div class="humberger__open">
