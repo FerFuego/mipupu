@@ -1,6 +1,6 @@
 .banner-shopping {
-    background-color: #F3F6FA;
-    padding: 40px 0 20px;
+    background-color: $black-color;
+    padding: 20px 0 10px;
     margin: 0 0 60px;
 
     &__item {
@@ -11,19 +11,21 @@
 
     i {
         color: $primary-color;
+        font-size: 2em;
     }
 
     &__title {
-        color: $black-color;
+        color: $white-color;
         margin: 15px 0 5px;
         text-align: center;
-        font-size: 21px;
+        font-size: 16px;
         font-weight: 700;
     }
 
     &__text {
        text-align: center;
-       color: $black-color;
-       line-height: 20px !important;
+       color: #afafaf;
+       font-size: 14px;
+       line-height: 18px !important;
     }
 }
