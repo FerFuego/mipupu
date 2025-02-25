@@ -2,7 +2,7 @@
     <div class="featured__item">
         <div class="featured__item__pic set-bg" data-setbg="<?php echo Productos::getImage( $product->CodProducto ); ?>">
             <!-- <div class="product__discount__percent">-20%</div> -->
-            <div class="product__code"><h5><?php echo 'COD: ' . $product->CodProducto; ?></h5></div>
+            <!-- <div class="product__code"><h5><?php //echo 'COD: ' . $product->CodProducto; ?></h5></div> -->
             <form class="js-form-cart">
                 <input type="hidden" name="id_product" value="<?php echo $product->Id_Producto; ?>">
                 <input type="hidden" name="cod_product" value="<?php echo $product->CodProducto; ?>">
