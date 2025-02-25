@@ -16,11 +16,9 @@
             </div>
             <div class="row featured__filter owl-carousel">
                 <?php while ( $product = $results->fetch_object() ) : ?>
-                    <div class="owl-item">
-                        <?php require 'inc/partials/product-card.php'; ?>
-                    </div>
+                    <?php require 'inc/partials/product-card.php'; ?>
                 <?php endwhile; ?>
-                <div class="owl-nav">
+                <!-- <div class="owl-nav">
                     <button type="button" role="presentation" class="owl-prev">
                         <span class="fa fa-angle-left">
                             <span></span>
@@ -31,7 +29,7 @@
                             <span></span>
                         </span>
                     </button>
-                </div>
+                </div> -->
             </div>
         </div>
 
