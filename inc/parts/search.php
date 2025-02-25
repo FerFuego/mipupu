@@ -1,4 +1,4 @@
-<div class="col-lg-9">
+<!-- <div class="col-lg-9"> -->
     <div class="hero__search">
         <div class="hero__search__form">
             <form action="productos.php" method="GET">
@@ -16,4 +16,4 @@
             </div>
         </div>
     </div>    
-</div>
+<!-- </div> -->
