@@ -7,7 +7,7 @@
 
         <div class="container-fluid">
             <div class="row">
-                <div class="col-lg-12">
+                <div class="col-lg-12 mb-5">
                     <h2>Indumentaria para todas las edades</h2>
                     <p>Sumate a la onda TikTokers</p>
                 </div>
