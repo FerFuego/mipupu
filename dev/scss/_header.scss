@@ -63,8 +63,8 @@
         top: 1px;
         height: 20px;
         width: 1px;
-        background: $seconday-color;
-        opacity: .1;
+        background: $white-color;
+        opacity: 1;
         content: "";
     }
 
@@ -156,6 +156,7 @@
     strong {
         position: relative;
         padding-right: 13px;
+        color: $seconday-color;
         &::after {
             position: absolute;
             right: -20px;
