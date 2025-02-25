@@ -130,6 +130,18 @@
         border-radius: 25px;
         margin: 0 5px;
     }
+
+    h2 {
+        color: $white-color;
+        text-transform: uppercase;
+        font-weight: 700;
+    }
+
+    p {
+        font-family: $primary-font;
+        font-weight: 700;
+        color: $black-color;
+    }
 }
 
 .featured__controls {
