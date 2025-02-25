@@ -262,12 +262,12 @@
 
     h5 {
         color: $heading-color-2;
-        font-weight: 600;
+        font-weight: 700;
     }
 
     p, strong {
         color: $seconday-color;
-        font-weight: 600;
+        font-weight: 700;
     }
 
     span {
@@ -370,12 +370,14 @@
     h6 {
         color: $heading-color-2;
         margin-bottom: 8px;
+        font-weight: 700;
+        margin-top: 15px;
     }
 
     span {
         font-size: 18px;
         display: block;
-        color: $heading-color-2;
+        color: $seconday-color;
         font-weight: 700;
     }
 
