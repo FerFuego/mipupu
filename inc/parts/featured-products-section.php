@@ -18,18 +18,6 @@
                 <?php while ( $product = $results->fetch_object() ) : ?>
                     <?php require 'inc/partials/product-card.php'; ?>
                 <?php endwhile; ?>
-                <!-- <div class="owl-nav">
-                    <button type="button" role="presentation" class="owl-prev">
-                        <span class="fa fa-angle-left">
-                            <span></span>
-                        </span>
-                    </button>
-                    <button type="button" role="presentation" class="owl-next">
-                        <span class="fa fa-angle-right">
-                            <span></span>
-                        </span>
-                    </button>
-                </div> -->
             </div>
         </div>
 
