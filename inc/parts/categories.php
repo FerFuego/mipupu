@@ -13,9 +13,9 @@
                     <li>
                         <a href="productos.php?id_rubro=<?php echo $rubro->Id_Rubro; ?>" id="<?php echo $rubro->Id_Rubro; ?>" data-rubro="<?php echo $rubro->Id_Rubro; ?>" class="item sublistCTA">
                             <?php echo $rubro->Nombre; ?>
-                            <span></span>
+                            <!-- <span></span> -->
                         </a>
-                        <div class="sublist"></div>
+                       <!--  <div class="sublist"></div> -->
                     </li>
             <?php endwhile; ?>
         </ul>
