@@ -36,7 +36,8 @@
                 $result = $rubros->getRubros();
 
                 while ( $rubro = $result->fetch_object() ) : ?>
-                    <li>
+                    <!-- get id_rubro from url and compare with $rubro->Id_Rubro == $id_rubro ? 'active' : '' ?> -->
+                     <li class="item <?php echo isset($_GET['id_rubro']) && $_GET['id_rubro'] == $rubro->Id_Rubro ? 'active' : ''; ?>">
                         <a href="productos.php?id_rubro=<?php echo $rubro->Id_Rubro; ?>" id="<?php echo $rubro->Id_Rubro; ?>" data-rubro="<?php echo $rubro->Id_Rubro; ?>" class="item sublistCTA">
                             <?php echo $rubro->Nombre; ?>
                             <!-- <span></span> -->

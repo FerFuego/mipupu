@@ -25,16 +25,20 @@
         li {
             list-style: none;
 
+            .active * {
+                color: $primary-color;
+            }
+
             .item {
-                font-size: 16px;
+                font-size: 14px;
                 color: $normal-color;
-                line-height: 39px;
+                line-height: 26px;
                 display: flex;
                 position: relative;
                 justify-content: space-between;
 
                 &:hover {
-                    color: #7fad39;
+                    color: $primary-color;
                 }
     
                 span {
