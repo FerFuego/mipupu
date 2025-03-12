@@ -35,14 +35,14 @@ endif; ?>
 
 <div class="container-fluid">
     <div class="row">
-        <div class="col-lg-6">
+        <div class="col-lg-6 px-0">
             <a href="/productos.php?id_rubro=58">
                 <img class="img-fluid" src="img/ads/ads-1.webp" alt="">
             </a>
         </div>
-        <div class="col-lg-6">
+        <div class="col-lg-6 px-0">
             <a href="/productos.php?id_rubro=18">
-                <img class="img-fluid" src="img/ads/ads-2.webp" alt="">
+                <img class="img-fluid" src="img/ads/ads-2.webp" height="100%" alt="">
             </a>
         </div>
     </div>
