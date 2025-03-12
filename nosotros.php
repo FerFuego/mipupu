@@ -27,9 +27,10 @@
         <h2>Acerca de Nosotros</h2><hr>
             <p>Somos dos amigas Mónica y Romina que de mates de por medio, un día nos motivamos de emprender algo juntas. 
                 Luego de varias charlas y una lluvia de ideas resultó Friends, un emprendimiento que tenía por objetivo, crear set regalables, 
-                conformados por distintos productos que seleccionamos con amor.</p>
-            <p>Intentamos responder con creatividad y originalidad la pregunta... tengo un evento ... qué le regalo???<br>
-                Estuvimos en el rubro por algun tiempo, muchas ferias comerciales de por medio, siempre anelando crecer y tener nuestro propio negocio, pero al cabo de unos años el emprendimiento llego a su final por sí solo.<br>
+                conformados por distintos productos que seleccionamos con amor.<br>
+            Intentamos responder con creatividad y originalidad la pregunta... tengo un evento ... qué le regalo???<p>
+            <p>Estuvimos en el rubro por algun tiempo, muchas ferias comerciales de por medio, siempre anelando crecer y tener nuestro propio negocio.<br>
+            Pero al cabo de unos años, el emprendimiento llego a su final por sí solo.<br>
             <p>La idea de Friends nos llevó a querer más, y así como todo en la vida, si uno desea algo con todas sus fuerzas y hace lo imposible para que sucedan, al universo no le queda otra cosa que dártelo.</p>
         </div>
 
@@ -48,7 +49,7 @@
         <div class="col-xs-12 col-sm-6">
             <br><br>
             <p>En esa busqueda nos encontramos con una propuesta que nos pondría en el camino nuevos desafios.<br>
-                Teníamos miedos? si, muchoooooosss pero esta vida no esta hecha para cagones.</p>
+                Teníamos miedos? si, muuuuuchos pero esta vida no esta hecha para cagones.</p>
             <p>Le dimos mil vueltas, vimos que era un sueño que podíamos realizar, así que nos propusimos hacerlo.</p>
             <p>De esta forma fue como renació nuestra empresa, compramos Mipupú y anexamos TikTokers.</p> 
             <p>Ahora queremos ser referencia de moda y de estilo, de niños y jóvenes en la ciudad de Bell Ville.</p>
