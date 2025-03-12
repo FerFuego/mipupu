@@ -30,7 +30,7 @@
                 conformados por distintos productos que seleccionamos con amor.</p>
             <p>Intentamos responder con creatividad y originalidad la pregunta... tengo un evento ... qué le regalo???<br>
                 Estuvimos en el rubro por algunos años, muchas ferias comerciales de por medio, pero al cabo de unos años el emprendimiento de Friends llego a su final por sí solo.</p>
-            <p>Pero la idea de Friends nos llevó a querer más, y así como todo en la vida, si uno desea algo con todas sus fuerzas y hace lo imposible para que sucedan, al universo no le queda otra cosa que dártelo.</p>
+            <p>La idea de Friends nos llevó a querer más, y así como todo en la vida, si uno desea algo con todas sus fuerzas y hace lo imposible para que sucedan, al universo no le queda otra cosa que dártelo.</p>
         </div>
 
         <div class="col-xs-12 col-sm-6">
@@ -46,7 +46,8 @@
         </div>
 
         <div class="col-xs-12 col-sm-6">
-        <p>En un momento nos encontramos con una propuesta que nos pondría en el camino de una nueva aventura.<br>
+            <br><br><br>
+            <p>En cierto momento nos encontramos con una propuesta que nos pondría en el camino de una nueva aventura.<br>
                 Teníamos miedos? si, pero esta vida no esta hecha para cagones.</p>
             <p>Le dimos mil vueltas, vimos que era un desafío que podíamos superar, así que nos propusimos a hacerlo.</p>
             <p>Así fue como renació nuestra empresa, compramos Mipupú y anexamos TikTokers.</p> 
@@ -56,7 +57,7 @@
             <p>Agradecemos a nuestros compañeros de vida, que estuvieron al pie del cañón bancándonos.</p>
             <p>Agradecemos a todas las amigas que nos ayudaron que sin ellas, estas amigas quizás no se hubiesen conocido.</p>
             <p>Gracias a todos nuestros clientes por todo el apoyo y la confianza que nos brindan.</p>
-            <p>Hoy somos una de las tiendas más grandes de la ciudad de Bell Ville y queremos seguir creciendo.<p>
+            <p>Hoy somos una de las tiendas más conocidas de la ciudad de Bell Ville y queremos seguir creciendo.<p>
         </div>
         
     </div>
