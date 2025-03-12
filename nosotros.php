@@ -29,7 +29,7 @@
                 Luego de varias charlas y una lluvia de ideas resultó Friends, un emprendimiento que tenía por objetivo, crear set regalables, 
                 conformados por distintos productos que seleccionamos con amor.</p>
             <p>Intentamos responder con creatividad y originalidad la pregunta... tengo un evento ... qué le regalo???<br>
-                Estuvimos en el rubro por algunos años, muchas ferias comerciales de por medio, pero al cabo de unos años el emprendimiento de Friends llego a su final por sí solo.</p>
+                Estuvimos en el rubro por algunos años, muchas ferias comerciales de por medio, siempre anelando crecer y tener nuestro propio negocio, pero al cabo de unos años el emprendimiento de Friends llego a su final por sí solo.<br>
             <p>La idea de Friends nos llevó a querer más, y así como todo en la vida, si uno desea algo con todas sus fuerzas y hace lo imposible para que sucedan, al universo no le queda otra cosa que dártelo.</p>
         </div>
 
@@ -46,7 +46,7 @@
         </div>
 
         <div class="col-xs-12 col-sm-6">
-            <br><br><br>
+            <br><br>
             <p>En cierto momento nos encontramos con una propuesta que nos pondría en el camino de una nueva aventura.<br>
                 Teníamos miedos? si, pero esta vida no esta hecha para cagones.</p>
             <p>Le dimos mil vueltas, vimos que era un desafío que podíamos superar, así que nos propusimos a hacerlo.</p>
