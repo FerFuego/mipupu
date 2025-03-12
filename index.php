@@ -18,7 +18,7 @@
 <div class="container-fluid">
     <div class="row">
         <div class="col-lg-12 px-0 text-center">
-            <h2>PROXIMAMENTE ESTAREMOS RECIBIENDO PEDIDOS</h2>
+            <h2>PRÓXIMAMENTE ESTAREMOS RECIBIENDO PEDIDOS</h2>
             <p>Estamos trabajando para darte la mejor experiencia de compra!</p>
         </div>
     </div>
