@@ -25,6 +25,7 @@ class Productos {
     public $fecha_alta_web;
     public $novedad;
     public $oferta;
+    public $stock_actual;
     public $observaciones;
     protected $obj;
 
@@ -57,6 +58,7 @@ class Productos {
             $this->fecha_alta_web = $row['FecAltaWeb'];
             $this->novedad = $row['Novedad'];
             $this->oferta = $row['Oferta'];
+            $this->stock_actual = $row['StockActual'];
             $this->observaciones = $row['Observaciones'];
 
         }
