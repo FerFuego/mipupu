@@ -37,12 +37,12 @@ endif; ?>
     <div class="row">
         <div class="col-lg-6">
             <a href="/productos.php?id_rubro=58">
-                <img class="img-fluid" src="img/ads/ads-1.png" alt="">
+                <img class="img-fluid" src="img/ads/ads-1.webp" alt="">
             </a>
         </div>
         <div class="col-lg-6">
             <a href="/productos.php?id_rubro=18"></a>
-                <img class="img-fluid" src="img/ads/ads-2.png" alt="">
+                <img class="img-fluid" src="img/ads/ads-2.webp" alt="">
             </a>
         </div>
     </div>
