@@ -20,40 +20,45 @@
 <!-- Breadcrumb Section End -->
 
 <div class="container mt-5 mb-5">
+
     <div class="row">
 
         <div class="col-xs-12 col-sm-6">
             <h2>Acerca de Nosotros</h2><hr>
-            <p>Somos una empresa muy joven que nació con el sueño de realizar el trabajo que más le gustaba a Miguel... ser vendedor...
-            Pero este sueño fue transformándose en una realidad, y esta se encargó de ir marcándonos un camino... el de crecer a medida que nuestros clientes lo necesitaban, tratando de cubrir sus necesidades.
-            Porque nacimos como <b>vendedores mayoristas de juguetes</b>, y hoy también contamos con <b>librería, regalaría, bazar, marroquinería, ropa interior y kiosco.</b></p>
-
-            <p>Lo que siempre tuvimos claro son nuestros tres pilares: <b>HONESTIDAD, BUENA FE Y TRABAJO.</b> 
-            Si... porque día a día trabajamos dando lo mejor de nosotros, y luchando por seguir mejorando, sabiendo que nos falta mucho por corregir y aprender, pero lo hacemos con la tranquilidad de que ponemos el corazón en este negocio, porque amamos lo que hacemos y tenemos muy claro que sin USTED todo es imposible.</p>
+            <p>Somos dos amigas Monica y Romina que de mates de por medio, un día nos motivamos de emprender algo juntas. 
+                Luego de varias charlas y una lluvia de ideas resultó Friends, un emprendimiento que tenia por objetivo, crear set regalables, 
+                conformados por distintos productos que seleccionamos con amor.</p>
+            <p>Intentamos responder con creatividad y originalidad la pregunta... tengo un evento ... que le regalo???<br>
+                Estuvimos en el rubro por algunos años, muchas ferias comerciales de por medio pero al cabo de unos años el emprendimiento de Friends llego a su final por si solo.</p>
+            <p>Pero la idea de Friends nos llevo a querer más, y asi como todo en la vida, si uno desea algo con todas sus fuerzas y hace lo imposible para que sucedan, al universo no le queda otra cosa que dartelo.</p>
         </div>
 
         <div class="col-xs-12 col-sm-6">
-            <img class="mt-5 pt-3 pb-3" src="img/empresa.jpg" alt="nosotros">
+            <img class="mt-5 pt-3 pb-3" src="img/empresa-1.jpeg" alt="nosotros">
         </div>
 
-        <div class="col-12">
-            <p>
-                Porque creemos que:
-                <ul class="ml-5">
-                    <li>Con una mentira suele irse muy lejos, pero sin esperanzas de volver...</li>
-                    <li>No tenemos, ni nos avergüenza decir “no se”, y “lo siento”...</li>
-                    <li>Queremos ganarnos su respeto con la base de la honestidad...</li>
-                    <li>Y porque este negocio es como un gran alcancía…. Le tenemos que poner todo lo que podamos, pero siempre firme a nuestros pilares...</li>
-                </ul>
-            </p>
+    </div>
 
-            <p>Y en nuestro afán de seguir brindándoles lo mejor de nosotros es que hoy estamos en este nuevo desafío... Nuestro sitio web.
-            Porque esperamos que les sirva esta nueva herramienta...
-            Aunque todavía nos cuesta llamarnos “empresa” porque no perdimos el aire familiar de nuestro negocio, a pesar de contar con todas las herramientas que una empresa de hoy requiere… nos gusta hacer sentir a nuestro cliente “como en casa”...</p>
+    <div class="row">
 
-            <p>Por todo esto y por la oportunidad de hacer que podamos trabajar en lo que más nos gusta… Muchísimas gracias.
-            <b>LOS CHICOS DE POLIRRUBROS.</b></p>
+        <div class="col-xs-12 col-sm-6">
+            <img class="mt-5 pt-3 pb-3" src="img/empresa-2.jpeg" alt="nosotros">
         </div>
+
+        <div class="col-xs-12 col-sm-6">
+            <p>En un momento nos encontramos con una propuesta que nos pondría en el camino de una nueva aventura.<br>
+                Teniamos miedos? si, pero esta vida no esta hecha para cagones.</p>
+            <p>Le dimos mil vueltas, vimos que era un desafio que podiamos superar, asi que nos propusimos a hacerlo.</p>
+            <p>Asi fue como renació nuestra empresa, compramos Mipupú y anexamos TikTokers.</p> 
+            <p>Ahora queremos ser referencia de moda y de estilo de niños y jovenes en la ciudad de Bell Ville.</p>
+            <p>Nuestra misión es darle a nuestros clientes el mejor servicio, la mejor atención y la mejor calidad de productos.</p>
+            <p>Es por eso que nosotros nos dedicamos a darle a nuestros clientes lo mejor de lo mejor y siempre estamos buscando la forma de mejorar aun más.</p>
+            <p>Agradecemos a nuestros compañeros de vida, que estuvieron al pie del cañón bancándonos.</p>
+            <p>Agradecemos a todas las amigas que nos ayudaron que sin ellas, estas amigas quizás no se hubiesen conocido.</p>
+            <p>Gracias a todos nuestros clientes por todo el apoyo y la confianza que nos brindan.</p>
+            <p>Hoy somos una de las tiendas más grandes de la ciudad de Bell Ville y queremos seguir creciendo.<p>
+        </div>
+        
     </div>
 </div>
 
