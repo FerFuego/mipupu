@@ -51,9 +51,8 @@
                 Teníamos miedos? si, muchoooooosss pero esta vida no esta hecha para cagones.</p>
             <p>Le dimos mil vueltas, vimos que era un sueño que podíamos realizar, así que nos propusimos hacerlo.</p>
             <p>Así fue como renació nuestra empresa, compramos Mipupú y anexamos TikTokers.</p> 
-            <p>Ahora queremos ser referencia de moda y de estilo de niños y jóvenes en la ciudad de Bell Ville.</p>
-            <p>Nuestra misión es darle a nuestros clientes el mejor servicio, la mejor atención y la mejor calidad de productos.</p>
-            <p>Es por eso que nosotros nos dedicamos a darle a nuestros clientes lo mejor de lo mejor y siempre estamos buscando la forma de mejorar aún más.</p>
+            <p>Ahora queremos ser referencia de moda y de estilo, de niños y jóvenes en la ciudad de Bell Ville.</p>
+            <p>Nuestra misión es darle a nuestros clientes el mejor servicio, atención, calidad, el menor precio y siempre estamos buscando lo mejor para nuestros clientes.</p>
             <p>Agradecemos a nuestros compañeros de vida, que estuvieron al pie del cañón bancándonos.</p>
             <p>Agradecemos a todas las amigas que nos ayudaron que sin ellas, estas amigas quizás no se hubiesen conocido.</p>
             <p>Gracias a todos nuestros clientes por todo el apoyo y la confianza que nos brindan.</p>
