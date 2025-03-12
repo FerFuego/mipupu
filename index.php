@@ -15,6 +15,15 @@
 </section> -->
 <!-- Hero Section End -->
 
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-lg-12 px-0 text-center">
+            <h2>PROXIMAMENTE ESTAREMOS RECIBIENDO PEDIDOS</h2>
+            <P>¡Gracias por su comprensión!>
+        </div>
+    </div>
+</div>
+
 <!-- Slider Begin -->
 <?php if ($_SERVER['REQUEST_URI'] === '/' || $_SERVER['REQUEST_URI'] === '/index.php' || $_SERVER['REQUEST_URI'] === '/nuevo/' || $_SERVER['REQUEST_URI'] === '/nuevo/index.php') :
     require_once('inc/parts/slider.php'); 
