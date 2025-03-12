@@ -49,7 +49,7 @@
             <br><br>
             <p>En esa busqueda nos encontramos con una propuesta que nos pondría en el camino nuevos desafios.<br>
                 Teníamos miedos? si, muchoooooosss pero esta vida no esta hecha para cagones.</p>
-            <p>Le dimos mil vueltas, vimos que era un sueño que podíamos realizar, así que nos propusimos a hacerlo.</p>
+            <p>Le dimos mil vueltas, vimos que era un sueño que podíamos realizar, así que nos propusimos hacerlo.</p>
             <p>Así fue como renació nuestra empresa, compramos Mipupú y anexamos TikTokers.</p> 
             <p>Ahora queremos ser referencia de moda y de estilo de niños y jóvenes en la ciudad de Bell Ville.</p>
             <p>Nuestra misión es darle a nuestros clientes el mejor servicio, la mejor atención y la mejor calidad de productos.</p>
