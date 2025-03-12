@@ -230,7 +230,7 @@ class Productos {
 
     public function update() {
         $this->obj = new sQuery();
-        $this->obj->executeQuery("UPDATE productos SET Nombre = '$this->nombre', Novedad = '$this->novedad', Oferta = '$this->oferta', Observaciones = '$this->observaciones' WHERE (CodProducto = '$this->cod_producto')");
+        $this->obj->executeQuery("UPDATE productos SET Nombre = '$this->nombre', Novedad = '$this->novedad', Oferta = '$this->oferta', StockActual = '$this->stock_actual', Observaciones = '$this->observaciones' WHERE (CodProducto = '$this->cod_producto')");
     }
 
     public function delete() {
