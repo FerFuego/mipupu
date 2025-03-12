@@ -42,7 +42,7 @@ endif; ?>
         </div>
         <div class="col-lg-6 px-0">
             <a href="/productos.php?id_rubro=18">
-                <img class="img-fluid" src="img/ads/ads-2.webp" height="100%" alt="">
+                <img class="img-fluid" src="img/ads/ads-2.webp" style="height: 100% !important;" alt="">
             </a>
         </div>
     </div>
