@@ -50,10 +50,10 @@
             <p>En esa busqueda nos encontramos con una propuesta que nos pondría en el camino nuevos desafios.<br>
                 Teníamos miedos? si, muchoooooosss pero esta vida no esta hecha para cagones.</p>
             <p>Le dimos mil vueltas, vimos que era un sueño que podíamos realizar, así que nos propusimos hacerlo.</p>
-            <p>Así fue como renació nuestra empresa, compramos Mipupú y anexamos TikTokers.</p> 
+            <p>De esta forma fue como renació nuestra empresa, compramos Mipupú y anexamos TikTokers.</p> 
             <p>Ahora queremos ser referencia de moda y de estilo, de niños y jóvenes en la ciudad de Bell Ville.</p>
             <p>Nuestra misión es darle a nuestros clientes el mejor servicio, atención, calidad, el menor precio y siempre estamos buscando lo mejor para nuestros clientes.</p>
-            <p>Agradecemos a nuestros compañeros de vida, que estuvieron al pie del cañón bancándonos.</p>
+            <p>Agradecemos a nuestras familias y a nuestros compañeros de vida, que estuvieron al pie del cañón bancándonos.</p>
             <p>Agradecemos a todas las amigas que nos ayudaron que sin ellas, estas amigas quizás no se hubiesen conocido.</p>
             <p>Gracias a todos nuestros clientes por todo el apoyo y la confianza que nos brindan.</p>
             <p>Hoy somos una de las tiendas más conocidas de la ciudad de Bell Ville y queremos seguir creciendo.<p>
