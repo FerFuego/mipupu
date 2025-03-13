@@ -58,8 +58,12 @@ endif; ?>
 </div>
 
 <!-- Featured Section Begin -->
-<?php require_once('inc/parts/featured-products-section.php'); ?>
+<?php //require_once('inc/parts/featured-products-section.php'); ?>
 <!-- Featured Section End -->
+
+<!-- New Products Section Begin -->
+<?php require_once('inc/parts/new-products-section.php'); ?>
+<!-- New Products Section End -->
 
 <!-- Latest Product Section Begin -->
 <?php //require_once('inc/parts/last-products-section.php'); ?>

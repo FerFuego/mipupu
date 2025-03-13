@@ -199,6 +199,14 @@ class Productos {
         return $result;
     }
 
+    public function getProductstNews(){
+
+        $this->obj = new sQuery();
+        $result = $this->obj->executeQuery("SELECT * FROM productos WHERE 1 = 1 ORDER BY Id_Producto DESC LIMIT 12");
+
+        return $result;
+    }
+
     public function getRelatedProducts($id_rubro, $id_subrubro, $id_grupo, $id_producto){
 
         $where = '1=1';
