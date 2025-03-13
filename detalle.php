@@ -5,14 +5,14 @@
 <!-- Header Section End -->
 
 <!-- Hero Section Begin -->
-<section class="hero hero-normal">
+<!-- <section class="hero hero-normal">
     <div class="container">
         <div class="row">
-            <?php require_once('inc/parts/categories.php'); ?>
-            <?php require_once('inc/parts/search.php'); ?>
+            <?php //require_once('inc/parts/categories.php'); ?>
+            <?php //require_once('inc/parts/search.php'); ?>
         </div>
     </div>
-</section>
+</section> -->
 <!-- Hero Section End -->
 
 <!-- Breadcrumb Section Begin -->
