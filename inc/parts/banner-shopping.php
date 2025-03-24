@@ -1,4 +1,4 @@
-<div class="banner-shopping">
+<div class="banner-shopping mt-0 mb-0">
     <div class="container">
         <div class="row">
             <div class="banner-shopping__item col-lg-3 col-md-6 col-xs-12">

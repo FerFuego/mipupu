@@ -1,4 +1,4 @@
-<div class="banner mb-5">
+<div class="banner mb-0 mt-0">
     <div class="container">
         <div class="row">
             <?php 
