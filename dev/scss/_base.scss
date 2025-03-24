@@ -201,6 +201,12 @@ ol {
   background: #000;
 }
 
+.hidden-xs {
+  @media (max-width: 480px) {
+    display: none;
+  }
+}
+
 .loader {
   width: 40px;
   height: 40px;

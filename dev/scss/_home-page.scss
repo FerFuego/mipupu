@@ -116,6 +116,10 @@
     padding-bottom: 40px;
     background-color: #e61b52a1;
 
+    @media (max-width: 768px) {
+        padding-top: 40px;
+    }
+
     .owl-nav {
         display: flex;
         justify-content: center;
@@ -135,6 +139,10 @@
         text-transform: uppercase;
         font-weight: 900;
         text-align: center;
+
+        @media (max-width: 768px) {
+            font-size: 30px;
+        }
     }
 
     p {
