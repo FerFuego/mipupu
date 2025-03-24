@@ -50,6 +50,7 @@
     <link rel="stylesheet" href="dist/css/owl.carousel.min.css" type="text/css">
     <link rel="stylesheet" href="dist/css/slicknav.min.css" type="text/css">
     <link rel="stylesheet" href="dist/css/style.css" type="text/css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
 </head>
 
 <body>
