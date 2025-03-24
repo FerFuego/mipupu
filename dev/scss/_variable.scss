@@ -12,7 +12,10 @@ $background-2: #f2f2f2;
 $border: #ebebeb;
 $border-1: #e1e1e1;
 
-$primary-font: 'Poppins', sans-serif;
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
+
+$primary-font: 'Montserrat', sans-serif;
+//$primary-font: 'Poppins', sans-serif;
 //$primary-font: 'Cairo', sans-serif;
 //$primary-font: 'Roboto', sans-serif;
 $fm-unna: 'Unna', serif;
