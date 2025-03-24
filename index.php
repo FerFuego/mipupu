@@ -43,7 +43,15 @@ endif; ?>
 <!-- Categories Section End -->
 
 <!-- Categories Section Begin -->
-<?php require_once('inc/parts/left-right-section.php'); ?>
+<?php require_once('inc/parts/left-right-mipupu.php'); ?>
+<!-- Categories Section End -->
+
+<!-- Banner Shopping Begin -->
+<?php require_once('inc/parts/banner-tiktokers.php'); ?>
+<!-- Banner End -->
+
+<!-- Categories Section Begin -->
+<?php require_once('inc/parts/left-right-tiktokers.php'); ?>
 <!-- Categories Section End -->
 
 <!-- Featured Section Begin -->
