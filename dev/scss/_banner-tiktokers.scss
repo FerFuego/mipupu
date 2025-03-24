@@ -1,0 +1,31 @@
+.banner-tiktokers {
+    background-color: $black-color;
+    padding: 20px 0 10px;
+    margin: 0 0 60px;
+
+    &__item {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    i {
+        color: $primary-color;
+        font-size: 2em;
+    }
+
+    &__title {
+        color: $white-color;
+        margin: 15px 0 5px;
+        text-align: center;
+        font-size: 16px;
+        font-weight: 700;
+    }
+
+    &__text {
+        text-align: center;
+        color: #afafaf;
+        font-size: 14px;
+        line-height: 18px !important;
+    }
+}
