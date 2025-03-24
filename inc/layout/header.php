@@ -97,7 +97,7 @@
         <div class="row">
             <div class="col-lg-3">
                 <div class="header__logo">
-                    <a href="/"><img src="<?php echo $general->logo; ?>" width="180" alt="logo"></a>
+                    <a href="/"><img class="animate__animated animate__heartBeat animate__delay-2s animate__repeat-2" src="<?php echo $general->logo; ?>" width="180" alt="logo"></a>
                 </div>
             </div>
             <div class="col-lg-9">
