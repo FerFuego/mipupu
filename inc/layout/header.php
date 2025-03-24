@@ -4,7 +4,7 @@
 <div class="humberger__menu__wrapper">
 
     <div class="humberger__menu__logo">
-        <a href="/"><img src="<?php echo $general->logo; ?>" alt="logo"></a>
+        <a href="/"><img class="animate__animated animate__heartBeat animate__delay-2s animate__repeat-2" src="<?php echo $general->logo; ?>" alt="logo"></a>
     </div>
 
     
