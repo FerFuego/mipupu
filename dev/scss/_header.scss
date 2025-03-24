@@ -186,9 +186,10 @@
 
 .header__logo {
     padding: 15px 0;
-
-    @media (max-width: 768px) {
-        width: 80%;
+    img {
+        @media (max-width: 768px) {
+            max-width: 60px;
+        }
     }
 
     a {

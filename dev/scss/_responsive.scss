@@ -446,6 +446,12 @@
   
     .humberger__menu__logo {
       margin-bottom: 30px;
+
+      img {
+        @media (max-width: 768px) {
+            max-width: 60px;
+        }
+      }
   
       a {
         display: inline-block;
