@@ -59,6 +59,7 @@
         box-sizing: border-box;
 
         &:hover {
+            $border: 2px;
             color: #FFF;
             background: #000;
             background-clip: padding-box; /* !importanté */
