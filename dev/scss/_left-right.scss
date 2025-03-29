@@ -16,6 +16,7 @@
         font-size: 52px;
         font-weight: 900;
         position: absolute;
+        text-transform: uppercase;
         top: 45%;
         left: 0;
         right: 0;
@@ -30,34 +31,28 @@
     }
 
     &__button {
-        margin: .45em .7em .85em;
-        max-width: 280px;
-        width: 280px;
-        height: 48px;
         line-height: 46px;
-        background-color: rgba(45, 45, 45, .3);
-        backdrop-filter: blur(10px);
         color: #fff !important;
         border: 1px solid #fff !important;
         line-height: 42px;
         transition: border .5s;
         padding: 0 1em;
-        font-size: 1em;
-        margin: .35em .7em .6em;
-        display: inline-block;
+        font-size: 18px;
+        display: block;
         width: 218px;
         height: 44px;
         line-height: 44px;
         background-color: #fff;
-        color: #000;
         vertical-align: middle;
         cursor: pointer;
         text-align: center;
         border: none;
-        text-decoration: none !important;
         font-weight: 400;
         border-radius: 100vmax;
-        -webkit-box-sizing: inherit;
-        box-sizing: inherit;
+        position: absolute;
+        top: 60%;
+        left: 0;
+        right: 0;
+        margin: 0 auto;
     }
 }
