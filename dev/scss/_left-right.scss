@@ -58,7 +58,8 @@
 
         &:hover {
             border: 2px solid $seconday-color !important;
-            color: $seconday-color !important;
+            background-color: $seconday-color !important;
+            color: $white-color !important;
         }
     }
 }
