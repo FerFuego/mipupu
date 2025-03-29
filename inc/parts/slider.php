@@ -1,5 +1,5 @@
 <section class="slider">
-    <div class="container">
+    <div class="container-fluid">
         <div class="row">
             <div class="home__slider owl-banner-carousel owl-carousel">
                 <?php 

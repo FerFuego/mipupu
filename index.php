@@ -15,6 +15,12 @@
 </section> -->
 <!-- Hero Section End -->
 
+<!-- Slider Begin -->
+<?php if ($_SERVER['REQUEST_URI'] === '/' || $_SERVER['REQUEST_URI'] === '/index.php' || $_SERVER['REQUEST_URI'] === '/nuevo/' || $_SERVER['REQUEST_URI'] === '/nuevo/index.php') :
+    require_once('inc/parts/slider.php'); 
+endif; ?>
+<!-- Slider End -->
+
 <div class="container-fluid">
     <div class="row">
         <div class="col-lg-12 px-0 text-center">
@@ -23,12 +29,6 @@
         </div>
     </div>
 </div>
-
-<!-- Slider Begin -->
-<?php if ($_SERVER['REQUEST_URI'] === '/' || $_SERVER['REQUEST_URI'] === '/index.php' || $_SERVER['REQUEST_URI'] === '/nuevo/' || $_SERVER['REQUEST_URI'] === '/nuevo/index.php') :
-    require_once('inc/parts/slider.php'); 
-endif; ?>
-<!-- Slider End -->
 
 <!-- Banner Shopping Begin -->
 <?php require_once('inc/parts/banner-shopping.php'); ?>
