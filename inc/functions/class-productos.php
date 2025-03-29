@@ -113,7 +113,6 @@ class Productos {
     }
 
     public function getProducts($opcion, $id_rubro, $id_subrubro, $id_grupo, $minamount, $maxamount, $order){
-
         $where = '1=1';
         if (is_array($id_rubro)) {
             $where .= ' AND Id_Rubro IN ('.implode(',', $id_rubro).')';
