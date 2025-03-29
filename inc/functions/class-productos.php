@@ -132,9 +132,8 @@ class Productos {
         $result = [
             'total' => $this->obj->getResultados(),
             'query' => $query,
-            'params' => ($opcion ? 'opcion='. $opcion .'&' : null).'id_rubro='.implode(',', $id_rubro).'&id_subrubro='.$id_subrubro.'&id_grupo='.$id_grupo. (($minamount && $maxamount) ? '&minamount='.$minamount.'&maxamount='.$maxamount : '') . (($order) ? '&order='.$order : '')
+            'params' => ($opcion ? 'opcion='. $opcion .'&' : null).'id_rubro[]=' . implode('&id_rubro[]=', $id_rubro) . '&id_subrubro='.$id_subrubro.'&id_grupo='.$id_grupo. (($minamount && $maxamount) ? '&minamount='.$minamount.'&maxamount='.$maxamount : '') . (($order) ? '&order='.$order : '')
         ];
-
         return $result;
     }
 
