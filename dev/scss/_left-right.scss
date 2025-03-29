@@ -34,7 +34,7 @@
         $border: 2px;
         line-height: 46px;
         color: #fff !important;
-        border: $border solid #fff !important;
+        // border: $border solid #fff !important;
         line-height: 42px;
         transition: all .3s ease;
         padding: 0 1em;
@@ -44,7 +44,7 @@
         width: 218px;
         height: 44px;
         line-height: 44px;
-        background-color: transparent;
+        //background-color: transparent;
         vertical-align: middle;
         cursor: pointer;
         text-align: center;
@@ -57,6 +57,21 @@
         margin: 0 auto;
         text-shadow: 0px 0px 10px rgba(0,0,0,.5);
         box-sizing: border-box;
+
+        background: #000;
+        background-clip: padding-box; /* !importanté */
+        border: solid $border transparent; /* !importanté */
+        // border-radius: 100vmax;
+
+        &:before {
+            content: '';
+            position: absolute;
+            top: 0; right: 0; bottom: 0; left: 0;
+            z-index: -1;
+            margin: -$border; /* !importanté */
+            border-radius: inherit; /* !importanté */
+            background: linear-gradient(to right, $seconday-color, $primary-color);
+        }
 
         &:hover {
             $border: 2px;
