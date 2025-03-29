@@ -11,7 +11,12 @@
             <div class="range-slider">
                 <form class="d-flex justify-content-around" method="GET">
                     <?php 
-                    $id_rubro = (isset($_GET["id_rubro"]) ? $_GET["id_rubro"] : null);
+                    $id_rubro  = (isset($_GET['id_rubro']) && $_GET['id_rubro'] != '') ? $_GET['id_rubro'] : null;
+                    $id_subrubro  = (isset($_GET['id_subrubro']) && $_GET['id_subrubro'] != '') ? $_GET['id_subrubro'] : null;
+                    $id_grupo  = (isset($_GET['id_grupo']) && $_GET['id_grupo'] != '') ? $_GET['id_grupo'] : null;
+                    $minamount = (isset($_GET['minamount']) && $_GET['minamount'] != '') ? $_GET['minamount'] : null;
+                    $maxamount = (isset($_GET['maxamount']) && $_GET['maxamount'] != '') ? $_GET['maxamount'] : null;
+                    $order     = (isset($_GET['order']) && $_GET['order'] != '') ? $_GET['order'] : null;
                     if (is_array($id_rubro)) : 
                         foreach ($id_rubro as $key => $value) {
                             echo '<input type="hidden" name="id_rubro[]" value="'.$value.'">';
