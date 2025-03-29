@@ -86,7 +86,13 @@
                     <div class="row">
                         <div class="col-lg-4 col-md-5 d-none d-sm-block">
                             <form id="form-order-prod" class="d-flex justify-content-around" method="GET">
-                                <input type="hidden" name="id_rubro" value="<?php echo $id_rubro; ?>">
+                                <?php if (is_array($id_rubro)) : 
+                                    foreach ($id_rubro as $key => $value) {
+                                        echo '<input type="hidden" name="id_rubro[]" value="'.$value.'">';
+                                    }
+                                else: 
+                                    echo '<input type="hidden" name="id_rubro" value="'.$id_rubro.'">';
+                                endif; ?>
                                 <input type="hidden" name="id_subrubro" value="<?php echo $id_subrubro; ?>">
                                 <input type="hidden" name="id_grupo" value="<?php echo $id_grupo; ?>">
                                 <input type="hidden" name="minamount" id="minamount" value="<?php echo $minamount; ?>">
