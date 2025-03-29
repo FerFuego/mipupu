@@ -139,17 +139,24 @@
         text-transform: uppercase;
         font-weight: 900;
         text-align: center;
+        font-size: 28px;
 
         @media (max-width: 768px) {
-            font-size: 30px;
+            font-size: 22px;
         }
     }
 
     p {
         font-family: $primary-font;
-        font-weight: 700;
+        font-weight: 900;
         color: $black-color;
         text-align: center;
+        font-size: 56px;
+        padding-top: 16px;
+
+        @media (max-width: 768px) {
+            font-size: 30px;
+        }
     }
 }
 
