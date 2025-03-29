@@ -28,8 +28,8 @@
                     <input type="hidden" name="id_grupo" value="<?php echo $id_grupo; ?>">
                     <input type="hidden" name="order" value="<?php echo $order; ?>">
                     <div class="price-input">
-                        <input type="text" name="minamount" id="minamount" value="<?php echo $minamount; ?>">
-                        <input type="text" name="maxamount" id="maxamount" value="<?php echo $maxamount; ?>">
+                        <input type="text" name="minamount" id="minamount" value="<?php echo str_replace('$', '', $minamount); ?>">
+                        <input type="text" name="maxamount" id="maxamount" value="<?php echo str_replace('$', '', $maxamount); ?>">
                     </div>
                     <input type="submit" class="site-btn-min" value="Filtrar">
                 </form>
