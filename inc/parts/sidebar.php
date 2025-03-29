@@ -31,7 +31,7 @@
     <div class="sidebar__item d-none d-sm-block">
         <h4>Categorías</h4>
         <form action="productos.php" method="GET">
-            <input type="submit" class="site-btn" value="Filtrar">
+            <input type="submit" class="site-btn-min mb-3" value="Filtrar">
             <ul>
                 <?php 
                     $rubros = new Rubros();
@@ -49,7 +49,7 @@
                         </li>
                 <?php endwhile; ?>
             </ul>
-            <input type="submit" class="site-btn" value="Filtrar">
+            <input type="submit" class="site-btn-min mt-3" value="Filtrar">
         </form>
     </div>
     <!-- <div class="sidebar__item sidebar__item__color--option">
