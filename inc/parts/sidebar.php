@@ -40,12 +40,14 @@
                     while ( $rubro = $result->fetch_object() ) : 
                         $current = null;
                         
-                        if (isset($_GET['id_rubro'])) {
+                        if (isset($_GET['id_rubro']) && is_array($_GET['id_rubro'])) {
                             foreach ($_GET['id_rubro'] as $key => $value) {
                                 if ($value == $rubro->Id_Rubro) {
                                     $current = $value;
                                 }
                             }
+                        } else {
+                            $current = $_GET['id_rubro'] ?? null;
                         } ?>
                         <li class="item <?php echo isset($current) && $current == $rubro->Id_Rubro ? 'active' : ''; ?>">
                             <label class="item sublistCTA">
