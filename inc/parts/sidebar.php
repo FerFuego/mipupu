@@ -37,15 +37,21 @@
                     $rubros = new Rubros();
                     $result = $rubros->getRubros();
 
-                    while ( $rubro = $result->fetch_object() ) : ?>
-                        <!-- get id_rubro from url and compare with $rubro->Id_Rubro == $id_rubro ? 'active' : '' ?> -->
-                        <li class="item <?php echo isset($_GET['id_rubro']) && $_GET['id_rubro'] == $rubro->Id_Rubro ? 'active' : ''; ?>">
-                            <a href="productos.php?id_rubro=<?php echo $rubro->Id_Rubro; ?>" id="<?php echo $rubro->Id_Rubro; ?>" data-rubro="<?php echo $rubro->Id_Rubro; ?>" class="item sublistCTA">
-                                <input type="checkbox" name="id_rubro[]" value="<?php echo $rubro->Id_Rubro; ?>" <?php echo isset($_GET['id_rubro']) && $_GET['id_rubro'] == $rubro->Id_Rubro ? 'checked' : ''; ?>>
+                    while ( $rubro = $result->fetch_object() ) : 
+                        $current = null;
+                        
+                        if (isset($_GET['id_rubro'])) {
+                            foreach ($_GET['id_rubro'] as $key => $value) {
+                                if ($value == $rubro->Id_Rubro) {
+                                    $current = $value;
+                                }
+                            }
+                        } ?>
+                        <li class="item <?php echo isset($current) && $current == $rubro->Id_Rubro ? 'active' : ''; ?>">
+                            <label class="item sublistCTA">
+                                <input type="checkbox" name="id_rubro[]" value="<?php echo $rubro->Id_Rubro; ?>" <?php echo isset($current) && $current == $rubro->Id_Rubro ? 'checked' : ''; ?>>
                                 <?php echo $rubro->Nombre; ?>
-                                <!-- <span></span> -->
-                            </a>
-                            <!-- <div class="sublist"></div> -->
+                            </label>
                         </li>
                 <?php endwhile; ?>
             </ul>
