@@ -112,7 +112,7 @@
   Featured
 -----------------------*/
 .featured {
-    padding-top: 80px;
+    padding-top: 50px;
     padding-bottom: 40px;
     background-color: #e61b52a1;
 
@@ -156,10 +156,9 @@
     .featured__header {
         h2 {
             color: $white-color;
-            text-transform: uppercase;
             font-weight: 900;
             text-align: center;
-            font-size: 28px;
+            font-size: 22px;
     
             @media (max-width: 768px) {
                 font-size: 22px;
@@ -171,8 +170,9 @@
             font-weight: 900;
             color: $black-color;
             text-align: center;
-            font-size: 56px;
+            font-size: 45px;
             padding-top: 16px;
+            text-transform: uppercase;
     
             @media (max-width: 768px) {
                 font-size: 30px;
