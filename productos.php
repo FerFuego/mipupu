@@ -109,7 +109,7 @@
                     </div>
                 </div>
 
-                <?php if ( $results->num_rows > 0 ) : ?>
+                <?php if ( isset($results) && $results->num_rows > 0 ) : ?>
 
                     <div class="row">
                         <?php
