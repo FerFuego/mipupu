@@ -8,7 +8,7 @@
 
                     while ( $banner = $result->fetch_object() ) : ?>
 
-                        <div class="hero__item col-lg-12 set-bg-contain" data-setbg="<?php echo $banner->image; ?>">
+                        <div class="hero__item col-lg-12 set-bg-contain set-bg" data-setbg="<?php echo $banner->image; ?>">
                             <div class="hero__text">
                                 <?php if ($banner->title) : ?>
                                     <!-- <span>PRODUCTOS</span> -->
