@@ -33,21 +33,21 @@
     &__button {
         line-height: 46px;
         color: #fff !important;
-        border: 1px solid #fff !important;
+        border: 2px solid #fff !important;
         line-height: 42px;
         transition: border .5s;
         padding: 0 1em;
         font-size: 18px;
+        font-weight: 600;
         display: block;
         width: 218px;
         height: 44px;
         line-height: 44px;
-        background-color: #fff;
+        background-color: transparent;
         vertical-align: middle;
         cursor: pointer;
         text-align: center;
         border: none;
-        font-weight: 400;
         border-radius: 100vmax;
         position: absolute;
         top: 60%;
