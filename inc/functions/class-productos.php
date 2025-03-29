@@ -115,7 +115,11 @@ class Productos {
     public function getProducts($opcion, $id_rubro, $id_subrubro, $id_grupo, $minamount, $maxamount, $order){
 
         $where = '1=1';
-        $where .= ( $id_rubro ) ? ' AND Id_Rubro='. $id_rubro : '';
+        if (is_array($id_rubro)) {
+            $where .= ' AND Id_Rubro IN ('.implode(',', $id_rubro).')';
+        } else {
+            $where .= ( $id_rubro ) ? ' AND Id_Rubro='. $id_rubro : '';
+        }
         $where .= ( $id_subrubro ) ? ' AND Id_SubRubro='. $id_subrubro : '';
         $where .= ( $id_grupo ) ? ' AND Id_Grupo='. $id_grupo : '';
         $where .= ( $minamount && $maxamount ) ? ' AND PreVtaFinal1 BETWEEN '.$minamount.' AND '.$maxamount : '';
