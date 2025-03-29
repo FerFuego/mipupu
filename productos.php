@@ -37,9 +37,17 @@
                             <span class="mt-3 mb-0 text-success" style="font-size: 18px;">
 
                                 <?php if ( isset($_GET['id_rubro']) && $_GET['id_rubro'] != '') : 
-                                    $rubro = new Rubros($_GET['id_rubro']); ?>
-                                    <a href="productos.php?id_rubro=<?php echo $rubro->id_rubro; ?>" class="text-success"><?php echo $rubro->nombre; ?></a>
-                                <?php endif; ?>
+                                    $rubros = $_GET['id_rubro'];
+                                    if ( is_array($rubros)) {
+                                        foreach ($rubros as $key => $value) {
+                                            $rubro = new Rubros($value);
+                                            echo '<span class="text-success">'. $rubro->nombre . '</span> / ';
+                                        }
+                                    } else {
+                                        $rubro = new Rubros($_GET['id_rubro']);
+                                        echo '<a href="productos.php?id_rubro='. $rubro->id_rubro .'" class="text-success">'. $rubro->nombre . '</a>';
+                                    }
+                                endif; ?>
 
                                 <?php if ( isset($_GET['id_subrubro']) && $_GET['id_subrubro'] != '') : 
                                     $subrubro = new Subrubros($_GET['id_subrubro']); ?>
