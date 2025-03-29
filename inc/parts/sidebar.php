@@ -28,14 +28,14 @@
                     <input type="hidden" name="id_grupo" value="<?php echo $id_grupo; ?>">
                     <input type="hidden" name="order" value="<?php echo $order; ?>">
                     <div class="price-input">
-                        <input type="text" name="minamount" id="minamount" value="<?php echo str_replace('$', '', $minamount); ?>">
-                        <input type="text" name="maxamount" id="maxamount" value="<?php echo str_replace('$', '', $maxamount); ?>">
+                        <input type="text" name="minamount" id="minamount" value="<?php echo $minamount; ?>">
+                        <input type="text" name="maxamount" id="maxamount" value="<?php echo $maxamount; ?>">
                     </div>
                     <input type="submit" class="site-btn-min" value="Filtrar">
                 </form>
 
                 <?php if ( isset($minamount) || isset($maxamount) ) : ?>
-                    <p class="mt-3 mb-0 text-success">Filtrado de <?php echo $minamount; ?> a <?php echo $maxamount; ?>.-</p>
+                    <p class="mt-3 mb-0 text-success">Filtrado de $<?php echo $minamount; ?> a $<?php echo $maxamount; ?>.-</p>
                 <?php endif; ?>
 
             </div>
