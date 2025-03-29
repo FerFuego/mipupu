@@ -11,7 +11,7 @@
             <div class="range-slider">
                 <form class="d-flex justify-content-around" method="GET">
                     <?php 
-                    $id_rubro   = (isset($_GET["id_rubro"]) ? filter_var($_GET["id_rubro"], FILTER_VALIDATE_INT) : "");
+                    $id_rubro = (isset($_GET["id_rubro"]) ? $_GET["id_rubro"] : null);
                     if (is_array($id_rubro)) : 
                         foreach ($id_rubro as $key => $value) {
                             echo '<input type="hidden" name="id_rubro[]" value="'.$value.'">';
