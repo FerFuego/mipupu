@@ -28,4 +28,36 @@
             font-size: 32px;
         }
     }
+
+    &__buttons {
+        margin: .45em .7em .85em;
+        max-width: 280px;
+        width: 280px;
+        height: 48px;
+        line-height: 46px;
+        background-color: rgba(45, 45, 45, .3);
+        backdrop-filter: blur(10px);
+        color: #fff !important;
+        border: 1px solid #fff !important;
+        line-height: 42px;
+        transition: border .5s;
+        padding: 0 1em;
+        font-size: 1em;
+        margin: .35em .7em .6em;
+        display: inline-block;
+        width: 218px;
+        height: 44px;
+        line-height: 44px;
+        background-color: #fff;
+        color: #000;
+        vertical-align: middle;
+        cursor: pointer;
+        text-align: center;
+        border: none;
+        text-decoration: none !important;
+        font-weight: 400;
+        border-radius: 100vmax;
+        -webkit-box-sizing: inherit;
+        box-sizing: inherit;
+    }
 }
