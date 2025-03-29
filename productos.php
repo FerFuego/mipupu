@@ -68,6 +68,12 @@
                         $productos = new Productos();
                         $result    = $productos->getProductSearch(null, $search);
                     } else {
+                        $id_rubro  = (isset($_GET['id_rubro']) && $_GET['id_rubro'] != '') ? $_GET['id_rubro'] : null;
+                        $id_subrubro  = (isset($_GET['id_subrubro']) && $_GET['id_subrubro'] != '') ? $_GET['id_subrubro'] : null;
+                        $id_grupo  = (isset($_GET['id_grupo']) && $_GET['id_grupo'] != '') ? $_GET['id_grupo'] : null;
+                        $minamount = (isset($_GET['minamount']) && $_GET['minamount'] != '') ? $_GET['minamount'] : null;
+                        $maxamount = (isset($_GET['maxamount']) && $_GET['maxamount'] != '') ? $_GET['maxamount'] : null;
+                        $order     = (isset($_GET['order']) && $_GET['order'] != '') ? $_GET['order'] : null;
                         $productos = new Productos();
                         $result    = $productos->getProducts(null, $id_rubro, $id_subrubro, $id_grupo, $minamount, $maxamount, $order);
                     }
