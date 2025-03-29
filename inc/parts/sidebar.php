@@ -35,7 +35,7 @@
                 </form>
 
                 <?php if ( isset($minamount) || isset($maxamount) ) : ?>
-                    <p class="mt-3 mb-0 text-success">Filtrado de $<?php echo $minamount; ?> a $<?php echo $maxamount; ?>.-</p>
+                    <p class="mt-3 mb-0 text-success">Filtrado de <?php echo $minamount; ?> a <?php echo $maxamount; ?>.-</p>
                 <?php endif; ?>
 
             </div>
