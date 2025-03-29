@@ -38,6 +38,7 @@
                 display: flex;
                 position: relative;
                 justify-content: flex-start;
+                align-items: center;
                 gap: 10px;
 
                 &:hover {
@@ -88,6 +89,7 @@
                 
                 input[type="checkbox"]:checked::before {
                     transform: scale(1);
+                    background-color: $primary-color;
                 }
             }
 
