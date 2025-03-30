@@ -1,5 +1,31 @@
 .product-details {
 
+    .nav.nav-tabs {
+        display: flex;
+        gap: 10px;
+        justify-content: flex-start;
+    }
+
+    .nav-item {
+        display: inline-block;
+        background: #f8f8f8;
+        box-shadow: none;
+        border: none;
+        outline: none;
+        text-transform: uppercase;
+        position: relative;
+        padding: 10px;
+        cursor: pointer;
+        font-weight: 600;
+        font-size: 13px;
+        line-height: 110%;
+        transition: all 0.2s;
+
+        &.active {
+            background-color: transparent;
+        }
+    }
+
     .mp-payment-methods-header {
         margin-top: 10px;
         align-items: center;
