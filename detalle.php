@@ -61,8 +61,8 @@
                                 <!-- <span>(18 reviews)</span> -->
                             </div>
 
-                            <h4>Cód.: <?php echo $product->getCode(); ?></h4>
                             <ul>
+                                <li><b>Cód</b> <?php echo $product->getCode(); ?></h4></li>
                                 <?php if ($product->marca) : ?>
                                     <li><b>Marca</b> <span><?php echo ucfirst(strtolower($product->marca)); ?></span></li>
                                 <?php endif; ?>
