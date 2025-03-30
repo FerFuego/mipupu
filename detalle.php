@@ -215,8 +215,8 @@
                                                     <payment-method-logo src="https://www.mercadopago.com/org-img/MP3/API/logos/mercadopago.gif" alt="mercadopago">
                                                         <div class="mp-payment-method-logo-container"><img class="mp-payment-method-logo-image" alt="mercadopago" src="https://www.mercadopago.com/org-img/MP3/API/logos/mercadopago.gif"></div>
                                                     </payment-method-logo>
-                                                    <payment-method-logo src="https://www.mercadopago.com/org-img/MP3/API/logos/rapipago.gif" alt="rapipago">
-                                                        <div class="mp-payment-method-logo-container"><img class="mp-payment-method-logo-image" alt="rapipago" src="https://www.mercadopago.com/org-img/MP3/API/logos/rapipago.gif"></div>
+                                                    <payment-method-logo src="https://www.mercadopago.com/org-img/MP3/API/logos/rapipago.gif" alt="banco-macro">
+                                                        <div class="mp-payment-method-logo-container"><img class="mp-payment-method-logo-image" alt="banco-macro" src="/img/banco-macro.png"></div>
                                                     </payment-method-logo>
                                                 </div>
                                             </div>
