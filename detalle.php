@@ -8,8 +8,10 @@
 <!-- <section class="hero hero-normal">
     <div class="container">
         <div class="row">
-            <?php //require_once('inc/parts/categories.php'); ?>
-            <?php //require_once('inc/parts/search.php'); ?>
+            <?php //require_once('inc/parts/categories.php'); 
+            ?>
+            <?php //require_once('inc/parts/search.php'); 
+            ?>
         </div>
     </div>
 </section> -->
@@ -20,11 +22,11 @@
 <!-- Breadcrumb Section End -->
 
 <!-- Product Details Section Begin -->
-<?php if ( $id ) : 
-    
-    $product = new Productos( $id ); 
-    
-    if ( $product->getNombre() ) : ?>
+<?php if ($id) :
+
+    $product = new Productos($id);
+
+    if ($product->getNombre()) : ?>
 
         <section class="product-details spad">
             <div class="container">
@@ -32,7 +34,7 @@
                     <div class="col-lg-6 col-md-6">
                         <div class="product__details__pic">
                             <div class="product__details__pic__item">
-                                <img class="product__details__pic__item--large" src="<?php echo Productos::getImage( $product->getCode() ); ?>" alt="">
+                                <img class="product__details__pic__item--large" src="<?php echo Productos::getImage($product->getCode()); ?>" alt="">
                             </div>
                             <!--  <div class="product__details__pic__slider owl-carousel">
                                 <img data-imgbigurl="img/product/details/product-details-2.jpg"
@@ -62,7 +64,7 @@
                             <h4>Cód.: <?php echo $product->getCode(); ?></h4>
                             <?php if ($general->showPrices()): ?>
                                 <form class="js-form-cart">
-                                    <div class="product__details__price">$<?php echo number_format($product->PreVtaFinal1(), 2,',','.'); ?></div>
+                                    <div class="product__details__price">$<?php echo number_format($product->PreVtaFinal1(), 2, ',', '.'); ?></div>
                                     <input type="hidden" name="id_product" value="<?php echo $product->getID(); ?>">
                                     <input type="hidden" name="cod_product" value="<?php echo $product->getCode(); ?>">
                                     <input type="hidden" name="name_product" value="<?php echo $product->getNombre(); ?>">
@@ -75,7 +77,7 @@
                                     <div class="product__details__quantity">
                                         <div class="quantity">
                                             <div class="pro-qty">
-                                                <input type="number" name="cant" min="1" max="99999" value="1"> 
+                                                <input type="number" name="cant" min="1" max="99999" value="1">
                                             </div>
                                         </div>
                                     </div>
@@ -91,15 +93,15 @@
                                 <?php if ($product->marca) : ?>
                                     <li><b>Marca</b> <span><?php echo ucfirst(strtolower($product->marca)); ?></span></li>
                                 <?php endif; ?>
-                                
+
                                 <?php if ($product->rubro) : ?>
                                     <li><b>Rubro</b> <span><?php echo ucfirst(strtolower($product->rubro)); ?></span></li>
                                 <?php endif; ?>
-                                
+
                                 <?php if ($product->subrubro) : ?>
                                     <li><b>SubRubro</b> <span><?php echo ucfirst(strtolower($product->subrubro)); ?></span></li>
                                 <?php endif; ?>
-                                
+
                                 <?php if ($product->grupo) : ?>
                                     <li><b>Grupo</b> <span><?php echo ucfirst(strtolower($product->grupo)); ?></span></li>
                                 <?php endif; ?>
@@ -127,47 +129,156 @@
                             <ul class="nav nav-tabs" role="tablist">
                                 <li class="nav-item">
                                     <a class="nav-link active" data-toggle="tab" href="#tabs-1" role="tab"
-                                        aria-selected="true">Descripcion</a>
+                                        aria-selected="true">CAMBIOS Y DEVOLUCIONES</a>
                                 </li>
                                 <li class="nav-item">
                                     <a class="nav-link" data-toggle="tab" href="#tabs-2" role="tab"
-                                        aria-selected="false">Informacion</a>
+                                        aria-selected="false">MÉTODO DE ENVÍO</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" data-toggle="tab" href="#tabs-3" role="tab"
+                                        aria-selected="false">MÉTODO DE PAGO</a>
                                 </li>
                             </ul>
                             <div class="tab-content">
                                 <div class="tab-pane active" id="tabs-1" role="tabpanel">
                                     <div class="product__details__tab__desc">
-                                        <h6>Descripcion del Producto</h6>
-
-                                        <p>Vestibulum ac diam sit amet quam vehicula elementum sed sit amet dui.
-                                            Pellentesque in ipsum id orci porta dapibus. Proin eget tortor risus. Vivamus
-                                            suscipit tortor eget felis porttitor volutpat. Vestibulum ac diam sit amet quam
-                                            vehicula elementum sed sit amet dui. Donec rutrum congue leo eget malesuada.
-                                            Vivamus suscipit tortor eget felis porttitor volutpat. Curabitur arcu erat,
-                                            accumsan id imperdiet et, porttitor at sem. Praesent sapien massa, convallis a
-                                            pellentesque nec, egestas non nisi. Vestibulum ac diam sit amet quam vehicula
-                                            elementum sed sit amet dui. Vestibulum ante ipsum primis in faucibus orci luctus
-                                            et ultrices posuere cubilia Curae; Donec velit neque, auctor sit amet aliquam
-                                            vel, ullamcorper sit amet ligula. Proin eget tortor risus.</p>
-                                            <p>Praesent sapien massa, convallis a pellentesque nec, egestas non nisi. Lorem
-                                            ipsum dolor sit amet, consectetur adipiscing elit. Mauris blandit aliquet
-                                            elit, eget tincidunt nibh pulvinar a. Cras ultricies ligula sed magna dictum
-                                            porta. Cras ultricies ligula sed magna dictum porta. Sed porttitor lectus
-                                            nibh. Mauris blandit aliquet elit, eget tincidunt nibh pulvinar a.
-                                            Vestibulum ac diam sit amet quam vehicula elementum sed sit amet dui. Sed
-                                            porttitor lectus nibh. Vestibulum ac diam sit amet quam vehicula elementum
-                                            sed sit amet dui. Proin eget tortor risus.</p>
+                                        <h6>Cambios y devoluciones</h6>
+                                        <p><strong>Cambios:</strong><br>
+                                            Tenés 30 días corridos desde que retiraste o recibiste la compra para contactarte con nosotros y solicitarlo. Los mismos, dejan de contar una vez nos envíes el primer mail.<br>
+                                            Dispones de dos tipos de cambio:
+                                        <ul>
+                                            <li>- Cambio en locales oficiales Buddies</li>
+                                            <li>- Cambio online</li>
+                                        </ul>
+                                        <br><br>
+                                        <strong>Devoluciones:</strong><br>
+                                        Tenés 10 días corridos desde que retiraste o recibiste la compra para hacer la devolución.
+                                        </p>
                                     </div>
                                 </div>
                                 <div class="tab-pane" id="tabs-2" role="tabpanel">
                                     <div class="product__details__tab__desc">
-                                        <h6>Infomacion del Producto</h6>
+                                        <h6>Método de envío</h6>
+                                        <p><strong>Retiro gratis en locales:</strong><br>
+                                            Llega entre 3 a 7 días hábiles. Podés retirar en Caballito, Unicenter, Plaza Oeste y Ramos Mejía.<br>
+                                            <a href="/contacto.php" target="_blank">Ver ubicación del local</a><br>
+                                            <strong>Envío a domicilio:</strong><br>
+                                        <ul>
+                                            <li>- Si pedís días hábiles antes de las 11:00 horas lo recibís el mismo día.</li>
+                                            <li>- Si pedís en fin de semana o feriado, te llega al siguiente día hábil.</li>
+                                            <li>- Costo de envío: $1.500</li>
+                                            <li>- Entrega estimada: 1 a 2 días hábiles</li>
+                                        </ul>
+                                        <strong>Envío con Correo Argentino:</strong><br>
+                                        <ul>
+                                            <li>- Costo de envío: pago en destino</li>
+                                            <li>- Entrega estimada: 3 a 5 días hábiles</li>
+                                        </ul>
+                                        </p>
+                                    </div>
+                                </div>
+                                <div class="tab-pane" id="tabs-3" role="tabpanel">
+                                    <div class="product__details__tab__desc">
+                                        <h6>Método de pago</h6>
 
-                                        <p>Praesent sapien massa, convallis a pellentesque nec, egestas non nisi. Lorem
-                                            ipsum dolor sit amet, consectetur adipiscing elit. Mauris blandit aliquet
-                                            elit, eget tincidunt nibh pulvinar a. Cras ultricies ligula sed magna dictum
-                                            porta. Cras ultricies ligula sed magna dictum porta. Sed porttitor lectus
-                                            nibh. Mauris blandit aliquet elit, eget tincidunt nibh pulvinar a.</p>
+                                        <p></p>
+                                        <div class="mp-payment-methods-container">
+                                            <div class="mp-payment-method-type-container">
+                                                <div class="mp-payment-methods-header">
+                                                    <p class="mp-payment-methods-title">Tarjetas de crédito</p>
+                                                    <div class="mp-payment-methods-badge">
+                                                        <span class="mp-payment-methods-badge-text">hasta 3 cuotas sin interés</span>
+                                                    </div>
+                                                </div>
+                                                <div class="mp-payment-methods-content">
+                                                    <payment-method-logo src="https://http2.mlstatic.com/storage/logos-api-admin/e8ffdc40-5dc7-11ec-ae75-df2bef173be2-xl@2x.png" alt="cencosud">
+                                                        <div class="mp-payment-method-logo-container"><img class="mp-payment-method-logo-image" alt="cencosud" src="https://http2.mlstatic.com/storage/logos-api-admin/e8ffdc40-5dc7-11ec-ae75-df2bef173be2-xl@2x.png"></div>
+                                                        <div class="mp-payment-method-logo-container"><img class="mp-payment-method-logo-image" alt="cencosud" src="https://http2.mlstatic.com/storage/logos-api-admin/e8ffdc40-5dc7-11ec-ae75-df2bef173be2-xl@2x.png"></div>
+                                                    </payment-method-logo>
+                                                    <payment-method-logo src="https://http2.mlstatic.com/storage/logos-api-admin/33ea00e0-571a-11e8-8364-bff51f08d440-xl@2x.png" alt="tarshop">
+                                                        <div class="mp-payment-method-logo-container"><img class="mp-payment-method-logo-image" alt="tarshop" src="https://http2.mlstatic.com/storage/logos-api-admin/33ea00e0-571a-11e8-8364-bff51f08d440-xl@2x.png"></div>
+                                                        <div class="mp-payment-method-logo-container"><img class="mp-payment-method-logo-image" alt="tarshop" src="https://http2.mlstatic.com/storage/logos-api-admin/33ea00e0-571a-11e8-8364-bff51f08d440-xl@2x.png"></div>
+                                                    </payment-method-logo>
+                                                    <payment-method-logo src="https://http2.mlstatic.com/storage/logos-api-admin/d7e55980-f3be-11eb-8e0d-6f4af49bf82e-xl@2x.png" alt="argencard">
+                                                        <div class="mp-payment-method-logo-container"><img class="mp-payment-method-logo-image" alt="argencard" src="https://http2.mlstatic.com/storage/logos-api-admin/d7e55980-f3be-11eb-8e0d-6f4af49bf82e-xl@2x.png"></div>
+                                                        <div class="mp-payment-method-logo-container"><img class="mp-payment-method-logo-image" alt="argencard" src="https://http2.mlstatic.com/storage/logos-api-admin/d7e55980-f3be-11eb-8e0d-6f4af49bf82e-xl@2x.png"></div>
+                                                    </payment-method-logo>
+                                                    <payment-method-logo src="https://http2.mlstatic.com/storage/logos-api-admin/0fada860-571c-11e8-8364-bff51f08d440-xl@2x.png" alt="cordobesa">
+                                                        <div class="mp-payment-method-logo-container"><img class="mp-payment-method-logo-image" alt="cordobesa" src="https://http2.mlstatic.com/storage/logos-api-admin/0fada860-571c-11e8-8364-bff51f08d440-xl@2x.png"></div>
+                                                        <div class="mp-payment-method-logo-container"><img class="mp-payment-method-logo-image" alt="cordobesa" src="https://http2.mlstatic.com/storage/logos-api-admin/0fada860-571c-11e8-8364-bff51f08d440-xl@2x.png"></div>
+                                                    </payment-method-logo>
+                                                    <payment-method-logo src="https://http2.mlstatic.com/storage/logos-api-admin/d589be70-eb86-11e9-b9a8-097ac027487d-xl@2x.png" alt="visa">
+                                                        <div class="mp-payment-method-logo-container"><img class="mp-payment-method-logo-image" alt="visa" src="https://http2.mlstatic.com/storage/logos-api-admin/d589be70-eb86-11e9-b9a8-097ac027487d-xl@2x.png"></div>
+                                                        <div class="mp-payment-method-logo-container"><img class="mp-payment-method-logo-image" alt="visa" src="https://http2.mlstatic.com/storage/logos-api-admin/d589be70-eb86-11e9-b9a8-097ac027487d-xl@2x.png"></div>
+                                                    </payment-method-logo>
+                                                    <payment-method-logo src="https://http2.mlstatic.com/storage/logos-api-admin/c9f71470-6f07-11ec-9b23-071a218bbe35-xl@2x.png" alt="cabal">
+                                                        <div class="mp-payment-method-logo-container"><img class="mp-payment-method-logo-image" alt="cabal" src="https://http2.mlstatic.com/storage/logos-api-admin/c9f71470-6f07-11ec-9b23-071a218bbe35-xl@2x.png"></div>
+                                                        <div class="mp-payment-method-logo-container"><img class="mp-payment-method-logo-image" alt="cabal" src="https://http2.mlstatic.com/storage/logos-api-admin/c9f71470-6f07-11ec-9b23-071a218bbe35-xl@2x.png"></div>
+                                                    </payment-method-logo>
+                                                    <payment-method-logo src="https://http2.mlstatic.com/storage/logos-api-admin/b08cf800-4c1a-11e9-9888-a566cbf302df-xl@2x.png" alt="amex">
+                                                        <div class="mp-payment-method-logo-container"><img class="mp-payment-method-logo-image" alt="amex" src="https://http2.mlstatic.com/storage/logos-api-admin/b08cf800-4c1a-11e9-9888-a566cbf302df-xl@2x.png"></div>
+                                                        <div class="mp-payment-method-logo-container"><img class="mp-payment-method-logo-image" alt="amex" src="https://http2.mlstatic.com/storage/logos-api-admin/b08cf800-4c1a-11e9-9888-a566cbf302df-xl@2x.png"></div>
+                                                    </payment-method-logo>
+                                                    <payment-method-logo src="https://http2.mlstatic.com/storage/logos-api-admin/770edaa0-5dc7-11ec-a13d-73e40a9e9500-xl@2x.png" alt="naranja">
+                                                        <div class="mp-payment-method-logo-container"><img class="mp-payment-method-logo-image" alt="naranja" src="https://http2.mlstatic.com/storage/logos-api-admin/770edaa0-5dc7-11ec-a13d-73e40a9e9500-xl@2x.png"></div>
+                                                        <div class="mp-payment-method-logo-container"><img class="mp-payment-method-logo-image" alt="naranja" src="https://http2.mlstatic.com/storage/logos-api-admin/770edaa0-5dc7-11ec-a13d-73e40a9e9500-xl@2x.png"></div>
+                                                    </payment-method-logo>
+                                                    <payment-method-logo src="https://http2.mlstatic.com/storage/logos-api-admin/751ea930-571a-11e8-9a2d-4b2bd7b1bf77-xl@2x.png" alt="diners">
+                                                        <div class="mp-payment-method-logo-container"><img class="mp-payment-method-logo-image" alt="diners" src="https://http2.mlstatic.com/storage/logos-api-admin/751ea930-571a-11e8-9a2d-4b2bd7b1bf77-xl@2x.png"></div>
+                                                        <div class="mp-payment-method-logo-container"><img class="mp-payment-method-logo-image" alt="diners" src="https://http2.mlstatic.com/storage/logos-api-admin/751ea930-571a-11e8-9a2d-4b2bd7b1bf77-xl@2x.png"></div>
+                                                    </payment-method-logo>
+                                                    <payment-method-logo src="https://http2.mlstatic.com/storage/logos-api-admin/26fbb110-571c-11e8-95d8-631c1a9a92a9-xl@2x.png" alt="cmr">
+                                                        <div class="mp-payment-method-logo-container"><img class="mp-payment-method-logo-image" alt="cmr" src="https://http2.mlstatic.com/storage/logos-api-admin/26fbb110-571c-11e8-95d8-631c1a9a92a9-xl@2x.png"></div>
+                                                        <div class="mp-payment-method-logo-container"><img class="mp-payment-method-logo-image" alt="cmr" src="https://http2.mlstatic.com/storage/logos-api-admin/26fbb110-571c-11e8-95d8-631c1a9a92a9-xl@2x.png"></div>
+                                                    </payment-method-logo>
+                                                    <payment-method-logo src="https://http2.mlstatic.com/storage/logos-api-admin/0daa1670-5c81-11ec-ae75-df2bef173be2-xl@2x.png" alt="master">
+                                                        <div class="mp-payment-method-logo-container"><img class="mp-payment-method-logo-image" alt="master" src="https://http2.mlstatic.com/storage/logos-api-admin/0daa1670-5c81-11ec-ae75-df2bef173be2-xl@2x.png"></div>
+                                                        <div class="mp-payment-method-logo-container"><img class="mp-payment-method-logo-image" alt="master" src="https://http2.mlstatic.com/storage/logos-api-admin/0daa1670-5c81-11ec-ae75-df2bef173be2-xl@2x.png"></div>
+                                                    </payment-method-logo>
+                                                </div>
+                                            </div>
+                                            <div class="mp-payment-method-type-container">
+                                                <div class="mp-payment-methods-header">
+                                                    <p class="mp-payment-methods-title">Tarjetas de débito </p>
+                                                    <div class="mp-payment-methods-badge"><span class="mp-payment-methods-badge-text">hasta 4 cuotas sin interés</span>
+                                                    </div>
+                                                </div>
+                                                <div class="mp-payment-methods-content">
+                                                    <payment-method-logo src="https://http2.mlstatic.com/storage/logos-api-admin/ce454480-445f-11eb-bf78-3b1ee7bf744c-xl@2x.png" alt="maestro">
+                                                        <div class="mp-payment-method-logo-container"><img class="mp-payment-method-logo-image" alt="maestro" src="https://http2.mlstatic.com/storage/logos-api-admin/ce454480-445f-11eb-bf78-3b1ee7bf744c-xl@2x.png"></div>
+                                                        <div class="mp-payment-method-logo-container"><img class="mp-payment-method-logo-image" alt="maestro" src="https://http2.mlstatic.com/storage/logos-api-admin/ce454480-445f-11eb-bf78-3b1ee7bf744c-xl@2x.png"></div>
+                                                    </payment-method-logo>
+                                                    <payment-method-logo src="https://http2.mlstatic.com/storage/logos-api-admin/0daa1670-5c81-11ec-ae75-df2bef173be2-xl@2x.png" alt="debmaster">
+                                                        <div class="mp-payment-method-logo-container"><img class="mp-payment-method-logo-image" alt="debmaster" src="https://http2.mlstatic.com/storage/logos-api-admin/0daa1670-5c81-11ec-ae75-df2bef173be2-xl@2x.png"></div>
+                                                        <div class="mp-payment-method-logo-container"><img class="mp-payment-method-logo-image" alt="debmaster" src="https://http2.mlstatic.com/storage/logos-api-admin/0daa1670-5c81-11ec-ae75-df2bef173be2-xl@2x.png"></div>
+                                                    </payment-method-logo>
+                                                    <payment-method-logo src="https://http2.mlstatic.com/storage/logos-api-admin/c9f71470-6f07-11ec-9b23-071a218bbe35-xl@2x.png" alt="debcabal">
+                                                        <div class="mp-payment-method-logo-container"><img class="mp-payment-method-logo-image" alt="debcabal" src="https://http2.mlstatic.com/storage/logos-api-admin/c9f71470-6f07-11ec-9b23-071a218bbe35-xl@2x.png"></div>
+                                                        <div class="mp-payment-method-logo-container"><img class="mp-payment-method-logo-image" alt="debcabal" src="https://http2.mlstatic.com/storage/logos-api-admin/c9f71470-6f07-11ec-9b23-071a218bbe35-xl@2x.png"></div>
+                                                    </payment-method-logo>
+                                                    <payment-method-logo src="https://http2.mlstatic.com/storage/logos-api-admin/d589be70-eb86-11e9-b9a8-097ac027487d-xl@2x.png" alt="debvisa">
+                                                        <div class="mp-payment-method-logo-container"><img class="mp-payment-method-logo-image" alt="debvisa" src="https://http2.mlstatic.com/storage/logos-api-admin/d589be70-eb86-11e9-b9a8-097ac027487d-xl@2x.png"></div>
+                                                        <div class="mp-payment-method-logo-container"><img class="mp-payment-method-logo-image" alt="debvisa" src="https://http2.mlstatic.com/storage/logos-api-admin/d589be70-eb86-11e9-b9a8-097ac027487d-xl@2x.png"></div>
+                                                    </payment-method-logo>
+                                                </div>
+                                            </div>
+                                            <div class="mp-payment-method-type-container">
+                                                <div class="mp-payment-methods-header">
+                                                    <p class="mp-payment-methods-title">Pagos en efectivo </p>
+                                                </div>
+                                                <div class="mp-payment-methods-content">
+                                                    <payment-method-logo src="https://www.mercadopago.com/org-img/MP3/API/logos/pagofacil.gif" alt="pagofacil">
+                                                        <div class="mp-payment-method-logo-container"><img class="mp-payment-method-logo-image" alt="pagofacil" src="https://www.mercadopago.com/org-img/MP3/API/logos/pagofacil.gif"></div>
+                                                        <div class="mp-payment-method-logo-container"><img class="mp-payment-method-logo-image" alt="pagofacil" src="https://www.mercadopago.com/org-img/MP3/API/logos/pagofacil.gif"></div>
+                                                    </payment-method-logo>
+                                                    <payment-method-logo src="https://www.mercadopago.com/org-img/MP3/API/logos/rapipago.gif" alt="rapipago">
+                                                        <div class="mp-payment-method-logo-container"><img class="mp-payment-method-logo-image" alt="rapipago" src="https://www.mercadopago.com/org-img/MP3/API/logos/rapipago.gif"></div>
+                                                        <div class="mp-payment-method-logo-container"><img class="mp-payment-method-logo-image" alt="rapipago" src="https://www.mercadopago.com/org-img/MP3/API/logos/rapipago.gif"></div>
+                                                    </payment-method-logo>
+                                                </div>
+                                            </div>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
