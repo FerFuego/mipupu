@@ -21,11 +21,13 @@
         line-height: 110%;
         transition: all 0.2s;
 
-        &.active {
+    }
+    .nav-link.active {
+        .nav-item {
             background-color: transparent !important;
         }
     }
-
+    
     .product__details__tab .nav-tabs li a {
        font-size: 13px !important;
     }
