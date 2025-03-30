@@ -1,6 +1,6 @@
 <section class="related-product">
 <?php   
-    $products = new Productos();
+    $related = new Productos();
     $results = $related->getRelatedProducts($product->getRubroID(), $product->getSubRubroID(), $product->getGrupoID(), $product->getID());
     
     if ( $results->num_rows > 0 ) : ?>
@@ -19,6 +19,6 @@
                 <?php endwhile; ?>
             </div>
         </div>
-        
+
     <?php endif; ?>
 </section>
