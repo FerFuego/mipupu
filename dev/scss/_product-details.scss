@@ -11,6 +11,11 @@
         border-bottom: 1px solid #f8f8f8;
     }
 
+    .nav-tabs .nav-item {
+        margin-bottom: -1px;
+        border-bottom: 1px solid $white-color;
+    }
+
     .nav-link {
         display: inline-block;
         background: #f8f8f8;
