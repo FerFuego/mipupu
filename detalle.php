@@ -68,9 +68,9 @@
                                     <input type="hidden" name="name_product" value="<?php echo $product->getNombre(); ?>">
                                     <input type="hidden" name="price_product" value="<?php echo $product->PreVtaFinal1(); ?>">
 
-                                    <div>
+                                    <!-- <div>
                                         <textarea type="text" name="nota" class="product__details__note" placeholder="Agregar Nota"></textarea>
-                                    </div>
+                                    </div> -->
 
                                     <div class="product__details__quantity">
                                         <div class="quantity">
@@ -109,7 +109,7 @@
                                 <?php if ($product->observaciones) : ?>
                                     <li><b>Observaciones</b> <span><?php echo ucfirst(strtolower($product->observaciones)); ?></span></li>
                                 <?php endif; ?>
-                                <!-- <li><b>Shipping</b> <span>01 day shipping. <samp>Free pickup today</samp></span></li>
+                                <li><b>Shipping</b> <span>01 day shipping. <samp>Free pickup today</samp></span></li>
                                 <li><b>Weight</b> <span>0.5 kg</span></li>
                                 <li><b>Share on</b>
                                     <div class="share">
@@ -118,11 +118,11 @@
                                         <a href="#"><i class="fa fa-instagram"></i></a>
                                         <a href="#"><i class="fa fa-pinterest"></i></a>
                                     </div>
-                                </li> -->
+                                </li>
                             </ul>
                         </div>
                     </div>
-                    <!-- <div class="col-lg-12">
+                    <div class="col-lg-12">
                         <div class="product__details__tab">
                             <ul class="nav nav-tabs" role="tablist">
                                 <li class="nav-item">
@@ -172,7 +172,7 @@
                                 </div>
                             </div>
                         </div>
-                    </div> -->
+                    </div>
                 </div>
             </div>
         </section>
