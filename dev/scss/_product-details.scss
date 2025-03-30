@@ -22,7 +22,7 @@
         transition: all 0.2s;
 
         &.active {
-            background-color: transparent;
+            background-color: transparent !important;
         }
     }
 
