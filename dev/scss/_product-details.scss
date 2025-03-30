@@ -2,61 +2,62 @@
 
     .mp-payment-methods-header {
         margin-top: 10px;
-        align-items: center !important;
+        align-items: center;
         display: flex;
-        height: 100% !important;
-        justify-content: flex-start !important;
-        padding: 0 4px 16px !important;
-        width: 100% !important;
+        height: 100%;
+        justify-content: flex-start;
+        padding: 0 4px 16px;
+        width: 100%;
     }
 
     .mp-payment-methods-title {
         text-transform: uppercase;
+        margin-bottom: 0;
     }
     .mp-payment-methods-badge {
-        align-items: center !important;
-        background: #00a650 !important;
-        border-bottom-right-radius: 8px !important;
+        align-items: center;
+        background: #00a650;
+        border-bottom-right-radius: 8px;
         display: flex;
-        justify-content: center !important;
-        margin-left: 10px !important;
-        padding: 6px 8px 4px !important;
+        justify-content: center;
+        margin-left: 10px;
+        padding: 6px 8px 4px;
     }
     .mp-payment-methods-badge-text {
-        align-items: center !important;
-        background: #00a650 !important;
-        border-bottom-right-radius: 8px !important;
+        align-items: center;
+        background: #00a650;
+        border-bottom-right-radius: 8px;
         display: flex;
-        justify-content: center !important;
-        margin-left: 10px !important;
-        padding: 6px 8px 4px !important;
-        color: white;
-        font-size: 11px;
+        justify-content: center;
+        margin-left: 10px;
+        padding: 0px 10px;
+        color: $white-color;
+        font-size: 15px;
     }
 
     .mp-payment-methods-content {
-        align-items: center !important;
+        align-items: center;
         display: flex;
-        flex-wrap: wrap !important;
-        height: 100% !important;
-        justify-content: flex-start !important;
-        padding-bottom: 16px !important;
-        width: 100% !important;
+        flex-wrap: wrap;
+        height: 100%;
+        justify-content: flex-start;
+        padding-bottom: 16px;
+        width: 100%;
     }
 
     .mp-payment-methods-content payment-method-logo {
-        padding: 0 4px 8px !important;
+        padding: 0 4px 8px;
     }
 
     .mp-payment-method-logo-container {
-        align-items: center !important;
-        background: #fff !important;
-        border: 1px solid #e5e5e5 !important;
-        border-radius: 4px !important;
-        box-sizing: border-box !important;
+        align-items: center;
+        background: $white-color;
+        border: 1px solid #e5e5e5;
+        border-radius: 4px;
+        box-sizing: border-box;
         display: flex;
-        justify-content: center !important;
-        padding: 4px !important;
-        width: 55px !important;
+        justify-content: center;
+        padding: 4px;
+        width: 55px;
     }
 }
