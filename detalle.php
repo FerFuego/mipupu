@@ -95,15 +95,7 @@
                                 <?php endif; ?>
 
                                 <?php if ($product->rubro) : ?>
-                                    <li><b>Rubro</b> <span><?php echo ucfirst(strtolower($product->rubro)); ?></span></li>
-                                <?php endif; ?>
-
-                                <?php if ($product->subrubro) : ?>
-                                    <li><b>SubRubro</b> <span><?php echo ucfirst(strtolower($product->subrubro)); ?></span></li>
-                                <?php endif; ?>
-
-                                <?php if ($product->grupo) : ?>
-                                    <li><b>Grupo</b> <span><?php echo ucfirst(strtolower($product->grupo)); ?></span></li>
+                                    <li><b>Categoría</b> <span><?php echo ucfirst(strtolower($product->rubro)); ?></span></li>
                                 <?php endif; ?>
 
                                 <li><b>Disponibilidad</b> <span>Hay Stock</span></li>
@@ -111,7 +103,7 @@
                                 <?php if ($product->observaciones) : ?>
                                     <li><b>Observaciones</b> <span><?php echo ucfirst(strtolower($product->observaciones)); ?></span></li>
                                 <?php endif; ?>
-                                <li><b>Shipping</b> <span>01 day shipping. <samp>Free pickup today</samp></span></li>
+                                <!-- <li><b>Shipping</b> <span>01 day shipping. <samp>Free pickup today</samp></span></li>
                                 <li><b>Weight</b> <span>0.5 kg</span></li>
                                 <li><b>Share on</b>
                                     <div class="share">
@@ -120,7 +112,7 @@
                                         <a href="#"><i class="fa fa-instagram"></i></a>
                                         <a href="#"><i class="fa fa-pinterest"></i></a>
                                     </div>
-                                </li>
+                                </li> -->
                             </ul>
                         </div>
                     </div>
