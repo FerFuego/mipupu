@@ -143,38 +143,31 @@
                             <div class="tab-content">
                                 <div class="tab-pane active" id="tabs-1" role="tabpanel">
                                     <div class="product__details__tab__desc">
-                                        <h6>Cambios y devoluciones</h6>
                                         <p><strong>Cambios:</strong><br>
-                                            Tenés 30 días corridos desde que retiraste o recibiste la compra para contactarte con nosotros y solicitarlo. Los mismos, dejan de contar una vez nos envíes el primer mail.<br>
+                                            Tenés 15 días corridos desde que retiraste o recibiste la compra para contactarte con nosotros y solicitarlo.
+                                            Los mismos, dejan de contar una vez nos envíes el primer mail.<br>
                                             Dispones de dos tipos de cambio:
-                                        <ul>
-                                            <li>- Cambio en locales oficiales Buddies</li>
-                                            <li>- Cambio online</li>
-                                        </ul>
-                                        <br><br>
-                                        <strong>Devoluciones:</strong><br>
-                                        Tenés 10 días corridos desde que retiraste o recibiste la compra para hacer la devolución.
+                                            - Cambio en local.<br>
+                                            - Cambio online
+                                            <br><br>
+                                            <strong>Devoluciones:</strong><br>
+                                            Tenés 10 días corridos desde que retiraste o recibiste la compra para hacer la devolución.
                                         </p>
                                     </div>
                                 </div>
                                 <div class="tab-pane" id="tabs-2" role="tabpanel">
                                     <div class="product__details__tab__desc">
-                                        <h6>Método de envío</h6>
-                                        <p><strong>Retiro gratis en locales:</strong><br>
-                                            Llega entre 3 a 7 días hábiles. Podés retirar en Caballito, Unicenter, Plaza Oeste y Ramos Mejía.<br>
+                                        <p><strong>Retiro gratis en local:</strong><br>
+                                            Disponibilidad inmediata. Podés retirar en Pio Angulo 470, Bell Ville, Córdoba, Argentina.<br>
                                             <a href="/contacto.php" target="_blank">Ver ubicación del local</a><br>
-                                            <strong>Envío a domicilio:</strong><br>
-                                        <ul>
-                                            <li>- Si pedís días hábiles antes de las 11:00 horas lo recibís el mismo día.</li>
-                                            <li>- Si pedís en fin de semana o feriado, te llega al siguiente día hábil.</li>
-                                            <li>- Costo de envío: $1.500</li>
-                                            <li>- Entrega estimada: 1 a 2 días hábiles</li>
-                                        </ul>
+                                            <strong>Envío a domicilio en Bell Ville:</strong><br>
+                                            - Si pedís días hábiles antes de las 11:00 horas lo recibís el mismo día.<br>
+                                            - Si pedís en fin de semana o feriado, te llega al siguiente día hábil.<br>
+                                            - Costo de envío: $1.500.<br>
+                                            - Entrega estimada: 1 a 2 días hábiles.<br>
                                         <strong>Envío con Correo Argentino:</strong><br>
-                                        <ul>
-                                            <li>- Costo de envío: pago en destino</li>
-                                            <li>- Entrega estimada: 3 a 5 días hábiles</li>
-                                        </ul>
+                                            - Costo de envío: pago en destino.<br>
+                                            - Entrega estimada: 3 a 5 días hábiles.
                                         </p>
                                     </div>
                                 </div>
