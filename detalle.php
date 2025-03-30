@@ -124,7 +124,8 @@
                             </ul>
                         </div>
                     </div>
-                    <div class="col-lg-12">
+                    <div class="col-lg-6"></div>
+                    <div class="col-lg-6">
                         <div class="product__details__tab">
                             <ul class="nav nav-tabs" role="tablist">
                                 <li class="nav-item">
