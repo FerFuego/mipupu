@@ -6,7 +6,7 @@
         justify-content: flex-start;
     }
 
-    .nav-item {
+    .nav-link {
         display: inline-block;
         background: #f8f8f8;
         box-shadow: none;
@@ -20,14 +20,13 @@
         font-size: 13px;
         line-height: 110%;
         transition: all 0.2s;
+        padding: 10px;
 
-    }
-    .nav-link.active {
-        .nav-item {
+        &.active {
             background-color: transparent !important;
         }
     }
-    
+
     .product__details__tab .nav-tabs li a {
        font-size: 13px !important;
     }
