@@ -62,6 +62,31 @@
                             </div>
 
                             <h4>Cód.: <?php echo $product->getCode(); ?></h4>
+                            <ul>
+                                <?php if ($product->marca) : ?>
+                                    <li><b>Marca</b> <span><?php echo ucfirst(strtolower($product->marca)); ?></span></li>
+                                <?php endif; ?>
+
+                                <?php if ($product->rubro) : ?>
+                                    <li><b>Categoría</b> <span><?php echo ucfirst(strtolower($product->rubro)); ?></span></li>
+                                <?php endif; ?>
+
+                                <li><b>Disponibilidad</b> <span>Hay Stock</span></li>
+
+                                <?php if ($product->observaciones) : ?>
+                                    <li><b>Observaciones</b> <span><?php echo ucfirst(strtolower($product->observaciones)); ?></span></li>
+                                <?php endif; ?>
+                                <!-- <li><b>Shipping</b> <span>01 day shipping. <samp>Free pickup today</samp></span></li>
+                                <li><b>Weight</b> <span>0.5 kg</span></li>
+                                <li><b>Share on</b>
+                                    <div class="share">
+                                        <a href="#"><i class="fa fa-facebook"></i></a>
+                                        <a href="#"><i class="fa fa-twitter"></i></a>
+                                        <a href="#"><i class="fa fa-instagram"></i></a>
+                                        <a href="#"><i class="fa fa-pinterest"></i></a>
+                                    </div>
+                                </li> -->
+                            </ul>
                             <?php if ($general->showPrices()): ?>
                                 <form class="js-form-cart">
                                     <div class="product__details__price">$<?php echo number_format($product->PreVtaFinal1(), 2, ',', '.'); ?></div>
@@ -88,32 +113,6 @@
                             <?php endif; ?>
 
                             <div class="js-login-message"></div>
-
-                            <ul>
-                                <?php if ($product->marca) : ?>
-                                    <li><b>Marca</b> <span><?php echo ucfirst(strtolower($product->marca)); ?></span></li>
-                                <?php endif; ?>
-
-                                <?php if ($product->rubro) : ?>
-                                    <li><b>Categoría</b> <span><?php echo ucfirst(strtolower($product->rubro)); ?></span></li>
-                                <?php endif; ?>
-
-                                <li><b>Disponibilidad</b> <span>Hay Stock</span></li>
-
-                                <?php if ($product->observaciones) : ?>
-                                    <li><b>Observaciones</b> <span><?php echo ucfirst(strtolower($product->observaciones)); ?></span></li>
-                                <?php endif; ?>
-                                <!-- <li><b>Shipping</b> <span>01 day shipping. <samp>Free pickup today</samp></span></li>
-                                <li><b>Weight</b> <span>0.5 kg</span></li>
-                                <li><b>Share on</b>
-                                    <div class="share">
-                                        <a href="#"><i class="fa fa-facebook"></i></a>
-                                        <a href="#"><i class="fa fa-twitter"></i></a>
-                                        <a href="#"><i class="fa fa-instagram"></i></a>
-                                        <a href="#"><i class="fa fa-pinterest"></i></a>
-                                    </div>
-                                </li> -->
-                            </ul>
                         </div>
                     </div>
                     <div class="col-lg-6"></div>
