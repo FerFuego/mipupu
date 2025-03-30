@@ -1,0 +1,62 @@
+.product-details {
+
+    .mp-payment-methods-header {
+        margin-top: 10px;
+        align-items: center !important;
+        display: flex;
+        height: 100% !important;
+        justify-content: flex-start !important;
+        padding: 0 4px 16px !important;
+        width: 100% !important;
+    }
+
+    .mp-payment-methods-title {
+        text-transform: uppercase;
+    }
+    .mp-payment-methods-badge {
+        align-items: center !important;
+        background: #00a650 !important;
+        border-bottom-right-radius: 8px !important;
+        display: flex;
+        justify-content: center !important;
+        margin-left: 10px !important;
+        padding: 6px 8px 4px !important;
+    }
+    .mp-payment-methods-badge-text {
+        align-items: center !important;
+        background: #00a650 !important;
+        border-bottom-right-radius: 8px !important;
+        display: flex;
+        justify-content: center !important;
+        margin-left: 10px !important;
+        padding: 6px 8px 4px !important;
+        color: white;
+        font-size: 11px;
+    }
+
+    .mp-payment-methods-content {
+        align-items: center !important;
+        display: flex;
+        flex-wrap: wrap !important;
+        height: 100% !important;
+        justify-content: flex-start !important;
+        padding-bottom: 16px !important;
+        width: 100% !important;
+    }
+
+    .mp-payment-methods-content payment-method-logo {
+        padding: 0 4px 8px !important;
+    }
+
+    .mp-payment-method-logo-container {
+        align-items: center !important;
+        background: #fff !important;
+        border: 1px solid #e5e5e5 !important;
+        border-radius: 4px !important;
+        box-sizing: border-box !important;
+        display: flex;
+        justify-content: center !important;
+        padding: 4px !important;
+        width: 55px !important;
+    }
+}
