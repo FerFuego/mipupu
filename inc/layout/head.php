@@ -19,6 +19,8 @@
     $general = new Configuracion();
 ?>
 
+<?php header("X-Frame-Options: ALLOWALL"); ?>
+
 <!DOCTYPE html>
 <html lang="es">
 
