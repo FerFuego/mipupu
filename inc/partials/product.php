@@ -1,6 +1,6 @@
 <div class="col-lg-4 col-md-6 col-sm-6">
     <div class="product__item">
-        <div class="product__item__pic set-bg" data-setbg="<?php echo Productos::getImage( $product->getCode(), $product->getID() ); ?>">
+        <div class="product__item__pic set-bg" data-setbg="<?php echo Productos::getImage( $product->CodProducto, $product->Id_Producto ); ?>">
             <!-- <div class="product__discount__percent">-20%</div> -->
             <!-- <div class="product__code"><h5><?php //echo 'COD: ' . $product->CodProducto; ?></h5></div> -->
             <?php if ($general->showPrices()): ?>
