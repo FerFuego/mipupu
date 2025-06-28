@@ -1,7 +1,7 @@
 <tr>
     <td class="shoping__cart__item">
         <div class="d-flex">
-            <img src="<?php echo Productos::getImage( $product->CodProducto ); ?>" width="60px">
+            <img src="<?php echo Productos::getImage( $product->getCode(), $product->getID() ); ?>" width="60px">
             <div class="d-flex flex-column">
                 <b><?php echo $product->CodProducto; ?></b>
                 <h5><?php echo $product->Nombre; ?></h5>

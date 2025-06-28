@@ -34,7 +34,7 @@
                     <div class="col-lg-6 col-md-6">
                         <div class="product__details__pic">
                             <div class="product__details__pic__item">
-                                <img class="product__details__pic__item--large" src="<?php echo Productos::getImage($product->getCode()); ?>" alt="">
+                                <img class="product__details__pic__item--large" src="<?php echo Productos::getImage($product->getCode(), $product->getID()); ?>" alt="">
                             </div>
                             <!--  <div class="product__details__pic__slider owl-carousel">
                                 <img data-imgbigurl="img/product/details/product-details-2.jpg"
