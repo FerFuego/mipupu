@@ -1,6 +1,6 @@
 <tr id="item_prod_<?php echo $product->Id_Producto; ?>">
     <td>
-        <img src="<?php echo Productos::getImage( $product->getCode(), $product->getID() ); ?>" width="100px">
+        <img src="<?php echo Productos::getImage( $product->CodProducto, $product->Id_Producto ); ?>" width="100px">
     </td>
     <td class="text-left">
         <?php echo $product->CodProducto; ?>

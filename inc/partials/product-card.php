@@ -1,6 +1,6 @@
 <div class="col-lg-12 mix <?php echo Polirubro::get_slug($product->Rubro); ?>">
     <div class="featured__item">
-        <div class="featured__item__pic set-bg" data-setbg="<?php echo Productos::getImage( $product->getCode(), $product->getID() ); ?>">
+        <div class="featured__item__pic set-bg" data-setbg="<?php echo Productos::getImage( $product->CodProducto, $product->Id_Producto ); ?>">
         <!-- <div class="product__discount__percent">-20%</div> -->
         <!-- <div class="product__code"><h5><?php //echo 'COD: ' . $product->CodProducto; ?></h5></div> -->
             <?php if ($general->showPrices()): ?>
