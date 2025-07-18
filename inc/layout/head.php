@@ -4,7 +4,7 @@
 
 <?php
     // Variables para los Productos 
-    $id         = (isset($_GET['id'])           ? filter_var($_GET['id'],          FILTER_VALIDATE_INT) : null);
+    $id         = (isset($_GET['id'])           ? filter_var($_GET['id'],          FILTER_SANITIZE_STRING) : null);
     $id_rubro   = (isset($_GET["id_rubro"])     ? filter_var($_GET["id_rubro"],    FILTER_VALIDATE_INT) : "");
     $id_subrubro = (isset($_GET["id_subrubro"]) ? filter_var($_GET["id_subrubro"], FILTER_VALIDATE_INT) : "");
     $id_grupo   = (isset($_GET["id_grupo"])     ? filter_var($_GET["id_grupo"],    FILTER_VALIDATE_INT) : "");
