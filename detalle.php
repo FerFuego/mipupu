@@ -246,9 +246,11 @@
 <?php endif; ?>
 <!-- Product Details Section End -->
 
-<!-- Related Product Section Begin -->
-<?php require_once('inc/parts/related-products.php'); ?>
-<!-- Related Product Section End -->
+<?php if ($product->getNombre()) : ?>
+    <!-- Related Product Section Begin -->
+    <?php require_once('inc/parts/related-products.php'); ?>
+    <!-- Related Product Section End -->
+<?php endif; ?>
 
 <!-- Footer Section Begin -->
 <?php require_once('inc/layout/footer.php'); ?>
