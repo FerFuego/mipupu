@@ -21,7 +21,7 @@
         </div>
         <div class="product__item__text">
             <!-- <span><?php //echo $product->Rubro; ?></span> -->
-            <h6><a href="detalle.php?id=<?php echo $product->CodProducto; ?>"><?php echo $product->Nombre; ?></a></h6>
+            <h6><a href="detalle.php?id=<?php echo $product->Id_Producto; ?>"><?php echo $product->Nombre; ?></a></h6>
             <?php if ($general->showPrices()): ?>
                 <p class="text-left"><?php echo '<strong>$ '. number_format(Productos::PreVtaFinal($product->PreVtaFinal1), 2,',','.') . '</strong>'; ?></p>
                 <form class="js-form-cart">

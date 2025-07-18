@@ -19,7 +19,7 @@
         </div>
         <div class="featured__item__text">
             <span><?php echo $product->Rubro; ?></span>
-            <h6><a href="detalle.php?id=<?php echo $product->CodProducto; ?>"><?php echo $product->Nombre; ?></a></h6>
+            <h6><a href="detalle.php?id=<?php echo $product->Id_Producto; ?>"><?php echo $product->Nombre; ?></a></h6>
             <span><?php echo '$ '. number_format($product->PreVtaFinal1(), 2,',','.'); ?></span>
         </div>
     </div>
