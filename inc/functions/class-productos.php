@@ -27,6 +27,7 @@ class Productos {
     public $oferta;
     public $stock_actual;
     public $observaciones;
+    public $StockActual;
     protected $obj;
 
     public function __construct($id=0) {
@@ -34,7 +35,7 @@ class Productos {
         if ($id != 0) {
             
             $this->obj = new sQuery();
-            $result = $this->obj->executeQuery("SELECT * FROM productos WHERE Id_Producto='".$id."'");
+            $result = $this->obj->executeQuery("SELECT * FROM productos WHERE CodProducto='".$id."'");
             $row = mysqli_fetch_assoc($result);
 
             $this->id_producto = $row['Id_Producto'];
@@ -58,9 +59,8 @@ class Productos {
             $this->fecha_alta_web = $row['FecAltaWeb'];
             $this->novedad = $row['Novedad'];
             $this->oferta = $row['Oferta'];
-            $this->stock_actual = $row['StockActual'];
             $this->observaciones = $row['Observaciones'];
-
+            $this->StockActual = $row['StockActual'];
         }
     }
 
@@ -70,46 +70,43 @@ class Productos {
     public function getSubRubroID(){ return $this->id_subrubro; }
     public function getGrupoID(){ return $this->id_grupo; }
     public function getNombre(){ return $this->nombre; }
+    public function getStock(){ return $this->StockActual; }
     
     public static function PreVtaFinal($precio){ 
         $config  = new Configuracion();
         $aumento = $config->getAumento();
         
-        
-        // Usuario logueado
-        if (isset($_SESSION["user"])) {
-            // user recurrente
-            $user = new Usuarios($_SESSION["Id_Cliente"]);
-            if ($user->getTipo() == 1) return $precio;
-        } 
-        
-        // Usuario no logueado o tipo 2
-        if ($aumento) {
-            // aumento %
-            return $precio + ($precio * ($aumento / 100));
+        if (filter_var($aumento, FILTER_VALIDATE_FLOAT) && $aumento > 0) {
+            $precio = $precio + ($precio * ($aumento / 100));
         }
 
         return $precio; 
     }
-    public function PreVtaFinal1(){ 
-        $precio  = 0;
+
+    public function PreVta(){
         $config  = new Configuracion();
         $aumento = $config->getAumento();
         
         // Usuario logueado
         if (isset($_SESSION["user"])) {
-            // user recurrente
             $user = new Usuarios($_SESSION["Id_Cliente"]);
-            if ($user->getTipo() == 1) return $this->precio_venta_final_1;
-        } 
+            $listaPrecioDef = $user->getListaPrecioDef();
+            $precios = [
+                1 => $this->precio_venta_final_1,
+                2 => $this->precio_venta_final_2,
+                3 => $this->precio_venta_final_3,
+            ];
+            $precio = $precios[$listaPrecioDef] ?? $this->precio_venta_final_1;
+        } else {
+            $precio = $this->precio_venta_final_1;
+        }
         
-        // Usuario no logueado o tipo 2
-        if ($aumento) {
-            // aumento %
-            return $this->precio_venta_final_1 + ($this->precio_venta_final_1 * ($aumento / 100));
+        // aumento %
+        if (filter_var($aumento, FILTER_VALIDATE_FLOAT) && $aumento > 0) {
+            $precio = $precio + ($precio * ($aumento / 100));
         }
 
-        return $precio; 
+        return $precio;
     }
 
     public function getProducts($opcion, $id_rubro, $id_subrubro, $id_grupo, $minamount, $maxamount, $order){
