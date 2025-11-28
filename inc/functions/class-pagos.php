@@ -73,7 +73,7 @@ class Pagos {
     public function listarPagos() {
         $this->obj = new sQuery();
 
-        $sql = "SELECT * FROM PAGOS AS P LEFT JOIN PEDIDOS_CABE AS PC ON PC.Id_Pedido = P.Id_Pedido ORDER BY P.Fecha DESC";
+        $sql = "SELECT * FROM PAGOS AS P LEFT JOIN pedidos_cabe AS PC ON PC.Id_Pedido = P.Id_Pedido ORDER BY P.Fecha DESC";
 
         $result = $this->obj->executeQuery($sql);
 
