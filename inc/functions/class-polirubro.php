@@ -99,7 +99,8 @@ Class Polirubro {
         
         // Construyo el Cuerpo del Mail.
         $body = "<h2>Pedido {$nombre}</h2>
-                <p align='center'><strong>Nuestro Polirrubros de Alejandra Barzabal</strong><br>
+                <br>
+                <p>
                 {$direccion}<br>
                 Tel.: {$telefono} | WhatsApp: {$whatsapp} | E-Mail: 
                 <a href='mailto:{$email}'>{$email}</a>
@@ -127,17 +128,17 @@ Class Polirubro {
         $results = $detalle->getDetallesPedido($id_pedido);
 
         if ( $results->num_rows > 0 ) :
-            while ( $product = $results->fetch_object() ) :
+            while ( $item = $results->fetch_object() ) :
 
-                $total = $pedido->sumTotalCart($product->ImpTotal);
+                $total = $pedido->sumTotalCart($item->ImpTotal);
 
                 $body .= "<tr>
-                        <td width='10%' height='20' align='right' valign='middle'><b>".$product->CodProducto."</b></td>
-                        <td width='10%' height='20' align='center' valign='middle'><b>".$product->Cantidad."</b></td>
-                        <td width='40%' height='20' align='left' valign='middle'>".$product->Nombre."</td>
-                        <td width='20%' height='20' align='left' valign='middle'>".$product->Notas."</td>
-                        <td width='10%' height='20' align='right' valign='middle'>".number_format(Productos::PreVtaFinal($product->PreVtaFinal1), 2,',','.')."</td>
-                        <td width='10%' height='20' align='right' valign='middle'>".number_format($product->ImpTotal, 2, '.', ',')."</td>
+                        <td width='10%' height='20' align='right' valign='middle'><b>".$item->CodProducto."</b></td>
+                        <td width='10%' height='20' align='center' valign='middle'><b>".$item->Cantidad."</b></td>
+                        <td width='40%' height='20' align='left' valign='middle'>".$item->Nombre."</td>
+                        <td width='20%' height='20' align='left' valign='middle'>".$item->Notas."</td>
+                        <td width='10%' height='20' align='right' valign='middle'>".number_format($item->PreVtaFinal1, 2,',','.')."</td>
+                        <td width='10%' height='20' align='right' valign='middle'>".number_format($item->ImpTotal, 2, '.', ',')."</td>
                         </tr>";
             endwhile;
         endif;
@@ -183,7 +184,7 @@ Class Polirubro {
         $mail->AddReplyTo($emailDestino); // Esto es para que al recibir el correo y poner Responder, lo haga a la cuenta del vendedor.
         $mail->Subject = "{$nombre} - Pedido: ".$id_pedido; // Este es el titulo del email.
         $mail->Body = "{$cuerpo}"; // Texto del email en formato HTML
-        //$mail->AltBody = "{$mensaje} \n\n Formulario de ejemplo Web Polirrubros"; // Texto sin formato HTML
+        //$mail->AltBody = "{$mensaje} \n\n Formulario de ejemplo Web"; // Texto sin formato HTML
         
         $mail->SMTPOptions = array(
             'ssl' => array(
@@ -213,28 +214,34 @@ Class Polirubro {
         return $user->is_Admin();
     }
 
-    public static function checkUserCapabilities($product) {
-
-        $precio  = 0;
+    public static function checkUserCapabilities($product, $format=true) {
+        
         $config  = new Configuracion();
         $aumento = $config->getAumento();
         
         // Usuario logueado
         if (isset($_SESSION["user"])) {
-            // usuario recurrente
             $user = new Usuarios($_SESSION["Id_Cliente"]);
-            if ($user->getTipo() == 1) {
-                return number_format($product->PreVtaFinal1(), 2,',','.');
-            }
+            $precios = [
+                1 => $product->precio_venta_final_1,
+                2 => $product->precio_venta_final_2,
+                3 => $product->precio_venta_final_3,
+            ];
+            $precio = $precios[$user->getListaPrecioDef()] ?? $product->precio_venta_final_1;
+        } else {
+            $precio = $product->precio_venta_final_1;
         }
         
-        // Usuario no logueado o tipo 2
-        if ($aumento) {
-            // aumento %
-            $precio = $product->PreVtaFinal1() + ($product->PreVtaFinal1() * ($aumento / 100));
+        // aumento %
+        if (filter_var($aumento, FILTER_VALIDATE_FLOAT) && $aumento > 0) {
+            $precio = $precio + ($precio * ($aumento / 100));
         }
 
-        return number_format($precio, 2,',','.');
+        if ($format) {
+            return number_format($precio, 2, ',', '.');
+        }
+
+        return $precio;
     }
 }
 

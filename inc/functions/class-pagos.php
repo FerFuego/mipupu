@@ -1,0 +1,96 @@
+<?php
+/**
+ * Pagos class
+ */
+class Pagos {
+    
+    public $id_pago;
+    public $id_pedido;
+    public $mp_payment_id;
+    public $status;
+    public $metodo;
+    public $monto;
+    public $moneda;
+    public $cuotas;
+    public $fecha;
+    public $raw;
+
+    protected $obj;
+
+    /**
+     * Constructor
+     * Si recibe un ID, carga el pago automáticamente
+     */
+    public function __construct($id = 0) {
+
+        if ($id != 0) {
+
+            $this->obj = new sQuery();
+
+            $sql = "SELECT * FROM PAGOS WHERE Id_Pago = '$id' LIMIT 1";
+            
+            $result = $this->obj->executeQuery($sql);
+            $row = mysqli_fetch_assoc($result);
+
+            if ($row) {
+                $this->id_pago       = $row['Id_Pago'];
+                $this->id_pedido     = $row['Id_Pedido'];
+                $this->mp_payment_id = $row['MP_Payment_ID'];
+                $this->status        = $row['Status'];
+                $this->metodo        = $row['Metodo'];
+                $this->monto         = $row['Monto'];
+                $this->moneda        = $row['Moneda'];
+                $this->cuotas        = $row['Cuotas'];
+                $this->fecha         = $row['Fecha'];
+                $this->raw           = $row['Raw'];
+            }
+        }
+    }
+
+    /**
+     * Registrar un pago desde MercadoPago (webhook)
+     */
+    public function registrarPago($pedidoId, $pagoMP) {
+
+        $this->obj = new sQuery();
+
+        $mp_id   = $pagoMP["id"];
+        $status  = $pagoMP["status"];
+        $metodo  = $pagoMP["payment_method_id"];
+        $monto   = $pagoMP["transaction_amount"];
+        $moneda  = $pagoMP["currency_id"];
+        $cuotas  = $pagoMP["installments"];
+        $raw     = json_encode($pagoMP);
+
+        $sql = "INSERT INTO PAGOS (Id_Pedido, MP_Payment_ID, Status, Metodo, Monto, Moneda, Cuotas, Fecha, Raw) VALUES ('$pedidoId', '$mp_id', '$status', '$metodo', '$monto', '$moneda', '$cuotas', NOW(), '$raw')";
+
+        return $this->obj->executeQuery($sql);
+    }
+
+    /**
+     * Obtener todos los pagos
+     */
+    public function listarPagos() {
+        $this->obj = new sQuery();
+
+        $sql = "SELECT * FROM PAGOS AS P LEFT JOIN PEDIDOS_CABE AS PC ON PC.Id_Pedido = P.Id_Pedido ORDER BY P.Fecha DESC";
+
+        $result = $this->obj->executeQuery($sql);
+
+        $pagos = [];
+        while ($row = $result->fetch_object()) {
+            $pagos[] = $row;
+        }
+
+        return $pagos;
+    }
+
+    /**
+     * Cerrar conexiones
+     */
+    public function closeConnection() {
+        $this->obj->Clean();
+        $this->obj->Close();
+    }
+
+}

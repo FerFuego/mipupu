@@ -41,6 +41,9 @@
                     case 'pedidos':
                         require_once('inc/parts/cpanel/orders.php');
                         break;
+                    case 'pagos':
+                        require_once('inc/parts/cpanel/pagos.php');
+                        break;
                     default:
                         require_once('inc/parts/cpanel/default.php');
                         break;
