@@ -102,6 +102,12 @@ class Pedidos {
         return $result;
     }
 
+    public function getPedido($Id_Pedido) {
+        $this->obj = new sQuery();
+        $result = $this->obj->executeQuery("SELECT * FROM PEDIDOS_CABE WHERE Id_Pedido = '$Id_Pedido' LIMIT 1");
+        return $result->fetch_object();
+    }
+
     public function getOrdersSearch($opcion, $search) {
 
         $where = '1=1';
@@ -158,8 +164,8 @@ class Pedidos {
             while ( $detalle = $results->fetch_object() ) :
                 $producto = new Productos($detalle->CodProducto);
                 if ( null !== $producto->cod_producto ) {
-                    if ( Productos::PreVtaFinal($producto->precio_venta_final_1) !== $detalle->PreVtaFinal1 ) :
-                        $items->ActualizarPrecio($Id_Pedido, $detalle->CodProducto, Productos::PreVtaFinal($producto->precio_venta_final_1));
+                    if ( Polirubro::checkUserCapabilities($producto, false) !== $detalle->PreVtaFinal1 ) :
+                        $items->ActualizarPrecio($Id_Pedido, $detalle->CodProducto, Polirubro::checkUserCapabilities($producto, false));
                         $updated++;
                     endif;
                 } else {
@@ -206,6 +212,11 @@ class Pedidos {
     public function finalizarPedido() {
         $this->obj = new sQuery();
         $result = $this->obj->executeQuery("UPDATE PEDIDOS_CABE SET Nombre = '$this->Nombre', Mail = '$this->Mail', Telefono = '$this->Telefono', Localidad = '$this->Localidad', FechaFin = '$this->FechaFin', SubTotal = $this->SubTotal, PctDescuento = $this->PctDescuento, Descuento = $this->Descuento, ImpTotal = $this->ImpTotal, Cerrado = '$this->Cerrado' WHERE (Id_Cliente = $this->Id_Cliente) AND (Id_Pedido = $this->Id_Pedido) AND (Cerrado = 0)");
+    }
+
+    public function markAsPaid($Id_Pedido) {
+        $this->obj = new sQuery();
+        $result = $this->obj->executeQuery("UPDATE PEDIDOS_CABE SET Cerrado = 1 WHERE Id_Pedido = '$Id_Pedido'");
     }
 
     public function delete () { 

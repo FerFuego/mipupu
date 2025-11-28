@@ -168,9 +168,9 @@ if( !empty($_POST) && isset($_POST['action']) && $_POST['action'] == 'insertProd
     $detail->Id_Producto = $prod->getID();
     $detail->CodProducto = $cod_product;
     $detail->Nombre = $prod->getNombre();
-    $detail->PreVtaFinal1 = $prod->PreVtaFinal1();
+    $detail->PreVtaFinal1 = $prod->PreVta();
     $detail->Cantidad = $cant;
-    $detail->ImpTotal = $prod->PreVtaFinal1() * $cant;
+    $detail->ImpTotal = $prod->PreVta() * $cant;
     $detail->Notas = $note;
     $detail->insertDetalle();
 
@@ -184,21 +184,21 @@ if( !empty($_POST) && isset($_POST['action']) && $_POST['action'] == 'updateProd
 
     $note    = (isset($_POST['nota']) ? filter_var($_POST['nota'], FILTER_UNSAFE_RAW) : null);
     $cant    = (isset($_POST['cant']) ? filter_var($_POST['cant'], FILTER_VALIDATE_INT) : null);
-    $CodProducto = (isset($_POST['codprod']) ? filter_var($_POST['codprod'], FILTER_VALIDATE_INT) : null);
+    $CodProducto = isset($_POST['codprod']) ? filter_var($_POST['codprod'], FILTER_SANITIZE_FULL_SPECIAL_CHARS) : null;
     $id_productItem = (isset($_POST['id_item']) ? filter_var($_POST['id_item'], FILTER_VALIDATE_INT) : null);
 
     $prod = new Productos($CodProducto);
 
     if ( !$prod ) die('false');
 
-    $item = new Detalles();
-    $item->Auto = $id_productItem;
-    $item->Cantidad = $cant;
-    $item->Notas = $note;
-    $item->ImpTotal = $prod->PreVtaFinal1() * $cant;
-    $item->updateDetalle();
+    $detail = new Detalles();
+    $detail->Auto = $id_productItem;
+    $detail->Cantidad = $cant;
+    $detail->Notas = $note;
+    $detail->ImpTotal = $prod->PreVta() * $cant;
+    $detail->updateDetalle();
 
-    die('true');
+    die( 'true' );
 }
 
 /**
@@ -216,45 +216,100 @@ if( !empty($_POST) && isset($_POST['action']) && $_POST['action'] == 'deleteProd
 }
 
 /**
+ * Request of Payment Data
+ */
+if (!empty($_POST) && isset($_POST['action']) && $_POST['action'] == 'dataPago') {
+
+    $id_pago = $_POST['id_pago'];
+
+    $obj = new sQuery();
+    $result = $obj->executeQuery("SELECT * FROM PAGOS WHERE Id_Pago = '$id_pago'");
+    $row = $result->fetch_object();
+
+    if (!$row) {
+        echo json_encode(false);
+        exit;
+    }
+
+    echo json_encode([
+        "id_pago"     => $row->Id_Pago,
+        "id_pedido"   => $row->Id_Pedido,
+        "mp_id"       => $row->MP_Payment_ID,
+        "status"      => $row->Status,
+        "metodo"      => $row->Metodo,
+        "monto"       => $row->Monto,
+        "moneda"      => $row->Moneda,
+        "cuotas"      => $row->Cuotas,
+        "fecha"       => $row->Fecha,
+        "raw"         => json_decode($row->Raw, true) // decodificado como array
+    ]);
+
+    exit;
+}
+
+
+/**
  * Request of Finally Order
  */
 if( !empty($_POST) && isset($_POST['action']) && $_POST['action'] == 'finallyOrder') {
 
-    $id_pedido = (isset($_POST['id_pedido']) ? filter_var($_POST['id_pedido'], FILTER_VALIDATE_INT) : null);
-    $data      = isset($_POST['data']) ? json_decode($_POST['data']) : null;
+    $id_pedido = $_POST['id_pedido'];
+    $data = json_decode($_POST['data'], true);
 
-    if (!isset($_SESSION["Id_Cliente"]) || $_SESSION["Id_Cliente"] == 0) die('false');
+    // 1. Finalizar pedido en tu base
+    // $pedido = new Pedidos();
+    // $pedido->finallyOrder($id_pedido, $data);
+
+    // 2. Crear preferencia de MercadoPago
+    require __DIR__.'/../../crear-pago.php';
+    $init_point = crearPago($id_pedido);
+
+    echo json_encode([
+        "status" => "ok",
+        "init_point" => $init_point
+    ]);
+    exit;
+
+    // $id_pedido = (isset($_POST['id_pedido']) ? filter_var($_POST['id_pedido'], FILTER_VALIDATE_INT) : null);
+    // $data      = isset($_POST['data']) ? json_decode($_POST['data']) : null;
+
+    // if (!isset($_SESSION["Id_Cliente"]) || $_SESSION["Id_Cliente"] == 0) die('false');
     
-    $order = new Pedidos($id_pedido);
-    // Guest user update data order
-    if ( isset($data->name) ) {
-        $order->Nombre = $data->name;
-        $order->Mail  = $data->email;
-        $order->Telefono  = $data->phone;
-        $order->Localidad  = $data->locality;
-    } else {
-        $user = new Usuarios($_SESSION["Id_Cliente"]);
-        $order->Nombre = $user->getNombre();
-        $order->Mail  = $user->getMail();
-        $order->Telefono  = '';
-        $order->Localidad  = $user->getLocalidad();
-    }
+    // $order = new Pedidos($id_pedido);
+    // // Guest user update data order
+    // if ( isset($data->name) ) {
+    //     $order->Nombre = $data->name;
+    //     $order->Mail  = $data->email;
+    //     $order->Telefono  = $data->phone;
+    //     $order->Localidad  = $data->locality;
+    // } else {
+    //     $user = new Usuarios($_SESSION["Id_Cliente"]);
+    //     $order->Nombre = $user->getNombre();
+    //     $order->Mail  = $user->getMail();
+    //     $order->Telefono  = '';
+    //     $order->Localidad  = $user->getLocalidad();
+    // }
 
-    $order->SubTotal = $data->subtotal;
-    $order->PctDescuento = $data->PctDescuento;
-    $order->Descuento = $data->descuento;
-    $order->ImpTotal = $data->total;
-    $order->Id_Cliente = $_SESSION["Id_Cliente"];
-    $order->FechaFin = date("Y-m-d");
-    $order->Cerrado = 1;
-    $order->finalizarPedido();
+    // $order->SubTotal = $data->subtotal;
+    // $order->PctDescuento = $data->PctDescuento;
+    // $order->Descuento = $data->descuento;
+    // $order->ImpTotal = $data->total;
+    // $order->Id_Cliente = $_SESSION["Id_Cliente"];
+    // $order->FechaFin = date("Y-m-d");
+    // $order->Cerrado = 1;
+    // $order->finalizarPedido();
 
-    // Send mail to client
-    $datos = new Polirubro();
-    $body = $datos->getBodyEmail($id_pedido);
-    $datos->sendMail($id_pedido, $order->Mail, $body);
+    // Update stock
+    // $detail = new Detalles();
+    // $pedido = $detail->getDetallesPedido($id_pedido);
+    // $detail->updateStock($pedido);
 
-    die('true');
+    // // Send mail to client
+    // $datos = new Polirubro();
+    // $body = $datos->getBodyEmail($id_pedido);
+    // $datos->sendMail($id_pedido, $order->Mail, $body);
+
+    // die('true');
 }
 
 /**
@@ -322,7 +377,7 @@ if( !empty($_POST) && isset($_POST['action']) && $_POST['action'] == 'dataClient
 if( !empty($_POST) && isset($_POST['action']) && $_POST['action'] == 'operationClient') {
 
     $id   = (isset($_POST['id']) ? filter_var($_POST['id'], FILTER_VALIDATE_INT) : null);
-    $type = (isset($_POST['type']) ? filter_var($_POST['type'], FILTER_UNSAFE_RAW) : null);
+    $ListaPrecioDef = (isset($_POST['price']) ? filter_var($_POST['price'], FILTER_UNSAFE_RAW) : null);
     $type_cli = (isset($_POST['type_cli']) ? filter_var($_POST['type_cli'], FILTER_UNSAFE_RAW) : null);
     $name = (isset($_POST['name']) ? filter_var($_POST['name'], FILTER_UNSAFE_RAW) : null);
     $mail = (isset($_POST['mail']) ? filter_var($_POST['mail'], FILTER_UNSAFE_RAW) : null);
@@ -332,14 +387,14 @@ if( !empty($_POST) && isset($_POST['action']) && $_POST['action'] == 'operationC
 
     if ( $type_cli == 'new') {
         $user = new Usuarios();
-        $user->Id_Cliente = date('YmdHis');
+        $user->Id_Cliente = ($id) ? $id : date('YmdHis');
         $user->Nombre = $name;
         $user->Localidad = $locality;
         $user->Mail = $mail;
         $user->Usuario = $username;
-        $user->Password = md5($password);
-        $user->ListaPrecioDef = 1;
-        $user->tipo = $type;
+        $user->Password = $password;
+        $user->ListaPrecioDef = $ListaPrecioDef;
+        $user->tipo = $ListaPrecioDef;
         $user->is_Admin = 0;
         $user->insert();
         die('true');
@@ -353,11 +408,10 @@ if( !empty($_POST) && isset($_POST['action']) && $_POST['action'] == 'operationC
         $user->Mail = $mail;
         $user->Usuario = $username;
         if ($password) {
-            $user->Password = md5($password);
+            $user->Password = $password;
         }
-        $user->ListaPrecioDef = 1;
-        $user->tipo = $type;
-        $user->is_Admin = 0;
+        $user->ListaPrecioDef = $ListaPrecioDef;
+        $user->tipo = $ListaPrecioDef;
         $user->update();
         die('true');
     }
@@ -816,11 +870,12 @@ if( !empty($_POST) && isset($_POST['action']) && $_POST['action'] == 'registerUs
 
     // Insert User
     $user = new Usuarios();
-    $user->Id_Cliente = date('YmdHis');
+    $user->Id_Cliente = time();
     $user->Nombre = $name;
     $user->Mail = $email;
     $user->Usuario = $username;
-    $user->Password = md5($password);
+    //$user->Password = md5($password);
+    $user->Password = $password;
     $user->Localidad = $locality;
     $user->ListaPrecioDef = 1;
     $user->tipo = 0;

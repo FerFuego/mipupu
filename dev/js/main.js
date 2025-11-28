@@ -265,6 +265,21 @@
         $button.parent().find('input').val(newVal);
     });
 
+
+    // Agregar listener para validar ingreso por teclado
+    proQty.find('input').on('input', function () {
+        var $input = $(this);
+        var maxValue = $input.attr('max');
+        var value = parseFloat($input.val());
+        if (isNaN(value)) {
+            $input.val(0);
+        } else if (value > maxValue) {
+            $input.val(maxValue);
+        } else if (value < 0) {
+            $input.val(0);
+        }
+    });
+
 })(jQuery);
 
 /*-------------------
@@ -658,18 +673,23 @@ $(document).ready( function () {
                 $('#js-finally-order').html('ENVIANDO...');
             },
             success: function (response) {
-                //if (response == 'true') {
-                $('#js-finally-order').html('PEDIDO ENVIADO');
-                $("#js-dynamic-cart").load( $(location).attr("href") + ' #js-data-cart' );
-                toastr.success('El Pedido fue enviado con exito!');
-                setTimeout(function() {
-                    window.location.href = 'index.php';
-                }, 3000);
-                // } else {
-                //     $('#js-finally-order').html('FINALIZAR PEDIDO');
-                //     toastr.error('Ocurrio un error, por favor recarge la pagina e intente nuevamente.');
-                // }
+                let data = JSON.parse(response);
+
+                if (data.status == "ok") {
+                    window.location.href = data.init_point; // ← IR A MERCADOPAGO
+                } else {
+                    toastr.error('Ocurrió un error al generar el pago.');
+                }
             }
+
+            // success: function (response) {
+            //     $('#js-finally-order').html('PEDIDO ENVIADO');
+            //     $("#js-dynamic-cart").load( $(location).attr("href") + ' #js-data-cart' );
+            //     toastr.success('El Pedido fue enviado con exito!');
+            //     setTimeout(function() {
+            //         window.location.href = 'index.php';
+            //     }, 3000);
+            // }
         });
     })
 
@@ -803,6 +823,9 @@ $(document).ready( function () {
                 formData.append('action', 'operationClient');
                 formData.append('type_cli', values.type_cli);
                 formData.append('type', values.type);
+                formData.append('id', values.id);
+                formData.append('type_cli', values.type);
+                formData.append('price', values.price);
                 formData.append('name', values.name);
                 formData.append('locality', values.locality);
                 formData.append('mail', values.mail);
@@ -1300,11 +1323,66 @@ function getClientdata(obj) {
                 $('#mail').val(data.Mail);
                 $('#username').val(data.Usuario);
                 $('#pass_cli').val(data.Password);
+                $('#price').val(data.ListaPrecioDef).niceSelect('update');
                 $('#type').val(data.tipo).change();
             }
         }
     });
 }
+
+/*--------------------
+    GET Pago Data
+--------------------*/
+function getPagodata(obj) {
+
+    var id_pago = $(obj).attr('data-p');
+    cleanModal();
+
+    var formData = new FormData();
+    formData.append('action', 'dataPago');
+    formData.append('id_pago', id_pago);
+
+    jQuery.ajax({
+        cache: false,
+        url: 'inc/functions/ajax-requests.php',
+        type: 'POST',
+        data: formData,
+        contentType: false,
+        processData: false,
+        success: function(response) {
+
+            if (response == 'false' || !response) {
+                toastr.error('Ocurrió un error al obtener el pago.');
+                return;
+            }
+
+            let data = JSON.parse(response);
+
+            // Armado HTML
+            let html = `
+                <h4>Información del Pago</h4>
+                <p><strong>ID Pago:</strong> ${data.id_pago}</p>
+                <p><strong>ID Pedido:</strong> ${data.id_pedido}</p>
+                <p><strong>ID MercadoPago:</strong> ${data.mp_id}</p>
+                <p><strong>Estado:</strong> ${data.status}</p>
+                <p><strong>Monto:</strong> $${data.monto} ${data.moneda}</p>
+                <p><strong>Método:</strong> ${data.metodo}</p>
+                <p><strong>Cuotas:</strong> ${data.cuotas}</p>
+                <p><strong>Fecha:</strong> ${data.fecha}</p>
+
+                <h4>JSON Completo</h4>
+                <pre>${JSON.stringify(data.raw, null, 2)}</pre>
+            `;
+
+            $("#pagoModalBody").html(html);
+        }
+    });
+}
+
+function cleanModal() {
+    $("#pagoModalBody").html("Cargando...");
+}
+
 
 /*--------------------
     GET Product Data
