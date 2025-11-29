@@ -260,7 +260,6 @@ if( !empty($_POST) && isset($_POST['action']) && $_POST['action'] == 'finallyOrd
     if (!isset($_SESSION["Id_Cliente"]) || $_SESSION["Id_Cliente"] == 0) die('false');
     
     $customer = $_SESSION["Id_Cliente"];
-    $order = new Pedidos($id_pedido);
 
     // MercadoPago
     $id_pedido = $_POST['id_pedido'];
@@ -268,7 +267,7 @@ if( !empty($_POST) && isset($_POST['action']) && $_POST['action'] == 'finallyOrd
 
     // 2. Crear preferencia de MercadoPago
     require __DIR__.'/../../crear-pago.php';
-    $init_point = crearPago($id_pedido, $data, $order, $customer);
+    $init_point = crearPago($id_pedido, $data, $customer);
 
     echo json_encode([
         "status" => "ok",
