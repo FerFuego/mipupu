@@ -27,7 +27,7 @@ function crearPago($idPedido) {
         ],
         "external_reference" => $idPedido,
 
-        "notification_url" => "https://mipupu.com.ar/config/webhook-mercadopago.php",
+        "notification_url" => "https://mipupu.com.ar/webhook-mercadopago.php",
 
         "back_urls" => [
             "success" => "https://mipupu.com.ar/pago-exitoso.php?id=".$idPedido,
