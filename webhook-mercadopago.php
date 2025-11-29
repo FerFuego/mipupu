@@ -1,6 +1,7 @@
 <?php
 require __DIR__.'/config/mercadopago.php';
 require __DIR__."/inc/functions/class-pedidos.php";
+require __DIR__."/inc/functions/class-pagos.php";
 
 $input = file_get_contents("php://input");
 $data = json_decode($input, true);
@@ -23,11 +24,9 @@ if (!empty($data["data"]["id"])) {
     $estado = $pago["status"];
     $pedidoId = $pago["external_reference"];
 
-    if ($estado === "approved") {
-        $pedido = new Pagos();
-        $pagos->registrarPago($pedidoId, $pago);
-        //$pedido->markAsPaid($pedidoId);
-    }
+    // instancia correcta
+    $pagos = new Pagos();
+    $pagos->registrarPago($pedidoId, $pago);
 }
 
 http_response_code(200);
