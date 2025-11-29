@@ -3,7 +3,7 @@ require __DIR__."/config/mercadopago.php";
 
 use MercadoPago\Client\Preference\PreferenceClient;
 
-function crearPago($idPedido) {
+function crearPago($idPedido, $data, $order, $customer) {
 
     // cargar clase Pedidos
     require __DIR__."/inc/functions/class-pedidos.php";
