@@ -27,7 +27,7 @@ class Pagos {
 
             $this->obj = new sQuery();
 
-            $sql = "SELECT * FROM PAGOS WHERE Id_Pago = '$id' LIMIT 1";
+            $sql = "SELECT * FROM pagos WHERE Id_Pago = '$id' LIMIT 1";
             
             $result = $this->obj->executeQuery($sql);
             $row = mysqli_fetch_assoc($result);
@@ -62,7 +62,7 @@ class Pagos {
         $cuotas  = $pagoMP["installments"];
         $raw     = json_encode($pagoMP);
 
-        $sql = "INSERT INTO PAGOS (Id_Pedido, MP_Payment_ID, Status, Metodo, Monto, Moneda, Cuotas, Fecha, Raw) VALUES ('$pedidoId', '$mp_id', '$status', '$metodo', '$monto', '$moneda', '$cuotas', NOW(), '$raw')";
+        $sql = "INSERT INTO pagos (Id_Pedido, MP_Payment_ID, Status, Metodo, Monto, Moneda, Cuotas, Fecha, Raw) VALUES ('$pedidoId', '$mp_id', '$status', '$metodo', '$monto', '$moneda', '$cuotas', NOW(), '$raw')";
 
         return $this->obj->executeQuery($sql);
     }
@@ -73,7 +73,7 @@ class Pagos {
     public function listarPagos() {
         $this->obj = new sQuery();
 
-        $sql = "SELECT * FROM PAGOS AS P LEFT JOIN pedidos_cabe AS PC ON PC.Id_Pedido = P.Id_Pedido ORDER BY P.Fecha DESC";
+        $sql = "SELECT * FROM pagos AS P LEFT JOIN pedidos_cabe AS PC ON PC.Id_Pedido = P.Id_Pedido ORDER BY P.Fecha DESC";
 
         $result = $this->obj->executeQuery($sql);
 
