@@ -1,4 +1,7 @@
 <?php
+file_put_contents(__DIR__."/webhook.log", date("Y-m-d H:i:s")." - Llego algo: ".file_get_contents("php://input")."\n\n", FILE_APPEND);
+
+
 require __DIR__.'/config/mercadopago.php';
 require __DIR__."/inc/functions/class-pedidos.php";
 require __DIR__."/inc/functions/class-pagos.php";
