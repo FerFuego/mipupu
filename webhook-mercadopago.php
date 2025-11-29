@@ -17,7 +17,7 @@ if (!empty($data["data"]["id"])) {
 
     $opts = [
         "http" => [
-            "header" => "Authorization: Bearer ". getenv('MP_ACCESS_TOKEN')
+            "header" => "Authorization: Bearer ". getenv('MP_ACCESS_TOKEN_TEST')
         ]
     ];
 
