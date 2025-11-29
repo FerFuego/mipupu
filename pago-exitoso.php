@@ -14,7 +14,7 @@
     <div class="container">
         <div class="row">
             <div class="col-lg-12 col-md-12">
-                <h2>PAGO EXITOSO,<br>Nos comunicaremos con usted en breve.</h2>
+                <h2>PAGO EXITOSO!<br>Nos comunicaremos con usted en breve.</h2>
                 <br>
                 <?php
                     $payment_id = $_GET["payment_id"] ?? null;
@@ -33,10 +33,11 @@
                         $pago = json_decode($res, true);
 
                         if ($pago && $pago["status"] === "approved") {
-                            echo "<h1>Gracias por tu compra 🎉</h1>";
-                            echo "Pago ID: ".$payment_id."<br>";
-                            echo "Método: ".$pago["payment_method"]["type"]."<br>";
-                            echo "Monto: ".$pago["transaction_amount"]."<br>";
+                            echo "<h2>Gracias por tu compra 🎉</h2>";
+                            echo "<br>"."<br>";
+                            echo "<b>Pago ID</b>: ".$payment_id."<br>";
+                            echo "<b>Método</b>: ".$pago["payment_method"]["type"]."<br>";
+                            echo "<b>Monto</b>: ".$pago["transaction_amount"]."<br>";
 
                             $id_pedido = (isset($_GET['id']) ? filter_var($_GET['id'], FILTER_VALIDATE_INT) : null);
 
@@ -66,9 +67,9 @@
                                 $detail->updateStock($pedido);
     
                                 // Send mail to client
-                                $datos = new Polirubro();
-                                $body = $datos->getBodyEmail($id_pedido);
-                                $datos->sendMail($id_pedido, $order->Mail, $body);
+                                // $datos = new Polirubro();
+                                // $body = $datos->getBodyEmail($id_pedido);
+                                // $datos->sendMail($id_pedido, $order->Mail, $body);
                             }
                             
 
