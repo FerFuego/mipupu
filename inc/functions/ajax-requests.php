@@ -254,12 +254,12 @@ if (!empty($_POST) && isset($_POST['action']) && $_POST['action'] == 'dataPago')
 if( !empty($_POST) && isset($_POST['action']) && $_POST['action'] == 'finallyOrder') {
 
 
-    $id_pedido = (isset($_POST['id_pedido']) ? filter_var($_POST['id_pedido'], FILTER_VALIDATE_INT) : null);
-    $data      = isset($_POST['data']) ? json_decode($_POST['data']) : null;
+    // $id_pedido = (isset($_POST['id_pedido']) ? filter_var($_POST['id_pedido'], FILTER_VALIDATE_INT) : null);
+    // $data      = isset($_POST['data']) ? json_decode($_POST['data']) : null;
 
-    if (!isset($_SESSION["Id_Cliente"]) || $_SESSION["Id_Cliente"] == 0) die('false');
+    // if (!isset($_SESSION["Id_Cliente"]) || $_SESSION["Id_Cliente"] == 0) die('false');
     
-    $customer = $_SESSION["Id_Cliente"];
+    // $customer = $_SESSION["Id_Cliente"];
 
     // MercadoPago
     $id_pedido = $_POST['id_pedido'];
@@ -267,7 +267,8 @@ if( !empty($_POST) && isset($_POST['action']) && $_POST['action'] == 'finallyOrd
 
     // 2. Crear preferencia de MercadoPago
     require __DIR__.'/../../crear-pago.php';
-    $init_point = crearPago($id_pedido, $data, $customer);
+    $init_point = crearPago($id_pedido);
+    // $init_point = crearPago($id_pedido, $data, $customer);
 
     echo json_encode([
         "status" => "ok",
