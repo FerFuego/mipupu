@@ -3,7 +3,7 @@ require __DIR__."/config/mercadopago.php";
 
 use MercadoPago\Client\Preference\PreferenceClient;
 
-function crearPago($idPedido) {
+function crearPago($idPedido, $data, $customer) {
 
     // cargar clase Pedidos
     require __DIR__."/inc/functions/class-pedidos.php";
@@ -30,8 +30,8 @@ function crearPago($idPedido) {
         "notification_url" => "https://mipupu.com.ar/webhook-mercadopago.php",
 
         "back_urls" => [
-            "success" => "https://mipupu.com.ar/pago-exitoso.php?id=".$idPedido,
-            "pending" => "https://mipupu.com.ar/pago-pendiente.php?id=".$idPedido,
+            "success" => "https://mipupu.com.ar/pago-exitoso.php?id=".$idPedido."&data=".base64_encode(json_encode($data))."&customer=".base64_encode(json_encode($customer)),
+            "pending" => "https://mipupu.com.ar/pago-pendiente.php?id=".$idPedido."&data=".base64_encode(json_encode($data))."&customer=".base64_encode(json_encode($customer)),
             "failure" => "https://mipupu.com.ar/pago-fallido.php?id=".$idPedido
         ],
 
