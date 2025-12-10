@@ -21,7 +21,7 @@
                     $url = "https://api.mercadopago.com/v1/payments/".$payment_id;
                     $opts = [
                         "http" => [
-                            "header" => "Authorization: Bearer ".$_ENV["MP_ACCESS_TOKEN"]
+                            "header" => "Authorization: Bearer ".getenv("MP_ACCESS_TOKEN")
                         ]
                     ];
 
