@@ -25,7 +25,7 @@
 
                         $opts = [
                             "http" => [
-                                "header" => "Authorization: Bearer ".getenv("MP_ACCESS_TOKEN_TEST")
+                                "header" => "Authorization: Bearer ".getenv("MP_ACCESS_TOKEN")
                             ]
                         ];
 
