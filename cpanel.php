@@ -61,6 +61,7 @@
     require_once('inc/parts/cpanel/modals/modal-banners.php');
     require_once('inc/parts/cpanel/modals/modal-category.php');
     require_once('inc/parts/cpanel/modals/modal-orders.php');
+    require_once('inc/parts/cpanel/modals/modal-ver-pago.php');
 ?>
 <!-- End Modals -->
 

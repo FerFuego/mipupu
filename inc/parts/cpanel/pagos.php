@@ -52,9 +52,6 @@ $pagos = $pagosClass->listarPagos();
             
             <td>
                 <a href="#" onclick="getPagodata(this);" data-p="<?= $p->Id_Pago ?>" data-toggle="modal" data-target="#pagoModal" class="icon_dollar" title="Ver">Ver detalles</a>
-                <!-- <a href="ver-pago.php?id=<?php //echo $p->Id_Pago ?>">
-                    Ver detalles
-                </a> -->
             </td>
         </tr>
         <?php endforeach; ?>
