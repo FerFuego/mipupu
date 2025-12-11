@@ -2,6 +2,25 @@
 
 file_put_contents(__DIR__."/webhook.log", date("Y-m-d H:i:s")." - Llego algo: ".file_get_contents("php://input")."\n\n", FILE_APPEND);
 
+// CARGAR .env correctamente sin depender de DOCUMENT_ROOT
+$envPath = __DIR__ . '/.env';
+
+if (file_exists($envPath)) {
+    $file = new SplFileObject($envPath);
+
+    while (!$file->eof()) {
+        $line = trim(str_replace('"', '', $file->fgets()));
+
+        if ($line === '' || str_starts_with($line, '#')) continue;
+
+        if (strpos($line, '=') !== false) {
+            putenv($line);
+        }
+    }
+}
+
+
+require __DIR__."/inc/functions/class-connection.php";
 require __DIR__."/inc/functions/class-squery.php";
 require __DIR__.'/config/mercadopago.php';
 require __DIR__."/inc/functions/class-pagos.php";

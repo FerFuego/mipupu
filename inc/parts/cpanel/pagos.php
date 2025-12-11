@@ -10,6 +10,7 @@ $pagos = $pagosClass->listarPagos();
         <tr>
             <th>ID Pago</th>
             <th>ID Pedido</th>
+            <th>MP Payment ID</th>
             <th>Cliente</th>
             <th>Monto</th>
             <th>Estado</th>
@@ -22,10 +23,16 @@ $pagos = $pagosClass->listarPagos();
 
     <tbody>
         <?php foreach ($pagos as $p): ?>
+
+            <?php
+                $pedidosClass = new Pedidos($p->Id_Pedido);
+                $ClienteNombre = $pedidosClass->getNombre();
+            ?>
         <tr>
             <td><?= $p->Id_Pago ?></td>
             <td><?= $p->Id_Pedido ?></td>
-            <td><?= $p->Nombre_Cliente ?></td>
+            <td><?= $p->MP_Payment_ID ?></td>
+            <td><?= $ClienteNombre ?></td>
             <td>$<?= number_format($p->Monto, 2) ?> <?= $p->Moneda ?></td>
             
             <td>
