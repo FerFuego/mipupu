@@ -1,7 +1,4 @@
 <?php
-
-file_put_contents(__DIR__."/webhook.log", date("Y-m-d H:i:s")." - Llego algo: ".file_get_contents("php://input")."\n\n", FILE_APPEND);
-
 // CARGAR .env correctamente sin depender de DOCUMENT_ROOT
 $envPath = __DIR__ . '/.env';
 
@@ -19,12 +16,13 @@ if (file_exists($envPath)) {
     }
 }
 
-
 require __DIR__."/inc/functions/class-connection.php";
 require __DIR__."/inc/functions/class-squery.php";
 require __DIR__.'/config/mercadopago.php';
 require __DIR__."/inc/functions/class-pagos.php";
 require __DIR__."/inc/functions/class-pedidos.php";
+
+file_put_contents(__DIR__."/webhook.log", date("Y-m-d H:i:s")." - Llego algo: ".file_get_contents("php://input")."\n\n", FILE_APPEND);
 
 $input = file_get_contents("php://input");
 $data = json_decode($input, true);
@@ -57,10 +55,9 @@ if (!$paymentId) {
 
 // Obtener detalles del pago
 $url = "https://api.mercadopago.com/v1/payments/".$paymentId;
-$token = "APP_USR-3586300996216349-121019-bd3037b23d4956d50322b97a7f519b94-34651085"; //getenv('MP_ACCESS_TOKEN')
 $opts = [
     "http" => [
-        "header" => "Authorization: Bearer ". $token
+        "header" => "Authorization: Bearer ". getenv('MP_ACCESS_TOKEN')
     ]
 ];
 
@@ -81,8 +78,6 @@ $pagos = new Pagos();
 $resultado = $pagos->registrarPago($pedidoId, $pago);
 
 file_put_contents(__DIR__."/webhook.log", "Resultado insert: ".print_r($resultado, true)."\n", FILE_APPEND);
-
-file_put_contents(__DIR__."/webhook.log", "TOKEN: ".$token."\n", FILE_APPEND);
 
 http_response_code(200);
 exit;
