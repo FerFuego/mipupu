@@ -223,7 +223,7 @@ if (!empty($_POST) && isset($_POST['action']) && $_POST['action'] == 'dataPago')
     $id_pago = $_POST['id_pago'];
 
     $obj = new sQuery();
-    $result = $obj->executeQuery("SELECT * FROM PAGOS WHERE Id_Pago = '$id_pago'");
+    $result = $obj->executeQuery("SELECT * FROM pagos WHERE Id_Pago = '$id_pago'");
     $row = $result->fetch_object();
 
     if (!$row) {
