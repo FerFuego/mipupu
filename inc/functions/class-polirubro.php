@@ -167,7 +167,7 @@ Class Polirubro {
         $mail = new PHPMailer();
         $mail->IsSMTP();
         $mail->SMTPAuth = true;
-        $mail->Port = 587; 
+        $mail->Port = getenv('SMTP_PORT'); 
         $mail->IsHTML(true); 
         $mail->SMTPDebug = 2;
         $mail->CharSet = "utf-8";
