@@ -81,7 +81,7 @@
                         echo "Pago no válido.";
                     }
                 ?>
-                <a href="index.php" class="site-btn">CONTINUAR</a>
+                <a href="index.php" class="site-btn mt-5">CONTINUAR</a>
             </div>
         </div>
     </div>

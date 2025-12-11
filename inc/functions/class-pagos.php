@@ -62,6 +62,9 @@ class Pagos {
         $cuotas  = $pagoMP["installments"];
         $raw     = json_encode($pagoMP);
 
+        // Escapar RAW correctamente
+        $raw     = $this->obj->escapeString(json_encode($pagoMP, JSON_UNESCAPED_UNICODE));
+
         $sql = "INSERT INTO pagos (Id_Pedido, MP_Payment_ID, Status, Metodo, Monto, Moneda, Cuotas, Fecha, Raw) VALUES ('$pedidoId', '$mp_id', '$status', '$metodo', '$monto', '$moneda', '$cuotas', NOW(), '$raw')";
 
         return $this->obj->executeQuery($sql);

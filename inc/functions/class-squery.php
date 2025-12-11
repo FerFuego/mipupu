@@ -52,5 +52,19 @@ class sQuery {
 	function getIDAffect() {
 	   return $this->pconnection->getConnection()->insert_id;
 	}
+
+	// Escapar strings para evitar errores SQL y proteger JSON
+	function escapeString($string) {
+
+		$conn = $this->pconnection->getConnection();
+
+		if ($conn && $conn instanceof mysqli) {
+			return $conn->real_escape_string($string);
+		}
+
+		// fallback seguro
+		return addslashes($string);
+	}
+
 }
 ?>

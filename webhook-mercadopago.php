@@ -2,6 +2,7 @@
 
 file_put_contents(__DIR__."/webhook.log", date("Y-m-d H:i:s")." - Llego algo: ".file_get_contents("php://input")."\n\n", FILE_APPEND);
 
+require __DIR__."/inc/functions/class-squery.php";
 require __DIR__.'/config/mercadopago.php';
 require __DIR__."/inc/functions/class-pagos.php";
 require __DIR__."/inc/functions/class-pedidos.php";
@@ -37,10 +38,10 @@ if (!$paymentId) {
 
 // Obtener detalles del pago
 $url = "https://api.mercadopago.com/v1/payments/".$paymentId;
-
+$token = "APP_USR-3586300996216349-121019-bd3037b23d4956d50322b97a7f519b94-34651085"; //getenv('MP_ACCESS_TOKEN')
 $opts = [
     "http" => [
-        "header" => "Authorization: Bearer ".getenv('MP_ACCESS_TOKEN')
+        "header" => "Authorization: Bearer ". $token
     ]
 ];
 
@@ -60,43 +61,9 @@ $pedidoId = $pago["external_reference"];
 $pagos = new Pagos();
 $resultado = $pagos->registrarPago($pedidoId, $pago);
 
-
-// $order = new Pedidos($id_pedido);
-// // Guest user update data order
-// if ( isset($data->name) ) {
-//     $order->Nombre = $data->name;
-//     $order->Mail  = $data->email;
-//     $order->Telefono  = $data->phone;
-//     $order->Localidad  = $data->locality;
-// } else {
-//     $user = new Usuarios($_SESSION["Id_Cliente"]);
-//     $order->Nombre = $user->getNombre();
-//     $order->Mail  = $user->getMail();
-//     $order->Telefono  = '';
-//     $order->Localidad  = $user->getLocalidad();
-// }
-
-// $order->SubTotal = $data->subtotal;
-// $order->PctDescuento = $data->PctDescuento;
-// $order->Descuento = $data->descuento;
-// $order->ImpTotal = $data->total;
-// $order->Id_Cliente = $_SESSION["Id_Cliente"];
-// $order->FechaFin = date("Y-m-d");
-// $order->Cerrado = 1;
-// $order->finalizarPedido();
-
-// Update stock
-// $detail = new Detalles();
-// $pedido = $detail->getDetallesPedido($id_pedido);
-// $detail->updateStock($pedido);
-
-// // Send mail to client
-// $datos = new Polirubro();
-// $body = $datos->getBodyEmail($id_pedido);
-// $datos->sendMail($id_pedido, $order->Mail, $body);
-
 file_put_contents(__DIR__."/webhook.log", "Resultado insert: ".print_r($resultado, true)."\n", FILE_APPEND);
+
+file_put_contents(__DIR__."/webhook.log", "TOKEN: ".$token."\n", FILE_APPEND);
 
 http_response_code(200);
 exit;
-
