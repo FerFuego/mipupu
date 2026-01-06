@@ -10,6 +10,7 @@
                 <th class="text-left">Imagen</th>
                 <th class="text-left">Codigo</th>
                 <th class="text-left">Nombre</th>
+                <th class="text-left">Clasificacion</th>
                 <th class="text-left">Marca</th>
                 <th class="text-left">Rubro</th>
                 <th class="text-left">SubRubro</th>
@@ -23,28 +24,38 @@
             </tr>
         </thead>
         <tbody>
-            <?php 
-                if ( $search != '') {
-                    $productos = new Productos();
-                    $result    = $productos->getProductSearch($opcion, $search);
-                } else {
-                    $productos = new Productos();
-                    $result    = $productos->getProducts($opcion, $id_rubro, $id_subrubro, $id_grupo, $minamount, $maxamount, $order);
-                }
+            <?php
+            if ($search != '') {
+                $productos = new Productos();
+                $result = $productos->getProductSearch($opcion, $search);
+            } else {
+                $id_rubro = (isset($_GET['id_rubro']) && $_GET['id_rubro'] != '') ? $_GET['id_rubro'] : null;
+                $id_subrubro = (isset($_GET['id_subrubro']) && $_GET['id_subrubro'] != '') ? $_GET['id_subrubro'] : null;
+                $id_grupo = (isset($_GET['id_grupo']) && $_GET['id_grupo'] != '') ? $_GET['id_grupo'] : null;
+                $id_marca = (isset($_GET['id_marca']) && $_GET['id_marca'] != '') ? $_GET['id_marca'] : null;
+                $id_clasificacion = (isset($_GET['id_clasificacion']) && $_GET['id_clasificacion'] != '') ? $_GET['id_clasificacion'] : null;
+                $minamount = (isset($_GET['minamount']) && $_GET['minamount'] != '') ? $_GET['minamount'] : null;
+                $maxamount = (isset($_GET['maxamount']) && $_GET['maxamount'] != '') ? $_GET['maxamount'] : null;
+                $order = (isset($_GET['order']) && $_GET['order'] != '') ? $_GET['order'] : null;
+                $productos = new Productos();
+                $result = $productos->getProducts($opcion, $id_rubro, $id_subrubro, $id_grupo, $minamount, $maxamount, $order, $id_marca, $id_clasificacion);
+            }
 
-                $paginator = new Paginator( $result['query'], $result['total'] );
-                $results   = $paginator->getData( $limit, $page );
+            $paginator = new Paginator($result['query'], $result['total']);
+            $results = $paginator->getData($limit, $page);
 
-                if ( $results->num_rows > 0 ) :
-                    while ( $product = $results->fetch_object() ) :
-                        require 'inc/partials/cpanel/item-product.php';
-                    endwhile;
-                else : ?>
-                    <tr>
-                        <td colspan="6"><h3>No existen productos</h3></td>
-                    </tr>
-                <?php endif; ?>
+            if ($results->num_rows > 0):
+                while ($product = $results->fetch_object()):
+                    require 'inc/partials/cpanel/item-product.php';
+                endwhile;
+            else: ?>
+                <tr>
+                    <td colspan="6">
+                        <h3>No existen productos</h3>
+                    </td>
+                </tr>
+            <?php endif; ?>
         </tbody>
     </table>
-    <?php echo $paginator->createLinks( $links, $result['params'], 'product__pagination' ); ?>
+    <?php echo $paginator->createLinks($links, $result['params'], 'product__pagination'); ?>
 </div>
