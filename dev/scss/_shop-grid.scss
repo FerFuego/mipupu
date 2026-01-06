@@ -286,6 +286,7 @@
         left: 0;
         top: 5px;
         padding: 0 12px;
+
         h5 {
             font-size: 16px;
             color: #fff;
@@ -314,6 +315,7 @@
 }
 
 .product__item__pic {
+    display: block;
     height: 350px;
     position: relative;
     overflow: hidden;
@@ -391,7 +393,8 @@
         font-weight: 700;
     }
 
-    p, strong {
+    p,
+    strong {
         color: $seconday-color;
         font-weight: 700;
     }
