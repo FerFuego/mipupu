@@ -191,7 +191,6 @@ class Productos
 
     public static function getImage($CodProducto, $id_producto = null)
     {
-        $basePath = realpath(__DIR__ . '/../../') . '/';
         $extensions = ['JPG', 'jpg', 'jpeg', 'JPEG', 'png', 'PNG', 'webp', 'WEBP'];
         $default = "img/sin-imagen.jpg";
 
