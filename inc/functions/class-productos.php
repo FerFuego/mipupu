@@ -191,24 +191,25 @@ class Productos
 
     public static function getImage($CodProducto, $id_producto = null)
     {
-        $extensions = ['JPG', 'jpg', 'png', 'PNG', 'webp', 'WEBP'];
-        $img = "img/sin-imagen.jpg";
+        $basePath = realpath(__DIR__ . '/../../') . '/';
+        $extensions = ['JPG', 'jpg', 'jpeg', 'JPEG', 'png', 'PNG', 'webp', 'WEBP'];
+        $default = "img/sin-imagen.jpg";
 
         if ($id_producto) {
             foreach ($extensions as $ext) {
-                if (file_exists("./fotos/" . $id_producto . "." . $ext)) {
-                    return "./fotos/" . $id_producto . "." . $ext;
+                if (file_exists($basePath . "fotos/" . $id_producto . "." . $ext)) {
+                    return "fotos/" . $id_producto . "." . $ext;
                 }
             }
         }
 
         foreach ($extensions as $ext) {
-            if (file_exists("./fotos/" . $CodProducto . "." . $ext)) {
-                return "./fotos/" . $CodProducto . "." . $ext;
+            if (file_exists($basePath . "fotos/" . $CodProducto . "." . $ext)) {
+                return "fotos/" . $CodProducto . "." . $ext;
             }
         }
 
-        return $img;
+        return $default;
     }
 
     public function getProductSearch($opcion, $search)
