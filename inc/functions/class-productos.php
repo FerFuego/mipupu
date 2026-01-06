@@ -197,14 +197,14 @@ class Productos
 
         if ($id_producto) {
             foreach ($extensions as $ext) {
-                if (file_exists($basePath . "fotos/" . $id_producto . "." . $ext)) {
+                if (file_exists("fotos/" . $id_producto . "." . $ext)) {
                     return "fotos/" . $id_producto . "." . $ext;
                 }
             }
         }
 
         foreach ($extensions as $ext) {
-            if (file_exists($basePath . "fotos/" . $CodProducto . "." . $ext)) {
+            if (file_exists("fotos/" . $CodProducto . "." . $ext)) {
                 return "fotos/" . $CodProducto . "." . $ext;
             }
         }
