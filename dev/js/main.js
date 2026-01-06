@@ -44,8 +44,8 @@
     });
 
     /*------------------
-		Navigation
-	--------------------*/
+        Navigation
+    --------------------*/
     $(".mobile-menu").slicknav({
         prependTo: '#mobile-menu-wrap',
         allowParentLinks: true
@@ -87,7 +87,7 @@
     });
 
 
-    $('.hero__categories__all').on('click', function(){
+    $('.hero__categories__all').on('click', function () {
         $('.hero__categories ul').slideToggle(400);
     });
 
@@ -109,7 +109,7 @@
     /*--------------------------
         Featured Product Slider
     ----------------------------*/
-    setTimeout(function(){
+    setTimeout(function () {
         $(".featured__filter").owlCarousel({
             loop: true,
             margin: 0,
@@ -125,22 +125,22 @@
                 0: {
                     items: 1,
                 },
-    
+
                 480: {
                     items: 2,
                 },
-    
+
                 768: {
                     items: 3,
                 },
-    
+
                 992: {
                     items: 4,
                 }
             }
         })
     },
-    2000);
+        2000);
 
     /*-----------------------------
         Product Discount Slider
@@ -204,8 +204,8 @@
     });
 
     /*-----------------------
-		Price Range Slider
-	------------------------ */
+        Price Range Slider
+    ------------------------ */
     var rangeSlider = $(".price-range"),
         minamount = $("#minamount"),
         maxamount = $("#maxamount"),
@@ -219,6 +219,13 @@
         slide: function (event, ui) {
             minamount.val(ui.values[0]);
             maxamount.val(ui.values[1]);
+        },
+        stop: function (event, ui) {
+            let params = new URLSearchParams(window.location.search);
+            params.set('minamount', ui.values[0]);
+            params.set('maxamount', ui.values[1]);
+            params.delete('page');
+            window.location.href = 'productos.php?' + params.toString();
         }
     });
     minamount.val(rangeSlider.slider("values", 0));
@@ -230,8 +237,8 @@
     $("select").niceSelect();
 
     /*------------------
-		Single Product
-	--------------------*/
+        Single Product
+    --------------------*/
     $('.product__details__pic__slider img').on('click', function () {
 
         var imgurl = $(this).data('imgbigurl');
@@ -244,8 +251,8 @@
     });
 
     /*-------------------
-		Quantity change
-	--------------------- */
+        Quantity change
+    --------------------- */
     var proQty = $('.pro-qty');
     proQty.prepend('<span class="dec qtybtn">-</span>');
     proQty.append('<span class="inc qtybtn">+</span>');
@@ -300,7 +307,7 @@ $('.owl-banner-carousel').owlCarousel({
 /*--------------------------
     CTA categories tree
 ----------------------------*/
-$('.sublistCTA span').on('click', function(e){
+$('.sublistCTA span').on('click', function (e) {
     e.preventDefault();
     $(this).parent().next('.sublist').slideToggle(400);
 });
@@ -308,7 +315,7 @@ $('.sublistCTA span').on('click', function(e){
 /*--------------------------
     CTA categories tree
 ----------------------------*/
-$('.lastlistCTA span').on('click', function(e){
+$('.lastlistCTA span').on('click', function (e) {
     e.preventDefault();
     $(this).parent().next('.lastlist').slideToggle(400);
 });
@@ -322,8 +329,8 @@ $('.sublistCTA').on('click', function () {
     var id_rubro = obj.attr('data-rubro');
 
     var formData = new FormData();
-        formData.append('action', 'getSubRubroByIdRubro');
-        formData.append('id_rubro', id_rubro);
+    formData.append('action', 'getSubRubroByIdRubro');
+    formData.append('id_rubro', id_rubro);
 
     jQuery.ajax({
         cache: false,
@@ -339,7 +346,7 @@ $('.sublistCTA').on('click', function () {
         },
         success: function (response) {
             obj.next('.sublist').show();
-            obj.next('.sublist').html(response); 
+            obj.next('.sublist').html(response);
         }
     });
 });
@@ -347,15 +354,15 @@ $('.sublistCTA').on('click', function () {
 /*--------------------
     Get Grupo
 ---------------------*/
-function loadGroupCategory (subrubro) {
+function loadGroupCategory(subrubro) {
 
     event.preventDefault();
 
     var obj = $(this);
 
     var formData = new FormData();
-        formData.append('action', 'getGrupoByIdSubRubro');
-        formData.append('id_subrubro', subrubro);
+    formData.append('action', 'getGrupoByIdSubRubro');
+    formData.append('id_subrubro', subrubro);
 
     jQuery.ajax({
         cache: false,
@@ -367,7 +374,7 @@ function loadGroupCategory (subrubro) {
         beforeSend: function () {
             $('.sub-item').removeClass('active');
             $('.lastlist').hide();
-            $('.'+subrubro).addClass('active');
+            $('.' + subrubro).addClass('active');
             console.log($(this).parent().parent())
         },
         success: function (response) {
@@ -380,9 +387,16 @@ function loadGroupCategory (subrubro) {
 /*--------------------
     Order By Price
 ---------------------*/
-$('#select-order-prod').on('change', function(){
+$('#select-order-prod').on('change', function () {
     $('#form-order-prod').submit();
 })
+
+/*--------------------
+    Auto Submit Filters (Disabled - using PHP Links)
+---------------------*/
+// $(document).on('change', '#form-filters input[type="checkbox"]', function () {
+//     $('#form-filters').submit();
+// });
 
 /*----------------------
     Form Login Toggle
@@ -391,8 +405,8 @@ function formToggle() {
     $('.form-login').toggleClass('d-none');
 }
 
-$(document).ready( function () {
-    
+$(document).ready(function () {
+
     /*-----------------
         Validate Email
     ------------------*/
@@ -406,9 +420,9 @@ $(document).ready( function () {
         const $emailControl = $('#email');
         const email = $('#email').val();
 
-        if(validateEmail(email)){
+        if (validateEmail(email)) {
             $emailControl.css('border-color', 'green');
-        } else{
+        } else {
             $emailControl.css('border-color', 'red');
         }
         return false;
@@ -419,20 +433,20 @@ $(document).ready( function () {
     /*--------------------
         Login Request
     ---------------------*/
-    $('.form-login').submit( function (e) {
+    $('.form-login').submit(function (e) {
 
         e.preventDefault();
 
         var values = {};
 
-        $.each($(this).serializeArray(), function(i, field) {
+        $.each($(this).serializeArray(), function (i, field) {
             values[field.name] = field.value;
         });
-    
+
         if (values.user == '') {
             $('.js-login-message').html('<p>Ingrese Usuario</p>');
         }
-    
+
         if (values.pass == '') {
             $('.js-login-message').html('<p>Ingrese Contraseña</p>');
         }
@@ -440,14 +454,14 @@ $(document).ready( function () {
         if (values['g-recaptcha-response'] == '') {
             $('.js-login-message').html('<p>Complete Captcha</p>');
         }
-    
+
         var formData = new FormData();
-            formData.append('action', 'actionLogin');
-            formData.append('user', values.user );
-            formData.append('pass', values.pass );
-            formData.append('csrf', values.csrf );
-            formData.append('g-recaptcha-response', values['g-recaptcha-response'] );
-    
+        formData.append('action', 'actionLogin');
+        formData.append('user', values.user);
+        formData.append('pass', values.pass);
+        formData.append('csrf', values.csrf);
+        formData.append('g-recaptcha-response', values['g-recaptcha-response']);
+
         jQuery.ajax({
             cache: false,
             url: 'inc/functions/ajax-requests.php',
@@ -465,30 +479,30 @@ $(document).ready( function () {
                     if (data.login == 'true') {
 
                         toastr.success('Pedido Actualizado Correctamente.');
-        
+
                         if (data.updated.updated > 0) {
                             toastr.info(data.updated.updated + ' Productos Actualizados');
                         }
-                        
+
                         if (data.updated.deleted > 0) {
                             toastr.info(data.updated.deleted + ' Productos Eliminados');
                         }
 
                         $('.js-login-message').html('<small class="text-success">Usuario Validado, Redireccionando...</small>');
-                        
-                        setTimeout(function() {
+
+                        setTimeout(function () {
                             location.reload();
                         }, 2000);
 
                     } else if (data.login == 'admin') {
 
                         $('.js-login-message').html('<small class="text-success">Usuario Validado, Redireccionando...</small>');
-                        
+
                         location.href = 'cpanel.php';
 
                     } else if (data.login == 'Captcha Incorrecto!') {
 
-                        $('.js-login-message').html('<small class="text-danger">'+data.login+'</small>');
+                        $('.js-login-message').html('<small class="text-danger">' + data.login + '</small>');
 
                     } else {
 
@@ -502,25 +516,25 @@ $(document).ready( function () {
     /*--------------------
         Insert Cart
     ---------------------*/
-    $('.js-form-cart').submit( function (e) {
+    $('.js-form-cart').submit(function (e) {
 
         e.preventDefault();
 
         var values = {};
 
-        $.each($(this).serializeArray(), function(i, field) {
+        $.each($(this).serializeArray(), function (i, field) {
             values[field.name] = field.value;
         });
-    
+
         var formData = new FormData();
-            formData.append('action', 'insertProductCart');
-            formData.append('id_product', values.id_product );
-            formData.append('nota', values.nota );
-            formData.append('cant', values.cant );
-            formData.append('cod_product', values.cod_product);
-            formData.append('name_product', values.name_product);
-            formData.append('price_product', values.price_product);
-    
+        formData.append('action', 'insertProductCart');
+        formData.append('id_product', values.id_product);
+        formData.append('nota', values.nota);
+        formData.append('cant', values.cant);
+        formData.append('cod_product', values.cod_product);
+        formData.append('name_product', values.name_product);
+        formData.append('price_product', values.price_product);
+
         jQuery.ajax({
             cache: false,
             url: 'inc/functions/ajax-requests.php',
@@ -534,14 +548,14 @@ $(document).ready( function () {
             success: function (response) {
                 if (response == 'true') {
                     $('.js-login-message').html('<small class="text-success">Agregado al carrito!</small>');
-                    $("#js-dynamic-cart").load( $(location).attr("href") + ' #js-data-cart' );
+                    $("#js-dynamic-cart").load($(location).attr("href") + ' #js-data-cart');
                     toastr.success('Agregado al carrito!');
                 } else if (response == 'exist') {
                     toastr.error('El producto ya existe en el Carrito');
                 } else {
                     $('.js-login-message').html('<small class="text-danger">Ocurrio un error, por favor recarge la pagina e intente nuevamente.</small>');
                     toastr.error('Ocurrio un error, por favor recarge la pagina e intente nuevamente.');
-                    
+
                 }
             }
         });
@@ -550,23 +564,23 @@ $(document).ready( function () {
     /*--------------------
         Update Cart
     ---------------------*/
-    $('.js-form-update').submit( function (e) {
+    $('.js-form-update').submit(function (e) {
 
         e.preventDefault();
 
         var values = {};
 
-        $.each($(this).serializeArray(), function(i, field) {
+        $.each($(this).serializeArray(), function (i, field) {
             values[field.name] = field.value;
         });
-    
+
         var formData = new FormData();
-            formData.append('action', 'updateProductCart');
-            formData.append('id_item', values.id_item );
-            formData.append('codprod', values.codprod );
-            formData.append('cant', $('#cant_'+ values.id_item).val() );
-            formData.append('nota', $('#nota_'+ values.id_item).val() );
-    
+        formData.append('action', 'updateProductCart');
+        formData.append('id_item', values.id_item);
+        formData.append('codprod', values.codprod);
+        formData.append('cant', $('#cant_' + values.id_item).val());
+        formData.append('nota', $('#nota_' + values.id_item).val());
+
         jQuery.ajax({
             cache: false,
             url: 'inc/functions/ajax-requests.php',
@@ -589,20 +603,20 @@ $(document).ready( function () {
     /*--------------------
         Delete Cart
     ---------------------*/
-    $('.js-form-delete').submit( function (e) {
+    $('.js-form-delete').submit(function (e) {
 
         e.preventDefault();
 
         var values = {};
 
-        $.each($(this).serializeArray(), function(i, field) {
+        $.each($(this).serializeArray(), function (i, field) {
             values[field.name] = field.value;
         });
-    
+
         var formData = new FormData();
-            formData.append('action', 'deleteProductCart');
-            formData.append('id_item', values.id_item );
-    
+        formData.append('action', 'deleteProductCart');
+        formData.append('id_item', values.id_item);
+
         jQuery.ajax({
             cache: false,
             url: 'inc/functions/ajax-requests.php',
@@ -624,20 +638,20 @@ $(document).ready( function () {
     /*--------------------
         Finally Order
     ---------------------*/
-    $('#js-finally-order').click( function (e) {
+    $('#js-finally-order').click(function (e) {
 
         e.preventDefault();
         let form;
         let data = {};
 
-        const inputs = document.querySelectorAll('input[type="hidden"]');    
+        const inputs = document.querySelectorAll('input[type="hidden"]');
         for (let i = 0; i < inputs.length; i++) {
             // Set Data
             data[inputs[i].name] = inputs[i].value;
         }
 
-        if ( form = document.getElementById('js-form-user-pedido')) {
-            const inputs = form.querySelectorAll('input, select, textarea');    
+        if (form = document.getElementById('js-form-user-pedido')) {
+            const inputs = form.querySelectorAll('input, select, textarea');
             for (let i = 0; i < inputs.length; i++) {
                 // Validate Required
                 if (inputs[i].value == '') {
@@ -658,10 +672,10 @@ $(document).ready( function () {
 
         var id_pedido = $(this).attr('data-id');
         var formData = new FormData();
-            formData.append('action', 'finallyOrder');
-            formData.append('id_pedido', id_pedido );
-            formData.append('data', JSON.stringify(data) );
-    
+        formData.append('action', 'finallyOrder');
+        formData.append('id_pedido', id_pedido);
+        formData.append('data', JSON.stringify(data));
+
         jQuery.ajax({
             cache: false,
             url: 'inc/functions/ajax-requests.php',
@@ -669,7 +683,7 @@ $(document).ready( function () {
             data: formData,
             contentType: false,
             processData: false,
-            beforeSend: function (){
+            beforeSend: function () {
                 $('#js-finally-order').html('ENVIANDO...');
             },
             success: function (response) {
@@ -696,23 +710,23 @@ $(document).ready( function () {
     /*---------------------------
         Finally Order Admin Btn
     ----------------------------*/
-    $('.js-finally-order-admin').click( function (e) {
+    $('.js-finally-order-admin').click(function (e) {
 
         e.preventDefault();
         let data = {};
         var id_pedido = $(this).attr('data-ord');
 
         const prices = document.querySelector('.shoping__checkout');
-        const inputs = prices.querySelectorAll('input[type="hidden"]');    
+        const inputs = prices.querySelectorAll('input[type="hidden"]');
         for (let i = 0; i < inputs.length; i++) {
             data[inputs[i].name] = inputs[i].value;
         }
-    
+
         var formData = new FormData();
-            formData.append('action', 'finallyOrderAdmin');
-            formData.append('id_pedido', id_pedido );
-            formData.append('data', JSON.stringify(data) );
-    
+        formData.append('action', 'finallyOrderAdmin');
+        formData.append('id_pedido', id_pedido);
+        formData.append('data', JSON.stringify(data));
+
         jQuery.ajax({
             cache: false,
             url: 'inc/functions/ajax-requests.php',
@@ -722,7 +736,7 @@ $(document).ready( function () {
             processData: false,
             success: function (response) {
                 if (response == 'true') {
-                    $('#item_order_'+id_pedido).css('background-color','rgba(#7fad39, .5)'); // Add green background
+                    $('#item_order_' + id_pedido).css('background-color', 'rgba(#7fad39, .5)'); // Add green background
                     toastr.success('El Pedido finalizado!');
                     location.reload();
                 } else {
@@ -735,7 +749,7 @@ $(document).ready( function () {
     /*--------------------------
         Update Configuration
     ----------------------------*/
-    $('#form-general').submit( function(e){
+    $('#form-general').submit(function (e) {
 
         e.preventDefault();
 
@@ -744,14 +758,14 @@ $(document).ready( function () {
         var banner = $('#banner')[0].files;
         var promo_modal = $('#promo_modal')[0].files;
 
-        $.each($(this).serializeArray(), function(i, field) {
+        $.each($(this).serializeArray(), function (i, field) {
             values[field.name] = field.value;
         });
-        
+
         const obj = [{}];
         let input = document.getElementsByName('precio[]');
         let input2 = document.getElementsByName('descuento[]');
- 
+
         for (let i = 0; i < input.length; i++) {
             let a = input[i];
             let b = input2[i];
@@ -763,24 +777,24 @@ $(document).ready( function () {
         }
 
         var formData = new FormData();
-            formData.append('action', 'operationConfiguration');
-            formData.append('logo', logo[0]);
-            formData.append('banner', banner[0]);
-            formData.append('promo_modal', promo_modal[0]);
-            formData.append('email', values.email);
-            formData.append('telefono', values.telefono);
-            formData.append('atencion', values.atencion);
-            formData.append('direccion', values.direccion);
-            formData.append('whatsapp', values.whatsapp);
-            formData.append('instagram', values.instagram);
-            formData.append('facebook', values.facebook);
-            formData.append('twitter', values.twitter);
-            formData.append('aumento_1', values.aumento_1);
-            formData.append('minimo', values.minimo);
-            formData.append('show_prices', values.show_prices);
-            formData.append('show_instagram', values.show_instagram);
-            formData.append('active_register', values.active_register);
-            formData.append('descuentos', JSON.stringify(obj));
+        formData.append('action', 'operationConfiguration');
+        formData.append('logo', logo[0]);
+        formData.append('banner', banner[0]);
+        formData.append('promo_modal', promo_modal[0]);
+        formData.append('email', values.email);
+        formData.append('telefono', values.telefono);
+        formData.append('atencion', values.atencion);
+        formData.append('direccion', values.direccion);
+        formData.append('whatsapp', values.whatsapp);
+        formData.append('instagram', values.instagram);
+        formData.append('facebook', values.facebook);
+        formData.append('twitter', values.twitter);
+        formData.append('aumento_1', values.aumento_1);
+        formData.append('minimo', values.minimo);
+        formData.append('show_prices', values.show_prices);
+        formData.append('show_instagram', values.show_instagram);
+        formData.append('active_register', values.active_register);
+        formData.append('descuentos', JSON.stringify(obj));
 
         jQuery.ajax({
             cache: false,
@@ -792,7 +806,7 @@ $(document).ready( function () {
             success: function (response) {
                 if (response == 'true') {
                     toastr.success('Datos Cargados Correctamente!');
-                    setTimeout(function() {
+                    setTimeout(function () {
                         location.reload();
                     }, 3000);
                 } else {
@@ -806,444 +820,448 @@ $(document).ready( function () {
     /*--------------------
         Modals
     --------------------*/
-        /*--------------------
-            SET Client Data
-        ---------------------*/
-        $('#js-form-cli').submit( function (e) {
+    /*--------------------
+        SET Client Data
+    ---------------------*/
+    $('#js-form-cli').submit(function (e) {
 
-            e.preventDefault();
+        e.preventDefault();
 
-            var values = {};
+        var values = {};
 
-            $.each($(this).serializeArray(), function(i, field) {
-                values[field.name] = field.value;
-            });
-        
-            var formData = new FormData();
-                formData.append('action', 'operationClient');
-                formData.append('type_cli', values.type_cli);
-                formData.append('type', values.type);
-                formData.append('id', values.id);
-                formData.append('type_cli', values.type);
-                formData.append('price', values.price);
-                formData.append('name', values.name);
-                formData.append('locality', values.locality);
-                formData.append('mail', values.mail);
-                formData.append('username', values.username);
-                formData.append('password', values.password);
-        
-            jQuery.ajax({
-                cache: false,
-                url: 'inc/functions/ajax-requests.php',
-                type: 'POST',
-                data: formData,
-                contentType: false,
-                processData: false,
-                success: function (response) {
-                    if (response == 'true') {
-                        location.reload();
-                    } else {
-                        toastr.error('Ocurrio un error, por favor recarge la pagina e intente nuevamente.');
-                    }
+        $.each($(this).serializeArray(), function (i, field) {
+            values[field.name] = field.value;
+        });
+
+        var formData = new FormData();
+        formData.append('action', 'operationClient');
+        formData.append('type_cli', values.type_cli);
+        formData.append('type', values.type);
+        formData.append('id', values.id);
+        formData.append('type_cli', values.type);
+        formData.append('price', values.price);
+        formData.append('name', values.name);
+        formData.append('locality', values.locality);
+        formData.append('mail', values.mail);
+        formData.append('username', values.username);
+        formData.append('password', values.password);
+
+        jQuery.ajax({
+            cache: false,
+            url: 'inc/functions/ajax-requests.php',
+            type: 'POST',
+            data: formData,
+            contentType: false,
+            processData: false,
+            success: function (response) {
+                if (response == 'true') {
+                    location.reload();
+                } else {
+                    toastr.error('Ocurrio un error, por favor recarge la pagina e intente nuevamente.');
                 }
-            });
-        })
-
-        /*--------------------
-            Delete Client
-        ---------------------*/
-        $('.js-form-cli-delete').submit( function (e) {
-
-            e.preventDefault();
-
-            if (!confirm("Seguro desea eliminar el cliente?")){
-                return false;
             }
-            
-            var values = {};
-            
-            $.each($(this).serializeArray(), function(i, field) {
-                values[field.name] = field.value;
-            });
+        });
+    })
 
-            $('#item_user_'+values.id_item).css('background-color','rgba(255,0,0, .5)'); // Add red background tr
-        
-            var formData = new FormData();
-                formData.append('action', 'operationClient');
-                formData.append('type_cli', 'delete');
-                formData.append('id', values.id_item);
-        
-            jQuery.ajax({
-                cache: false,
-                url: 'inc/functions/ajax-requests.php',
-                type: 'POST',
-                data: formData,
-                contentType: false,
-                processData: false,
-                success: function (response) {
-                    if (response == 'true') {
-                        location.reload();
-                    } else {
-                        toastr.error('Ocurrio un error, por favor recarge la pagina e intente nuevamente.');
-                    }
-                }
-            });
-        })
+    /*--------------------
+        Delete Client
+    ---------------------*/
+    $('.js-form-cli-delete').submit(function (e) {
 
-        /*--------------------
-            SET Product Data
-        ---------------------*/
-        $('#js-form-prod').submit( function (e) {
+        e.preventDefault();
 
-            e.preventDefault();
-
-            var values = {};
-
-            $.each($(this).serializeArray(), function(i, field) {
-                values[field.name] = field.value;
-            });
-        
-            var formData = new FormData();
-                formData.append('action', 'operationProduct');
-                formData.append('type_prod', values.type_prod);
-                formData.append('cod_prod', values.cod_prod);
-                formData.append('name_prod', values.name_prod);
-                formData.append('news', values.news);
-                formData.append('offer', values.offer);
-                formData.append('observation', values.observation);
-        
-            jQuery.ajax({
-                cache: false,
-                url: 'inc/functions/ajax-requests.php',
-                type: 'POST',
-                data: formData,
-                contentType: false,
-                processData: false,
-                success: function (response) {
-                    if (response == 'true') {
-                        location.reload();
-                    } else {
-                        toastr.error('Ocurrio un error, por favor recarge la pagina e intente nuevamente.');
-                    }
-                }
-            });
-        })
-
-        /*--------------------
-            Delete Product
-        ---------------------*/
-        $('.js-form-prod-delete').submit( function (e) {
-
-            e.preventDefault();
-
-            if (!confirm("Seguro desea eliminar el producto?")){
-                return false;
-            }
-            
-            var values = {};
-            
-            $.each($(this).serializeArray(), function(i, field) {
-                values[field.name] = field.value;
-            });
-
-            $('#item_prod_'+ values.id_item).css('background-color','rgba(255,0,0, .5)'); // Add red background tr
-        
-            var formData = new FormData();
-                formData.append('action', 'operationProduct');
-                formData.append('type_prod', 'delete');
-                formData.append('cod_prod', values.id_item);
-        
-            jQuery.ajax({
-                cache: false,
-                url: 'inc/functions/ajax-requests.php',
-                type: 'POST',
-                data: formData,
-                contentType: false,
-                processData: false,
-                success: function (response) {
-                    if (response == 'true') {
-                        location.reload();
-                    } else {
-                        toastr.error('Ocurrio un error, por favor recarge la pagina e intente nuevamente.');
-                    }
-                }
-            });
-        })
-
-        /*--------------------
-            SET Banner Data
-        ---------------------*/
-        $('#js-form-banner').submit( function (e) {
-
-            e.preventDefault();
-
-            var values = {};
-            var files = false;
-            if ($('#imagePreview').val()) {
-                var files = $('#imagePreview')[0].files;
-            }
-
-            $.each($(this).serializeArray(), function(i, field) {
-                values[field.name] = field.value;
-            });
-        
-            var formData = new FormData();
-                formData.append('action', 'operationBanner');
-                formData.append('id_banner', values.id_banner);
-                formData.append('type', values.type);
-                formData.append('order', values.order);
-                formData.append('file', files[0]);
-                formData.append('title', values.title);
-                formData.append('text', values.text);
-                formData.append('link', values.link);
-                formData.append('small', values.small);
-        
-            jQuery.ajax({
-                cache: false,
-                url: 'inc/functions/ajax-requests.php',
-                type: 'POST',
-                data: formData,
-                contentType: false,
-                processData: false,
-                success: function (response) {
-                    if (response == 'true') {
-                        location.reload();
-                    } else {
-                        toastr.error('Ocurrio un error, por favor recarge la pagina e intente nuevamente.');
-                    }
-                }
-            });
-        })
-
-        /*--------------------
-            Delete Banner
-        ---------------------*/
-        $('.js-form-banner-delete').submit( function (e) {
-
-            e.preventDefault();
-
-            if (!confirm("Seguro desea eliminar el banner?")){
-                return false;
-            }
-            
-            var values = {};
-            
-            $.each($(this).serializeArray(), function(i, field) {
-                values[field.name] = field.value;
-            });
-
-            $('#item_banner_'+ values.id_item).css('background-color','rgba(255,0,0, .5)'); // Add red background tr
-        
-            var formData = new FormData();
-                formData.append('action', 'operationBanner');
-                formData.append('type', 'delete');
-                formData.append('id_banner', values.id_item);
-        
-            jQuery.ajax({
-                cache: false,
-                url: 'inc/functions/ajax-requests.php',
-                type: 'POST',
-                data: formData,
-                contentType: false,
-                processData: false,
-                success: function (response) {
-                    if (response == 'true') {
-                        location.reload();
-                    } else {
-                        toastr.error('Ocurrio un error, por favor recarge la pagina e intente nuevamente.');
-                    }
-                }
-            });
-        })
-
-        /*--------------------
-            SET Categ Data
-        ---------------------*/
-        $('#js-form-categ').submit( function (e) {
-
-            e.preventDefault();
-
-            var values = {};
-            var files = false;
-            if ($('#imagePreviewCateg').val()) {
-                var files = $('#imagePreviewCateg')[0].files;
-            }
-
-            $.each($(this).serializeArray(), function(i, field) {
-                values[field.name] = field.value;
-            });
-        
-            var formData = new FormData();
-                formData.append('action', 'operationCateg');
-                formData.append('id_categ', values.id_categ);
-                formData.append('type', values.type);
-                formData.append('order', values.order);
-                formData.append('file', files[0]);
-                formData.append('title', values.title);
-                //formData.append('color', values.color);
-                formData.append('link', values.link);
-        
-            jQuery.ajax({
-                cache: false,
-                url: 'inc/functions/ajax-requests.php',
-                type: 'POST',
-                data: formData,
-                contentType: false,
-                processData: false,
-                success: function (response) {
-                    if (response == 'true') {
-                        location.reload();
-                    } else {
-                        toastr.error('Ocurrio un error, por favor recarge la pagina e intente nuevamente.');
-                    }
-                }
-            });
-        })
-
-        /*--------------------
-            Delete Categ
-        ---------------------*/
-        $('.js-form-categ-delete').submit( function (e) {
-
-            e.preventDefault();
-
-            if (!confirm("Seguro desea eliminar la categoria?")){
-                return false;
-            }
-            
-            var values = {};
-            
-            $.each($(this).serializeArray(), function(i, field) {
-                values[field.name] = field.value;
-            });
-
-            $('#item_categ_'+ values.id_item).css('background-color','rgba(255,0,0, .5)'); // Add red background tr
-        
-            var formData = new FormData();
-                formData.append('action', 'operationCateg');
-                formData.append('type', 'delete');
-                formData.append('id_categ', values.id_item);
-        
-            jQuery.ajax({
-                cache: false,
-                url: 'inc/functions/ajax-requests.php',
-                type: 'POST',
-                data: formData,
-                contentType: false,
-                processData: false,
-                success: function (response) {
-                    if (response == 'true') {
-                        location.reload();
-                    } else {
-                        toastr.error('Ocurrio un error, por favor recarge la pagina e intente nuevamente.');
-                    }
-                }
-            });
-        })
-
-        /*--------------------
-            Delete Order
-        ---------------------*/
-        $('.js-form-order-delete').submit( function (e) {
-
-            e.preventDefault();
-
-            if (!confirm("Seguro desea eliminar el pedido?")){
-                return false;
-            }
-            
-            var values = {};
-            
-            $.each($(this).serializeArray(), function(i, field) {
-                values[field.name] = field.value;
-            });
-
-            $('#item_order_'+values.id_item).css('background-color','rgba(255,0,0, .5)'); // Add red background tr
-        
-            var formData = new FormData();
-                formData.append('action', 'deleteOrderAdmin');
-                formData.append('Id_Pedido', values.id_item);
-        
-            jQuery.ajax({
-                cache: false,
-                url: 'inc/functions/ajax-requests.php',
-                type: 'POST',
-                data: formData,
-                contentType: false,
-                processData: false,
-                success: function (response) {
-                    if (response == 'true') {
-                        location.reload();
-                    } else {
-                        toastr.error('Ocurrio un error, por favor recarge la pagina e intente nuevamente.');
-                    }
-                }
-            });
-        })
-
-        /*--------------------
-            Modal Promo
-        ---------------------*/
-        $("#promoModal").modal('show');
-        const promoModalClose = document.querySelector('#promoModal .close');
-        if (promoModalClose) {
-            promoModalClose.addEventListener('click', function() {
-                $('#promoModal').modal('hide');
-            });
+        if (!confirm("Seguro desea eliminar el cliente?")) {
+            return false;
         }
 
-        /*-------------------
-            Remove Promo
-        --------------------*/
-        $('.remove-promo-banner').click( function (e) {
+        var values = {};
 
-            e.preventDefault();
+        $.each($(this).serializeArray(), function (i, field) {
+            values[field.name] = field.value;
+        });
 
-            if (!confirm("Seguro desea eliminar el banner de promocion?")){
-                return false;
-            }
-            
-            var formData = new FormData();
-                formData.append('action', 'operationRemovePromoBanner');
-        
-            jQuery.ajax({
-                cache: false,
-                url: 'inc/functions/ajax-requests.php',
-                type: 'POST',
-                data: formData,
-                contentType: false,
-                processData: false,
-                success: function (response) {
-                    if (response == 'true') {
-                        location.reload();
-                    } else {
-                        toastr.error('Ocurrio un error, por favor recarge la pagina e intente nuevamente.');
-                    }
+        $('#item_user_' + values.id_item).css('background-color', 'rgba(255,0,0, .5)'); // Add red background tr
+
+        var formData = new FormData();
+        formData.append('action', 'operationClient');
+        formData.append('type_cli', 'delete');
+        formData.append('id', values.id_item);
+
+        jQuery.ajax({
+            cache: false,
+            url: 'inc/functions/ajax-requests.php',
+            type: 'POST',
+            data: formData,
+            contentType: false,
+            processData: false,
+            success: function (response) {
+                if (response == 'true') {
+                    location.reload();
+                } else {
+                    toastr.error('Ocurrio un error, por favor recarge la pagina e intente nuevamente.');
                 }
-            });
-        })
+            }
+        });
+    })
+
+    /*--------------------
+        SET Product Data
+    ---------------------*/
+    $('#js-form-prod').submit(function (e) {
+
+        e.preventDefault();
+
+        var values = {};
+
+        $.each($(this).serializeArray(), function (i, field) {
+            values[field.name] = field.value;
+        });
+
+        var formData = new FormData();
+        formData.append('action', 'operationProduct');
+        formData.append('type_prod', values.type_prod);
+        formData.append('cod_prod', values.cod_prod);
+        formData.append('name_prod', values.name_prod);
+        formData.append('news', values.news);
+        formData.append('offer', values.offer);
+        formData.append('observation', values.observation);
+        formData.append('id_marca', values.id_marca);
+        formData.append('marca', values.marca);
+        formData.append('id_clasificacion', values.id_clasificacion);
+        formData.append('clasificacion', values.clasificacion);
+
+        jQuery.ajax({
+            cache: false,
+            url: 'inc/functions/ajax-requests.php',
+            type: 'POST',
+            data: formData,
+            contentType: false,
+            processData: false,
+            success: function (response) {
+                if (response == 'true') {
+                    location.reload();
+                } else {
+                    toastr.error('Ocurrio un error, por favor recarge la pagina e intente nuevamente.');
+                }
+            }
+        });
+    })
+
+    /*--------------------
+        Delete Product
+    ---------------------*/
+    $('.js-form-prod-delete').submit(function (e) {
+
+        e.preventDefault();
+
+        if (!confirm("Seguro desea eliminar el producto?")) {
+            return false;
+        }
+
+        var values = {};
+
+        $.each($(this).serializeArray(), function (i, field) {
+            values[field.name] = field.value;
+        });
+
+        $('#item_prod_' + values.id_item).css('background-color', 'rgba(255,0,0, .5)'); // Add red background tr
+
+        var formData = new FormData();
+        formData.append('action', 'operationProduct');
+        formData.append('type_prod', 'delete');
+        formData.append('cod_prod', values.id_item);
+
+        jQuery.ajax({
+            cache: false,
+            url: 'inc/functions/ajax-requests.php',
+            type: 'POST',
+            data: formData,
+            contentType: false,
+            processData: false,
+            success: function (response) {
+                if (response == 'true') {
+                    location.reload();
+                } else {
+                    toastr.error('Ocurrio un error, por favor recarge la pagina e intente nuevamente.');
+                }
+            }
+        });
+    })
+
+    /*--------------------
+        SET Banner Data
+    ---------------------*/
+    $('#js-form-banner').submit(function (e) {
+
+        e.preventDefault();
+
+        var values = {};
+        var files = false;
+        if ($('#imagePreview').val()) {
+            var files = $('#imagePreview')[0].files;
+        }
+
+        $.each($(this).serializeArray(), function (i, field) {
+            values[field.name] = field.value;
+        });
+
+        var formData = new FormData();
+        formData.append('action', 'operationBanner');
+        formData.append('id_banner', values.id_banner);
+        formData.append('type', values.type);
+        formData.append('order', values.order);
+        formData.append('file', files[0]);
+        formData.append('title', values.title);
+        formData.append('text', values.text);
+        formData.append('link', values.link);
+        formData.append('small', values.small);
+
+        jQuery.ajax({
+            cache: false,
+            url: 'inc/functions/ajax-requests.php',
+            type: 'POST',
+            data: formData,
+            contentType: false,
+            processData: false,
+            success: function (response) {
+                if (response == 'true') {
+                    location.reload();
+                } else {
+                    toastr.error('Ocurrio un error, por favor recarge la pagina e intente nuevamente.');
+                }
+            }
+        });
+    })
+
+    /*--------------------
+        Delete Banner
+    ---------------------*/
+    $('.js-form-banner-delete').submit(function (e) {
+
+        e.preventDefault();
+
+        if (!confirm("Seguro desea eliminar el banner?")) {
+            return false;
+        }
+
+        var values = {};
+
+        $.each($(this).serializeArray(), function (i, field) {
+            values[field.name] = field.value;
+        });
+
+        $('#item_banner_' + values.id_item).css('background-color', 'rgba(255,0,0, .5)'); // Add red background tr
+
+        var formData = new FormData();
+        formData.append('action', 'operationBanner');
+        formData.append('type', 'delete');
+        formData.append('id_banner', values.id_item);
+
+        jQuery.ajax({
+            cache: false,
+            url: 'inc/functions/ajax-requests.php',
+            type: 'POST',
+            data: formData,
+            contentType: false,
+            processData: false,
+            success: function (response) {
+                if (response == 'true') {
+                    location.reload();
+                } else {
+                    toastr.error('Ocurrio un error, por favor recarge la pagina e intente nuevamente.');
+                }
+            }
+        });
+    })
+
+    /*--------------------
+        SET Categ Data
+    ---------------------*/
+    $('#js-form-categ').submit(function (e) {
+
+        e.preventDefault();
+
+        var values = {};
+        var files = false;
+        if ($('#imagePreviewCateg').val()) {
+            var files = $('#imagePreviewCateg')[0].files;
+        }
+
+        $.each($(this).serializeArray(), function (i, field) {
+            values[field.name] = field.value;
+        });
+
+        var formData = new FormData();
+        formData.append('action', 'operationCateg');
+        formData.append('id_categ', values.id_categ);
+        formData.append('type', values.type);
+        formData.append('order', values.order);
+        formData.append('file', files[0]);
+        formData.append('title', values.title);
+        //formData.append('color', values.color);
+        formData.append('link', values.link);
+
+        jQuery.ajax({
+            cache: false,
+            url: 'inc/functions/ajax-requests.php',
+            type: 'POST',
+            data: formData,
+            contentType: false,
+            processData: false,
+            success: function (response) {
+                if (response == 'true') {
+                    location.reload();
+                } else {
+                    toastr.error('Ocurrio un error, por favor recarge la pagina e intente nuevamente.');
+                }
+            }
+        });
+    })
+
+    /*--------------------
+        Delete Categ
+    ---------------------*/
+    $('.js-form-categ-delete').submit(function (e) {
+
+        e.preventDefault();
+
+        if (!confirm("Seguro desea eliminar la categoria?")) {
+            return false;
+        }
+
+        var values = {};
+
+        $.each($(this).serializeArray(), function (i, field) {
+            values[field.name] = field.value;
+        });
+
+        $('#item_categ_' + values.id_item).css('background-color', 'rgba(255,0,0, .5)'); // Add red background tr
+
+        var formData = new FormData();
+        formData.append('action', 'operationCateg');
+        formData.append('type', 'delete');
+        formData.append('id_categ', values.id_item);
+
+        jQuery.ajax({
+            cache: false,
+            url: 'inc/functions/ajax-requests.php',
+            type: 'POST',
+            data: formData,
+            contentType: false,
+            processData: false,
+            success: function (response) {
+                if (response == 'true') {
+                    location.reload();
+                } else {
+                    toastr.error('Ocurrio un error, por favor recarge la pagina e intente nuevamente.');
+                }
+            }
+        });
+    })
+
+    /*--------------------
+        Delete Order
+    ---------------------*/
+    $('.js-form-order-delete').submit(function (e) {
+
+        e.preventDefault();
+
+        if (!confirm("Seguro desea eliminar el pedido?")) {
+            return false;
+        }
+
+        var values = {};
+
+        $.each($(this).serializeArray(), function (i, field) {
+            values[field.name] = field.value;
+        });
+
+        $('#item_order_' + values.id_item).css('background-color', 'rgba(255,0,0, .5)'); // Add red background tr
+
+        var formData = new FormData();
+        formData.append('action', 'deleteOrderAdmin');
+        formData.append('Id_Pedido', values.id_item);
+
+        jQuery.ajax({
+            cache: false,
+            url: 'inc/functions/ajax-requests.php',
+            type: 'POST',
+            data: formData,
+            contentType: false,
+            processData: false,
+            success: function (response) {
+                if (response == 'true') {
+                    location.reload();
+                } else {
+                    toastr.error('Ocurrio un error, por favor recarge la pagina e intente nuevamente.');
+                }
+            }
+        });
+    })
+
+    /*--------------------
+        Modal Promo
+    ---------------------*/
+    $("#promoModal").modal('show');
+    const promoModalClose = document.querySelector('#promoModal .close');
+    if (promoModalClose) {
+        promoModalClose.addEventListener('click', function () {
+            $('#promoModal').modal('hide');
+        });
+    }
+
+    /*-------------------
+        Remove Promo
+    --------------------*/
+    $('.remove-promo-banner').click(function (e) {
+
+        e.preventDefault();
+
+        if (!confirm("Seguro desea eliminar el banner de promocion?")) {
+            return false;
+        }
+
+        var formData = new FormData();
+        formData.append('action', 'operationRemovePromoBanner');
+
+        jQuery.ajax({
+            cache: false,
+            url: 'inc/functions/ajax-requests.php',
+            type: 'POST',
+            data: formData,
+            contentType: false,
+            processData: false,
+            success: function (response) {
+                if (response == 'true') {
+                    location.reload();
+                } else {
+                    toastr.error('Ocurrio un error, por favor recarge la pagina e intente nuevamente.');
+                }
+            }
+        });
+    })
 });
 /*-----------------------
     Show Preview Image
 -----------------------*/
-$("#imagePreview").change(function(e) {
+$("#imagePreview").change(function (e) {
     for (var i = 0; i < e.originalEvent.srcElement.files.length; i++) {
         var file = e.originalEvent.srcElement.files[i];
         var img = document.getElementById("preview-img");
         var reader = new FileReader();
-        reader.onloadend = function() {
+        reader.onloadend = function () {
             img.src = reader.result;
         }
         reader.readAsDataURL(file);
     }
 });
 
-$("#imagePreviewCateg").change(function(e) {
+$("#imagePreviewCateg").change(function (e) {
     for (var i = 0; i < e.originalEvent.srcElement.files.length; i++) {
         var file = e.originalEvent.srcElement.files[i];
         var img = document.getElementById("preview-img-categ");
         var reader = new FileReader();
-        reader.onloadend = function() {
+        reader.onloadend = function () {
             img.src = reader.result;
         }
         reader.readAsDataURL(file);
@@ -1255,8 +1273,8 @@ $("#imagePreviewCateg").change(function(e) {
 ----------------------*/
 function cleanModal() {
 
-    $.each($('#js-form-cli').serializeArray(), function(i, field) {
-        $('#'+field.name).val('');
+    $.each($('#js-form-cli').serializeArray(), function (i, field) {
+        $('#' + field.name).val('');
     });
 
     $('#id_cli').val('');
@@ -1268,8 +1286,8 @@ function cleanModal() {
     Clean Prod Modal
 --------------------*/
 function cleanProdModal() {
-    $.each($('#js-form-prod').serializeArray(), function(i, field) {
-        $('#'+field.name).val('');
+    $.each($('#js-form-prod').serializeArray(), function (i, field) {
+        $('#' + field.name).val('');
     });
 }
 
@@ -1277,8 +1295,8 @@ function cleanProdModal() {
     Clean Banner Modal
 ----------------------*/
 function cleanBannerModal() {
-    $.each($('#js-form-banner').serializeArray(), function(i, field) {
-        $('#'+field.name).val('');
+    $.each($('#js-form-banner').serializeArray(), function (i, field) {
+        $('#' + field.name).val('');
     });
 }
 
@@ -1286,8 +1304,8 @@ function cleanBannerModal() {
     Clean Categ Modal
 ----------------------*/
 function cleanCategModal() {
-    $.each($('#js-form-categ').serializeArray(), function(i, field) {
-        $('#'+field.name).val('');
+    $.each($('#js-form-categ').serializeArray(), function (i, field) {
+        $('#' + field.name).val('');
     });
 }
 
@@ -1301,9 +1319,9 @@ function getClientdata(obj) {
     cleanModal();
 
     var formData = new FormData();
-        formData.append('action', 'dataClient');
-        formData.append('id_client', id_client );
-    
+    formData.append('action', 'dataClient');
+    formData.append('id_client', id_client);
+
     jQuery.ajax({
         cache: false,
         url: 'inc/functions/ajax-requests.php',
@@ -1315,7 +1333,7 @@ function getClientdata(obj) {
             if (response == 'false' || response == 'undefines') {
                 toastr.error('Ocurrio un error, por favor recarge la pagina e intente nuevamente.');
             } else {
-                data = JSON.parse(response);         
+                data = JSON.parse(response);
                 $('#id_cli').val(data.Id_Cliente);
                 $('#type_cli').val('edit');
                 $('#name').val(data.Nombre);
@@ -1349,7 +1367,7 @@ function getPagodata(obj) {
         data: formData,
         contentType: false,
         processData: false,
-        success: function(response) {
+        success: function (response) {
 
             if (response == 'false' || !response) {
                 toastr.error('Ocurrió un error al obtener el pago.');
@@ -1394,9 +1412,9 @@ function getProddata(obj) {
     cleanProdModal();
 
     var formData = new FormData();
-        formData.append('action', 'dataProduct');
-        formData.append('cod_product', cod_product );
-    
+    formData.append('action', 'dataProduct');
+    formData.append('cod_product', cod_product);
+
     jQuery.ajax({
         cache: false,
         url: 'inc/functions/ajax-requests.php',
@@ -1408,11 +1426,15 @@ function getProddata(obj) {
             if (response == 'false' || response == 'undefines') {
                 toastr.error('Ocurrio un error, por favor recarge la pagina e intente nuevamente.');
             } else {
-                data = JSON.parse(response); 
+                data = JSON.parse(response);
                 $('#cod_prod').val(data.cod_producto);
                 $('#type_prod').val('edit');
                 $('#name_prod').val(data.nombre);
                 $('#observation').val(data.observaciones);
+                $('#id_marca').val(data.id_marca);
+                $('#marca').val(data.marca);
+                $('#id_clasificacion').val(data.id_clasificacion);
+                $('#clasificacion').val(data.clasificacion);
             }
         }
     });
@@ -1428,9 +1450,9 @@ function getBannerdata(obj) {
     cleanBannerModal();
 
     var formData = new FormData();
-        formData.append('action', 'dataBanner');
-        formData.append('id_banner', id_banner );
-    
+    formData.append('action', 'dataBanner');
+    formData.append('id_banner', id_banner);
+
     jQuery.ajax({
         cache: false,
         url: 'inc/functions/ajax-requests.php',
@@ -1442,7 +1464,7 @@ function getBannerdata(obj) {
             if (response == 'false' || response == 'undefines') {
                 toastr.error('Ocurrio un error, por favor recarge la pagina e intente nuevamente.');
             } else {
-                data = JSON.parse(response);         
+                data = JSON.parse(response);
                 $('#type_ban').val('edit');
                 $('#id_banner').val(data.Id_banner);
                 $('#order').val(data.orden);
@@ -1468,9 +1490,9 @@ function getCategdata(obj) {
     cleanCategModal();
 
     var formData = new FormData();
-        formData.append('action', 'dataCateg');
-        formData.append('id_categ', id_categ );
-    
+    formData.append('action', 'dataCateg');
+    formData.append('id_categ', id_categ);
+
     jQuery.ajax({
         cache: false,
         url: 'inc/functions/ajax-requests.php',
@@ -1482,7 +1504,7 @@ function getCategdata(obj) {
             if (response == 'false' || response == 'undefines') {
                 toastr.error('Ocurrio un error, por favor recarge la pagina e intente nuevamente.');
             } else {
-                data = JSON.parse(response);         
+                data = JSON.parse(response);
                 $('#type_categ').val('edit');
                 $('#id_categ').val(data.id_categ);
                 $('#order_categ').val(data.order);
@@ -1502,9 +1524,9 @@ function getCategdata(obj) {
 --------------------*/
 function updateCart(obj) {
     var formData = new FormData();
-        formData.append('action', 'updateCart');
-        formData.append('Id_Pedido', obj );
-    
+    formData.append('action', 'updateCart');
+    formData.append('Id_Pedido', obj);
+
     jQuery.ajax({
         cache: false,
         url: 'inc/functions/ajax-requests.php',
@@ -1516,7 +1538,7 @@ function updateCart(obj) {
             if (response == 'false' || response == 'undefined') {
                 toastr.error('Ocurrio un error, por favor recarge la pagina e intente nuevamente.');
             } else {
-                var data = JSON.parse(response); 
+                var data = JSON.parse(response);
                 toastr.success('Pedido Actualizado Correctamente.');
 
                 if (data.updated > 0) {
@@ -1527,7 +1549,7 @@ function updateCart(obj) {
                     toastr.info(data.deleted + ' Productos Eliminados');
                 }
 
-                setTimeout(function() {
+                setTimeout(function () {
                     location.reload();
                 }, 3000);
             }
@@ -1541,12 +1563,12 @@ function updateCart(obj) {
 function getOrderData(obj) {
     var Id_Pedido = $(obj).attr('data-order');
     var content = document.getElementById("contentOrderDetail");
-        content.innerHTML = '';
+    content.innerHTML = '';
 
     var formData = new FormData();
-        formData.append('action', 'dataOrders');
-        formData.append('Id_Pedido', Id_Pedido );
-    
+    formData.append('action', 'dataOrders');
+    formData.append('Id_Pedido', Id_Pedido);
+
     jQuery.ajax({
         cache: false,
         url: 'inc/functions/ajax-requests.php',
@@ -1573,28 +1595,28 @@ function sendContact() {
 
     event.preventDefault();
 
-    var data = ['name','email','state','locality','address','phone','message'];
+    var data = ['name', 'email', 'state', 'locality', 'address', 'phone', 'message'];
 
     for (var i = 0; i < data.length; i++) {
-        if ($('#'+data[i]).val() == '') {
-            $('#control_'+ data[i]).html('<p class="text-danger">Completa este campo</p>');
+        if ($('#' + data[i]).val() == '') {
+            $('#control_' + data[i]).html('<p class="text-danger">Completa este campo</p>');
             toastr.error('Todos los campos son obligatorios.');
             return false;
         } else {
-            $('#control_'+ data[i]).html('');
+            $('#control_' + data[i]).html('');
         }
     }
 
     var formData = new FormData();
-        formData.append('action',   'sendContact');
-        formData.append('name',     $('#name').val() );
-        formData.append('email',    $('#email').val() );
-        formData.append('state',    $('#state').val() );
-        formData.append('locality', $('#locality').val() );
-        formData.append('address',  $('#address').val() );
-        formData.append('phone',    $('#phone').val() );
-        formData.append('message',  $('#message').val() );
-    
+    formData.append('action', 'sendContact');
+    formData.append('name', $('#name').val());
+    formData.append('email', $('#email').val());
+    formData.append('state', $('#state').val());
+    formData.append('locality', $('#locality').val());
+    formData.append('address', $('#address').val());
+    formData.append('phone', $('#phone').val());
+    formData.append('message', $('#message').val());
+
     jQuery.ajax({
         cache: false,
         url: 'inc/functions/ajax-requests.php',
@@ -1637,7 +1659,7 @@ function sendContact() {
 /*-----------------
     Delete Rows Table
 ------------------*/
-function deleteRow (obj) {
+function deleteRow(obj) {
     const row = obj.parentNode.parentNode;
     row.parentNode.removeChild(row);
 }
@@ -1651,8 +1673,8 @@ function addClient() {
     event.preventDefault();
 
     var formData = new FormData();
-        formData.append('action', 'registerUser');
-        formData.append('g-recaptcha-response', $('#g-recaptcha-response').val() );
+    formData.append('action', 'registerUser');
+    formData.append('g-recaptcha-response', $('#g-recaptcha-response').val());
 
     const data = [
         'user_name',
@@ -1664,11 +1686,11 @@ function addClient() {
     ];
 
     for (var i = 0; i < data.length; i++) {
-        if ($('#'+data[i]).val() == '') {
+        if ($('#' + data[i]).val() == '') {
             toastr.error('Todos los campos son obligatorios.');
             return
         } else {
-            formData.append(data[i], $('#'+data[i]).val() );
+            formData.append(data[i], $('#' + data[i]).val());
         }
     }
 
@@ -1695,7 +1717,7 @@ function addClient() {
                 // reset form
                 $('#js-form-register')[0].reset();
                 // redirect
-                setTimeout(function() {
+                setTimeout(function () {
                     window.location = 'index.php';
                 }, 3000);
             }
