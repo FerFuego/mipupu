@@ -462,6 +462,20 @@ if (!empty($_POST) && isset($_POST['action']) && $_POST['action'] == 'operationP
     $id_clasificacion = (isset($_POST['id_clasificacion']) ? filter_var($_POST['id_clasificacion'], FILTER_VALIDATE_INT) : null);
     $clasificacion = (isset($_POST['clasificacion']) ? filter_var($_POST['clasificacion'], FILTER_UNSAFE_RAW) : null);
 
+    if ($type == 'new') {
+        $prod = new Productos();
+        $prod->cod_producto = $cod_prod;
+        $prod->nombre = $name_prod;
+        $prod->novedad = $news;
+        $prod->oferta = $offer;
+        $prod->observaciones = $observation;
+        $prod->id_marca = $id_marca;
+        $prod->marca = $marca;
+        $prod->id_clasificacion = $id_clasificacion;
+        $prod->clasificacion = $clasificacion;
+        $prod->insert();
+    }
+
     if ($type == 'edit') {
         $prod = new Productos($cod_prod);
         $prod->nombre = $name_prod;
@@ -475,7 +489,31 @@ if (!empty($_POST) && isset($_POST['action']) && $_POST['action'] == 'operationP
         $prod->id_clasificacion = $id_clasificacion;
         $prod->clasificacion = $clasificacion;
         $prod->update();
-        die('true');
+    }
+
+    // Handle Image Upload
+    if (isset($_FILES['image']['name']) && $_FILES['image']['name'] != '') {
+        $filename = $_FILES['image']['name'];
+        $location = "../../fotos/";
+        $imageFileType = pathinfo($filename, PATHINFO_EXTENSION);
+        $imageFileType = strtolower($imageFileType);
+        $valid_extensions = array("jpg", "jpeg", "png", "webp");
+
+        if (in_array($imageFileType, $valid_extensions)) {
+            // Remove previous images with same code but different extension
+            foreach ($valid_extensions as $ext) {
+                if (file_exists($location . $cod_prod . "." . $ext)) {
+                    unlink($location . $cod_prod . "." . $ext);
+                }
+                // Also check for ID based images if any (from getImage logic)
+                // But mostly it uses CodProducto
+            }
+
+            $new_filename = $cod_prod . "." . $imageFileType;
+            if (move_uploaded_file($_FILES['image']['tmp_name'], $location . $new_filename)) {
+                // Image uploaded successfully
+            }
+        }
     }
 
     if ($type == 'delete') {
@@ -484,7 +522,7 @@ if (!empty($_POST) && isset($_POST['action']) && $_POST['action'] == 'operationP
         die('true');
     }
 
-    die('false');
+    die('true');
 }
 
 /**

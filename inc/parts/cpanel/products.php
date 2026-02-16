@@ -1,7 +1,8 @@
 <div class="shoping__cart__table">
     <div class="d-flex justify-content-between mb-2">
         <div></div>
-        <!-- <button data-toggle="modal" onclick="cleanModal();" data-target="#clientModal" class="site-btn mb-2">Nuevo Producto</button> -->
+        <button data-toggle="modal" onclick="cleanModalProd();" data-target="#productModal" class="site-btn mb-2">Nuevo
+            Producto</button>
         <?php require 'inc/partials/cpanel/search-product.php'; ?>
     </div>
     <table class="table table-bordered table-striped table-responsive">

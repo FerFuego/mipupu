@@ -103,8 +103,14 @@ class Usuarios {
     }
 
     public function insert() {
+        $obj = new Connection();
+		$conn = $obj->getConnection();
+        $nombre = mysqli_real_escape_string($conn, $this->Nombre);
+        $mail   = mysqli_real_escape_string($conn, $this->Mail);
+        $pass = md5($this->Password);
+
         $this->obj = new sQuery();
-        $this->obj->executeQuery("INSERT INTO clientes (Id_Cliente, Nombre, Localidad, Mail, Usuario, Password, ListaPrecioDef, tipo, is_Admin) VALUES ($this->Id_Cliente,'$this->Nombre','$this->Localidad','$this->Mail','$this->Usuario','$this->Password',$this->ListaPrecioDef,$this->tipo,$this->is_Admin)");
+        $this->obj->executeQuery("INSERT INTO clientes (Id_Cliente, Nombre, Localidad, Mail, Usuario, Password, ListaPrecioDef, tipo, is_Admin) VALUES ($this->Id_Cliente,'$nombre','$this->Localidad','$mail','$this->Usuario','$pass',$this->ListaPrecioDef,$this->tipo,$this->is_Admin)");
     }
 
     public function update() {

@@ -911,24 +911,8 @@ $(document).ready(function () {
 
         e.preventDefault();
 
-        var values = {};
-
-        $.each($(this).serializeArray(), function (i, field) {
-            values[field.name] = field.value;
-        });
-
-        var formData = new FormData();
+        var formData = new FormData(this);
         formData.append('action', 'operationProduct');
-        formData.append('type_prod', values.type_prod);
-        formData.append('cod_prod', values.cod_prod);
-        formData.append('name_prod', values.name_prod);
-        formData.append('news', values.news);
-        formData.append('offer', values.offer);
-        formData.append('observation', values.observation);
-        formData.append('id_marca', values.id_marca);
-        formData.append('marca', values.marca);
-        formData.append('id_clasificacion', values.id_clasificacion);
-        formData.append('clasificacion', values.clasificacion);
 
         jQuery.ajax({
             cache: false,
@@ -1285,10 +1269,10 @@ function cleanModal() {
 /*--------------------
     Clean Prod Modal
 --------------------*/
-function cleanProdModal() {
-    $.each($('#js-form-prod').serializeArray(), function (i, field) {
-        $('#' + field.name).val('');
-    });
+function cleanModalProd() {
+    $('#js-form-prod')[0].reset();
+    $('#type_prod').val('new');
+    $('#cod_prod').prop('readonly', false);
 }
 
 /*----------------------
@@ -1409,7 +1393,7 @@ function getProddata(obj) {
     var cod_product = $(obj).attr('data-prod');
     var data;
 
-    cleanProdModal();
+    cleanModalProd();
 
     var formData = new FormData();
     formData.append('action', 'dataProduct');
@@ -1427,13 +1411,15 @@ function getProddata(obj) {
                 toastr.error('Ocurrio un error, por favor recarge la pagina e intente nuevamente.');
             } else {
                 data = JSON.parse(response);
-                $('#cod_prod').val(data.cod_producto);
+                $('#cod_prod').val(data.cod_producto).prop('readonly', true);
                 $('#type_prod').val('edit');
                 $('#name_prod').val(data.nombre);
+                $('#news').val(data.novedad).niceSelect('update');
+                $('#offer').val(data.oferta).niceSelect('update');
                 $('#observation').val(data.observaciones);
-                $('#id_marca').val(data.id_marca);
+                $('#id_marca').val(data.id_marca).niceSelect('update');
                 $('#marca').val(data.marca);
-                $('#id_clasificacion').val(data.id_clasificacion);
+                $('#id_clasificacion').val(data.id_clasificacion).niceSelect('update');
                 $('#clasificacion').val(data.clasificacion);
             }
         }

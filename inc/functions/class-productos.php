@@ -305,6 +305,12 @@ class Productos
         }
     }
 
+    public function insert()
+    {
+        $this->obj = new sQuery();
+        $this->obj->executeQuery("INSERT INTO productos (CodProducto, Nombre, Id_Marca, Marca, Id_Clasificacion, Clasificacion, Novedad, Oferta, StockActual, Observaciones, FecAltaWeb) VALUES ('$this->cod_producto', '$this->nombre', '$this->id_marca', '$this->marca', '$this->id_clasificacion', '$this->clasificacion', '$this->novedad', '$this->oferta', '$this->stock_actual', '$this->observaciones', NOW())");
+    }
+
     public function update()
     {
         $this->obj = new sQuery();

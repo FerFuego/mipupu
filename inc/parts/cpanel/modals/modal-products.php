@@ -10,11 +10,15 @@
 				</button>
 			</div>
 			<div class="modal-body">
-				<form class="form-cli" id="js-form-prod">
+				<form class="form-cli" id="js-form-prod" enctype="multipart/form-data">
 					<input type="hidden" name="type_prod" id="type_prod" value="edit">
 					<div class="form-group">
 						<label for="name">Cod Producto</label>
-						<input type="text" name="cod_prod" id="cod_prod" readonly>
+						<input type="text" name="cod_prod" id="cod_prod">
+					</div>
+					<div class="form-group">
+						<label for="image">Imagen del Producto</label>
+						<input type="file" name="image" id="image" class="form-control" accept="image/*">
 					</div>
 					<div class="form-group">
 						<label for="name">Nombre</label>
