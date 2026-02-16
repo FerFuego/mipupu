@@ -12,6 +12,9 @@
         <?php echo $product->Clasificacion; ?>
     </td>
     <td class="text-left">
+        <?php echo $product->Talle; ?>
+    </td>
+    <td class="text-left">
         <?php echo $product->Marca; ?>
     </td>
     <td class="text-left">

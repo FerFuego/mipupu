@@ -76,6 +76,22 @@
 						</select>
 						<input type="hidden" name="clasificacion" id="clasificacion">
 					</div>
+					<div class="form-group">
+						<label for="id_talle">Talle</label>
+						<select class="form-control" name="id_talle" id="id_talle"
+							onchange="$('#talle').val($('#id_talle option:selected').text())">
+							<option value="">Seleccione</option>
+							<?php
+							$talle_obj = new Talles();
+							$result_t = $talle_obj->getTalles();
+							while ($t = $result_t->fetch_object()): ?>
+								<option value="<?php echo $t->Id_Talle; ?>">
+									<?php echo $t->Nombre; ?>
+								</option>
+							<?php endwhile; ?>
+						</select>
+						<input type="hidden" name="talle" id="talle">
+					</div>
 				</form>
 			</div>
 			<div class="modal-footer">

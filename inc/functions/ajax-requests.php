@@ -461,6 +461,8 @@ if (!empty($_POST) && isset($_POST['action']) && $_POST['action'] == 'operationP
     $marca = (isset($_POST['marca']) ? filter_var($_POST['marca'], FILTER_UNSAFE_RAW) : null);
     $id_clasificacion = (isset($_POST['id_clasificacion']) ? filter_var($_POST['id_clasificacion'], FILTER_VALIDATE_INT) : null);
     $clasificacion = (isset($_POST['clasificacion']) ? filter_var($_POST['clasificacion'], FILTER_UNSAFE_RAW) : null);
+    $id_talle = (isset($_POST['id_talle']) ? filter_var($_POST['id_talle'], FILTER_VALIDATE_INT) : null);
+    $talle = (isset($_POST['talle']) ? filter_var($_POST['talle'], FILTER_UNSAFE_RAW) : null);
 
     if ($type == 'new') {
         $prod = new Productos();
@@ -473,6 +475,8 @@ if (!empty($_POST) && isset($_POST['action']) && $_POST['action'] == 'operationP
         $prod->marca = $marca;
         $prod->id_clasificacion = $id_clasificacion;
         $prod->clasificacion = $clasificacion;
+        $prod->id_talle = $id_talle;
+        $prod->talle = $talle;
         $prod->insert();
     }
 
@@ -488,6 +492,8 @@ if (!empty($_POST) && isset($_POST['action']) && $_POST['action'] == 'operationP
         $prod->marca = $marca;
         $prod->id_clasificacion = $id_clasificacion;
         $prod->clasificacion = $clasificacion;
+        $prod->id_talle = $id_talle;
+        $prod->talle = $talle;
         $prod->update();
     }
 

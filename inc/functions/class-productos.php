@@ -18,6 +18,8 @@ class Productos
     public $grupo;
     public $id_clasificacion;
     public $clasificacion;
+    public $id_talle;
+    public $talle;
     public $precio_venta_neto_1;
     public $precio_venta_final_1;
     public $precio_venta_neto_2;
@@ -55,6 +57,8 @@ class Productos
             $this->grupo = $row['Grupo'];
             $this->id_clasificacion = $row['Id_Clasificacion'];
             $this->clasificacion = $row['Clasificacion'];
+            $this->id_talle = $row['Id_Talle'];
+            $this->talle = $row['Talle'];
             $this->precio_venta_neto_1 = $row['PreVtaNeto1'];
             $this->precio_venta_final_1 = $row['PreVtaFinal1'];
             $this->precio_venta_neto_2 = $row['PreVtaNeto2'];
@@ -93,6 +97,10 @@ class Productos
     public function getClasificacionID()
     {
         return $this->id_clasificacion;
+    }
+    public function getTalleID()
+    {
+        return $this->id_talle;
     }
     public function getMarcaID()
     {
@@ -146,7 +154,7 @@ class Productos
         return $precio;
     }
 
-    public function getProducts($opcion, $id_rubro, $id_subrubro, $id_grupo, $minamount, $maxamount, $order, $id_marca = null, $id_clasificacion = null)
+    public function getProducts($opcion, $id_rubro, $id_subrubro, $id_grupo, $minamount, $maxamount, $order, $id_marca = null, $id_clasificacion = null, $id_talle = null)
     {
         $where = '1=1';
         if (is_array($id_rubro)) {
@@ -166,6 +174,11 @@ class Productos
         } else {
             $where .= ($id_clasificacion) ? ' AND Id_Clasificacion=' . $id_clasificacion : '';
         }
+        if (is_array($id_talle)) {
+            $where .= ' AND Id_Talle IN (' . implode(',', $id_talle) . ')';
+        } else {
+            $where .= ($id_talle) ? ' AND Id_Talle=' . $id_talle : '';
+        }
         $where .= ($minamount && $maxamount) ? ' AND PreVtaFinal1 BETWEEN ' . $minamount . ' AND ' . $maxamount : '';
         $orderBy = ($order) ? ' ORDER BY Id_Rubro, Id_SubRubro, Id_Grupo, PreVtaFinal1 ' . $order : ' ORDER BY Id_Rubro, Id_SubRubro, Id_Grupo, Nombre';
 
@@ -177,7 +190,7 @@ class Productos
         $result = [
             'total' => $this->obj->getResultados(),
             'query' => $query,
-            'params' => ($opcion ? 'opcion=' . $opcion . '&' : null) . (is_array($id_rubro) ? 'id_rubro[]=' . implode('&id_rubro[]=', $id_rubro) : 'id_rubro=' . $id_rubro) . '&id_subrubro=' . $id_subrubro . '&id_grupo=' . $id_grupo . (is_array($id_marca) ? '&id_marca[]=' . implode('&id_marca[]=', $id_marca) : '&id_marca=' . $id_marca) . (is_array($id_clasificacion) ? '&id_clasificacion[]=' . implode('&id_clasificacion[]=', $id_clasificacion) : '&id_clasificacion=' . $id_clasificacion) . (($minamount && $maxamount) ? '&minamount=' . $minamount . '&maxamount=' . $maxamount : '') . (($order) ? '&order=' . $order : '')
+            'params' => ($opcion ? 'opcion=' . $opcion . '&' : null) . (is_array($id_rubro) ? 'id_rubro[]=' . implode('&id_rubro[]=', $id_rubro) : 'id_rubro=' . $id_rubro) . '&id_subrubro=' . $id_subrubro . '&id_grupo=' . $id_grupo . (is_array($id_marca) ? '&id_marca[]=' . implode('&id_marca[]=', $id_marca) : '&id_marca=' . $id_marca) . (is_array($id_clasificacion) ? '&id_clasificacion[]=' . implode('&id_clasificacion[]=', $id_clasificacion) : '&id_clasificacion=' . $id_clasificacion) . (is_array($id_talle) ? '&id_talle[]=' . implode('&id_talle[]=', $id_talle) : ($id_talle ? '&id_talle=' . $id_talle : '')) . (($minamount && $maxamount) ? '&minamount=' . $minamount . '&maxamount=' . $maxamount : '') . (($order) ? '&order=' . $order : '')
         ];
         return $result;
     }
@@ -308,13 +321,13 @@ class Productos
     public function insert()
     {
         $this->obj = new sQuery();
-        $this->obj->executeQuery("INSERT INTO productos (CodProducto, Nombre, Id_Marca, Marca, Id_Clasificacion, Clasificacion, Novedad, Oferta, StockActual, Observaciones, FecAltaWeb) VALUES ('$this->cod_producto', '$this->nombre', '$this->id_marca', '$this->marca', '$this->id_clasificacion', '$this->clasificacion', '$this->novedad', '$this->oferta', '$this->stock_actual', '$this->observaciones', NOW())");
+        $this->obj->executeQuery("INSERT INTO productos (CodProducto, Nombre, Id_Marca, Marca, Id_Clasificacion, Clasificacion, Id_Talle, Talle, Novedad, Oferta, StockActual, Observaciones, FecAltaWeb) VALUES ('$this->cod_producto', '$this->nombre', '$this->id_marca', '$this->marca', '$this->id_clasificacion', '$this->clasificacion', '$this->id_talle', '$this->talle', '$this->novedad', '$this->oferta', '$this->stock_actual', '$this->observaciones', NOW())");
     }
 
     public function update()
     {
         $this->obj = new sQuery();
-        $this->obj->executeQuery("UPDATE productos SET Nombre = '$this->nombre', Id_Marca = '$this->id_marca', Marca = '$this->marca', Id_Clasificacion = '$this->id_clasificacion', Clasificacion = '$this->clasificacion', Novedad = '$this->novedad', Oferta = '$this->oferta', StockActual = '$this->stock_actual', Observaciones = '$this->observaciones' WHERE (CodProducto = '$this->cod_producto')");
+        $this->obj->executeQuery("UPDATE productos SET Nombre = '$this->nombre', Id_Marca = '$this->id_marca', Marca = '$this->marca', Id_Clasificacion = '$this->id_clasificacion', Clasificacion = '$this->clasificacion', Id_Talle = '$this->id_talle', Talle = '$this->talle', Novedad = '$this->novedad', Oferta = '$this->oferta', StockActual = '$this->stock_actual', Observaciones = '$this->observaciones' WHERE (CodProducto = '$this->cod_producto')");
     }
 
     public function delete()

@@ -231,7 +231,7 @@ class Polirubro
         $params = $_GET;
 
         // Ensure param ends with [] if it's an array type
-        $isArrayParam = in_array($param, ['id_rubro', 'id_marca', 'id_clasificacion']);
+        $isArrayParam = in_array($param, ['id_rubro', 'id_marca', 'id_clasificacion', 'id_talle']);
 
         if ($isArrayParam) {
             $currentValues = isset($params[$param]) ? (is_array($params[$param]) ? $params[$param] : [$params[$param]]) : [];

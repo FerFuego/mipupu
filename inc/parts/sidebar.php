@@ -7,6 +7,7 @@ $maxamount = (isset($_GET['maxamount']) && $_GET['maxamount'] != '') ? $_GET['ma
 $order = (isset($_GET['order']) && $_GET['order'] != '') ? $_GET['order'] : null;
 $id_marca = (isset($_GET['id_marca']) && $_GET['id_marca'] != '') ? $_GET['id_marca'] : null;
 $id_clasificacion = (isset($_GET['id_clasificacion']) && $_GET['id_clasificacion'] != '') ? $_GET['id_clasificacion'] : null;
+$id_talle = (isset($_GET['id_talle']) && $_GET['id_talle'] != '') ? $_GET['id_talle'] : null;
 $search = (isset($_GET['s']) && $_GET['s'] != '') ? $_GET['s'] : null;
 ?>
 
@@ -36,6 +37,9 @@ $search = (isset($_GET['s']) && $_GET['s'] != '') ? $_GET['s'] : null;
                     if (is_array($id_clasificacion))
                         foreach ($id_clasificacion as $v)
                             echo '<input type="hidden" name="id_clasificacion[]" value="' . $v . '">';
+                    if (is_array($id_talle))
+                        foreach ($id_talle as $v)
+                            echo '<input type="hidden" name="id_talle[]" value="' . $v . '">';
                     ?>
                     <div class="price-input">
                         <input type="text" name="minamount" id="minamount" value="<?php echo $minamount; ?>">
@@ -76,6 +80,35 @@ $search = (isset($_GET['s']) && $_GET['s'] != '') ? $_GET['s'] : null;
                         <input type="checkbox" <?php echo $is_active_m ? 'checked' : ''; ?> onclick="window.location.href='
                     <?php echo Polirubro::buildFilterUrl('id_marca', $m->Id_Marca); ?>'; event.stopPropagation();">
                         <?php echo $m->Nombre; ?>
+                    </a>
+                </li>
+            <?php endwhile; ?>
+        </ul>
+    </div>
+
+    <div class="sidebar__item d-none d-sm-block">
+        <h4>Talles</h4>
+        <ul>
+            <?php
+            $talle_obj = new Talles();
+            $result_t = $talle_obj->getTalles();
+
+            while ($t = $result_t->fetch_object()):
+                $is_active_t = false;
+                if (is_array($id_talle)) {
+                    if (in_array($t->Id_Talle, $id_talle))
+                        $is_active_t = true;
+                } else {
+                    if ($id_talle == $t->Id_Talle)
+                        $is_active_t = true;
+                }
+                ?>
+                <li>
+                    <a href="<?php echo Polirubro::buildFilterUrl('id_talle', $t->Id_Talle); ?>"
+                        class="item <?php echo $is_active_t ? 'active' : ''; ?>">
+                        <input type="checkbox" <?php echo $is_active_t ? 'checked' : ''; ?>
+                            onclick="window.location.href='<?php echo Polirubro::buildFilterUrl('id_talle', $t->Id_Talle); ?>'; event.stopPropagation();">
+                        <?php echo $t->Nombre; ?>
                     </a>
                 </li>
             <?php endwhile; ?>

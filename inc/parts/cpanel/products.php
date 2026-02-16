@@ -12,6 +12,7 @@
                 <th class="text-left">Codigo</th>
                 <th class="text-left">Nombre</th>
                 <th class="text-left">Clasificacion</th>
+                <th class="text-left">Talle</th>
                 <th class="text-left">Marca</th>
                 <th class="text-left">Rubro</th>
                 <th class="text-left">SubRubro</th>
@@ -35,11 +36,12 @@
                 $id_grupo = (isset($_GET['id_grupo']) && $_GET['id_grupo'] != '') ? $_GET['id_grupo'] : null;
                 $id_marca = (isset($_GET['id_marca']) && $_GET['id_marca'] != '') ? $_GET['id_marca'] : null;
                 $id_clasificacion = (isset($_GET['id_clasificacion']) && $_GET['id_clasificacion'] != '') ? $_GET['id_clasificacion'] : null;
+                $id_talle = (isset($_GET['id_talle']) && $_GET['id_talle'] != '') ? $_GET['id_talle'] : null;
                 $minamount = (isset($_GET['minamount']) && $_GET['minamount'] != '') ? $_GET['minamount'] : null;
                 $maxamount = (isset($_GET['maxamount']) && $_GET['maxamount'] != '') ? $_GET['maxamount'] : null;
                 $order = (isset($_GET['order']) && $_GET['order'] != '') ? $_GET['order'] : null;
                 $productos = new Productos();
-                $result = $productos->getProducts($opcion, $id_rubro, $id_subrubro, $id_grupo, $minamount, $maxamount, $order, $id_marca, $id_clasificacion);
+                $result = $productos->getProducts($opcion, $id_rubro, $id_subrubro, $id_grupo, $minamount, $maxamount, $order, $id_marca, $id_clasificacion, $id_talle);
             }
 
             $paginator = new Paginator($result['query'], $result['total']);

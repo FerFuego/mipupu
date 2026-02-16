@@ -1421,6 +1421,8 @@ function getProddata(obj) {
                 $('#marca').val(data.marca);
                 $('#id_clasificacion').val(data.id_clasificacion).niceSelect('update');
                 $('#clasificacion').val(data.clasificacion);
+                $('#id_talle').val(data.id_talle).niceSelect('update');
+                $('#talle').val(data.talle);
             }
         }
     });
