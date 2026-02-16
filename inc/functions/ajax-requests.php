@@ -451,7 +451,7 @@ if (!empty($_POST) && isset($_POST['action']) && $_POST['action'] == 'dataProduc
  */
 if (!empty($_POST) && isset($_POST['action']) && $_POST['action'] == 'operationProduct') {
 
-    $cod_prod = (isset($_POST['cod_prod']) ? filter_var($_POST['cod_prod'], FILTER_VALIDATE_INT) : null);
+    $cod_prod = (isset($_POST['cod_prod']) ? filter_var($_POST['cod_prod'], FILTER_UNSAFE_RAW) : null);
     $name_prod = (isset($_POST['name_prod']) ? filter_var($_POST['name_prod'], FILTER_UNSAFE_RAW) : null);
     $type = (isset($_POST['type_prod']) ? filter_var($_POST['type_prod'], FILTER_UNSAFE_RAW) : null);
     $news = (isset($_POST['news']) ? filter_var($_POST['news'], FILTER_VALIDATE_INT) : null);

@@ -43,34 +43,35 @@ class Productos
             $this->obj = new sQuery();
             $result = $this->obj->executeQuery("SELECT * FROM productos WHERE CodProducto='" . $id . "'");
             $row = mysqli_fetch_assoc($result);
-
-            $this->id_producto = $row['Id_Producto'];
-            $this->cod_producto = $row['CodProducto'];
-            $this->nombre = $row['Nombre'];
-            $this->id_marca = $row['Id_Marca'];
-            $this->marca = $row['Marca'];
-            $this->id_rubro = $row['Id_Rubro'];
-            $this->rubro = $row['Rubro'];
-            $this->id_subrubro = $row['Id_SubRubro'];
-            $this->subrubro = $row['SubRubro'];
-            $this->id_grupo = $row['Id_Grupo'];
-            $this->grupo = $row['Grupo'];
-            $this->id_clasificacion = $row['Id_Clasificacion'];
-            $this->clasificacion = $row['Clasificacion'];
-            $this->id_talle = $row['Id_Talle'];
-            $this->talle = $row['Talle'];
-            $this->precio_venta_neto_1 = $row['PreVtaNeto1'];
-            $this->precio_venta_final_1 = $row['PreVtaFinal1'];
-            $this->precio_venta_neto_2 = $row['PreVtaNeto2'];
-            $this->precio_venta_final_2 = $row['PreVtaFinal2'];
-            $this->precio_venta_neto_3 = $row['PreVtaNeto3'];
-            $this->precio_venta_final_3 = $row['PreVtaFinal3'];
-            $this->fecha_alta = $row['FecAlta'];
-            $this->fecha_alta_web = $row['FecAltaWeb'];
-            $this->novedad = $row['Novedad'];
-            $this->oferta = $row['Oferta'];
-            $this->observaciones = $row['Observaciones'];
-            $this->StockActual = $row['StockActual'];
+            if ($row) {
+                $this->id_producto = $row['Id_Producto'];
+                $this->cod_producto = $row['CodProducto'];
+                $this->nombre = $row['Nombre'];
+                $this->id_marca = $row['Id_Marca'];
+                $this->marca = $row['Marca'];
+                $this->id_rubro = $row['Id_Rubro'];
+                $this->rubro = $row['Rubro'];
+                $this->id_subrubro = $row['Id_SubRubro'];
+                $this->subrubro = $row['SubRubro'];
+                $this->id_grupo = $row['Id_Grupo'];
+                $this->grupo = $row['Grupo'];
+                $this->id_clasificacion = $row['Id_Clasificacion'];
+                $this->clasificacion = $row['Clasificacion'];
+                $this->id_talle = $row['Id_Talle'];
+                $this->talle = $row['Talle'];
+                $this->precio_venta_neto_1 = $row['PreVtaNeto1'];
+                $this->precio_venta_final_1 = $row['PreVtaFinal1'];
+                $this->precio_venta_neto_2 = $row['PreVtaNeto2'];
+                $this->precio_venta_final_2 = $row['PreVtaFinal2'];
+                $this->precio_venta_neto_3 = $row['PreVtaNeto3'];
+                $this->precio_venta_final_3 = $row['PreVtaFinal3'];
+                $this->fecha_alta = $row['FecAlta'];
+                $this->fecha_alta_web = $row['FecAltaWeb'];
+                $this->novedad = $row['Novedad'];
+                $this->oferta = $row['Oferta'];
+                $this->observaciones = $row['Observaciones'];
+                $this->StockActual = $row['StockActual'];
+            }
         }
     }
 
