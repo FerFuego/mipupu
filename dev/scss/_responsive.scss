@@ -204,6 +204,12 @@
       .header__top__right__language {
         margin-right: 20px;
       }
+      
+      .header__top__right__auth {
+        a, strong {
+          color: #1c1c1c;
+        }
+      }
     }
   
     .humberger__menu__nav {
@@ -517,6 +523,12 @@
   
       .header__top__right__language {
         margin-right: 20px;
+      }
+
+      .header__top__right__auth {
+        a, strong {
+          color: #1c1c1c;
+        }
       }
     }
   
