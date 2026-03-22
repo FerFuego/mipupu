@@ -13,6 +13,8 @@
                 <li><a href="cpanel.php?opcion=banners" class="<?php echo (isset($opcion) && $opcion == 'banners') ? 'active' : '';?> item">Gestion de Banners</a></li>
                 <li><a href="cpanel.php?opcion=categories" class="<?php echo (isset($opcion) && $opcion == 'categories') ? 'active' : '';?> item">Gestion de Categorias</a></li>
                 <li><a href="cpanel.php?opcion=pedidos" class="<?php echo (isset($opcion) && $opcion == 'pedidos') ? 'active' : '';?> item">Gestion de Pedidos</a></li>
+                <li><a href="cpanel.php?opcion=catalogos" class="<?php echo (isset($opcion) && $opcion == 'catalogos') ? 'active' : '';?> item">Gestion de Catálogos</a></li>
+                <li><a href="cpanel.php?opcion=preventas" class="<?php echo (isset($opcion) && $opcion == 'preventas') ? 'active' : '';?> item">Gestion de Preventas</a></li>
                 <li><a href="logout.php" class="item">Cerrar Sesion</a></li>
             </ul>
         </div>

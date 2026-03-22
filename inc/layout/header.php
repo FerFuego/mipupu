@@ -20,6 +20,7 @@
             <li class="<?php echo (Polirubro::normalize_title() === '')? 'active':''?>"><a href="./">Home</a></li>
             <li class="<?php echo (Polirubro::normalize_title() === 'Nosotros')? 'active':''?>"><a href="./nosotros.php">Nosotros</a></li>
             <li class="<?php echo (Polirubro::normalize_title() === 'Productos')? 'active':''?>"><a href="./productos.php">Productos</a></li>
+            <li class="<?php echo (Polirubro::normalize_title() === 'Preventas')? 'active':''?>"><a href="./preventa.php">Preventa</a></li>
             <li class="<?php echo (Polirubro::normalize_title() === 'Carrito')? 'active':''?>"><a href="./carrito.php">Carrito</a></li>
             <li class="<?php echo (Polirubro::normalize_title() === 'Contacto')? 'active':''?>"><a href="./contacto.php">Contacto</a></li>
             <?php if ( Polirubro::is_Admin() ) : ?>
@@ -107,6 +108,7 @@
                         <li class="<?php echo (Polirubro::normalize_title() === '')? 'active':''?>"><a href="./">Inicio</a></li>
                         <li class="<?php echo (Polirubro::normalize_title() === 'Nosotros')? 'active':''?>"><a href="./nosotros.php">Nosotros</a></li>
                         <li class="<?php echo (Polirubro::normalize_title() === 'Productos')? 'active':''?>"><a href="./productos.php">Productos</a></li>
+                        <li class="<?php echo (Polirubro::normalize_title() === 'Preventas')? 'active':''?>"><a href="./preventa.php">Preventa</a></li>
                         <li class="<?php echo (Polirubro::normalize_title() === 'Carrito')? 'active':''?>"><a href="./carrito.php">Carrito</a></li>
                         <li class="<?php echo (Polirubro::normalize_title() === 'Contacto')? 'active':''?>"><a href="./contacto.php">Contacto</a></li>
                         <?php if ( Polirubro::is_Admin() ) : ?>

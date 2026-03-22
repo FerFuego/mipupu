@@ -29,17 +29,17 @@ $general = new Configuracion();
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="title" content="Mipupú & Tiktokers - Moda que crece con vos">
+    <meta name="title" content="Tiktokers - Moda que crece con vos">
     <meta name="keywords"
         content="ropa, ropa de bebe, ropa para teens, rompa para adolecentes, ropa para chicos, rompa para chicas, ropa interior, bell ville, cordoba, argentina">
     <meta name="description"
-        content="Mipupú & Tiktokers venta de ropa, ropa de bebe, ropa para teens, rompa para adolecentes, ropa para chicos, rompa para chicas, ropa interior">
+        content="Tiktokers venta de ropa, ropa de bebe, ropa para teens, rompa para adolecentes, ropa para chicos, rompa para chicas, ropa interior">
     <meta name="author" content="Luciano Colmano y Fernando Catalano">
     <meta name="Robots" content="All">
     <meta name="Revisit-after" content="15 days">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="icon" href="img/favicon.png">
-    <title>Mipupú & Tiktokers | Bell Ville</title>
+    <title>Tiktokers | Bell Ville</title>
 
     <!-- Google Font -->
     <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@200;300;400;600;900&display=swap" rel="stylesheet">

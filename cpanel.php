@@ -44,6 +44,12 @@
                     case 'pagos':
                         require_once('inc/parts/cpanel/pagos.php');
                         break;
+                    case 'catalogos':
+                        require_once('inc/parts/cpanel/catalogos.php');
+                        break;
+                    case 'preventas':
+                        require_once('inc/parts/cpanel/preventas.php');
+                        break;
                     default:
                         require_once('inc/parts/cpanel/default.php');
                         break;
@@ -62,6 +68,8 @@
     require_once('inc/parts/cpanel/modals/modal-category.php');
     require_once('inc/parts/cpanel/modals/modal-orders.php');
     require_once('inc/parts/cpanel/modals/modal-ver-pago.php');
+    require_once('inc/parts/cpanel/modals/modal-catalogos.php');
+    require_once('inc/parts/cpanel/modals/modal-ver-preventa.php');
 ?>
 <!-- End Modals -->
 

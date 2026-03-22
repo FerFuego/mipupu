@@ -945,3 +945,182 @@ if (!empty($_POST) && isset($_POST['action']) && $_POST['action'] == 'registerUs
     // $result = $user->send();
     die($result);
 }
+
+/**
+ * CATALOGOS - PREVENTA - BACKEND
+ */
+
+if (!empty($_POST) && isset($_POST['action']) && $_POST['action'] == 'save_catalogo') {
+    require_once('class-catalogos.php');
+
+    $type = $_POST['type'] ?? 'new';
+    $id_catalogo = $_POST['id_catalogo'] ?? '';
+    $id_marca = $_POST['id_marca'] ?? '';
+    $titulo = $_POST['titulo'] ?? '';
+
+    $catalogo = new Catalogos();
+    $pdf_name = null;
+
+    if (isset($_FILES['archivo_pdf']['name']) && $_FILES['archivo_pdf']['name'] != '') {
+        $dir = "../../fotos/catalogos/";
+        if (!is_dir($dir)) mkdir($dir, 0777, true);
+        
+        $filename = $_FILES['archivo_pdf']['name'];
+        $extension = strtolower(pathinfo($filename, PATHINFO_EXTENSION));
+
+        if ($extension == 'pdf') {
+            $prefijo = time();
+            $newFilename = $prefijo . "_" . str_replace(" ", "-", $filename);
+            
+            if (move_uploaded_file($_FILES['archivo_pdf']['tmp_name'], $dir . $newFilename)) {
+                $pdf_name = $newFilename;
+            }
+        } else {
+            echo json_encode(['status' => 'error', 'message' => 'El archivo debe ser PDF.']);
+            die();
+        }
+    }
+
+    if ($type == 'new') {
+        if (!$pdf_name) {
+            echo json_encode(['status' => 'error', 'message' => 'Debe subir un archivo PDF.']);
+            die();
+        }
+        $catalogo->insertCatalogo($id_marca, $titulo, $pdf_name);
+        echo json_encode(['status' => 'success']);
+    } else {
+        $catalogo->updateCatalogo($id_catalogo, $id_marca, $titulo, $pdf_name);
+        echo json_encode(['status' => 'success']);
+    }
+    die();
+}
+
+if (!empty($_POST) && isset($_POST['action']) && $_POST['action'] == 'delete_catalogo') {
+    require_once('class-catalogos.php');
+    $id = $_POST['id'] ?? '';
+    if ($id) {
+        $c = new Catalogos();
+        $archivo = $c->deleteCatalogo($id);
+        if ($archivo && file_exists("../../fotos/catalogos/" . $archivo)) {
+            unlink("../../fotos/catalogos/" . $archivo);
+        }
+        echo json_encode(['status' => 'success']);
+    } else {
+        echo json_encode(['status' => 'error', 'message' => 'ID inválido']);
+    }
+    die();
+}
+
+/**
+ * PREVENTAS - ADMIN / C-PANEL BACKEND
+ */
+
+if (!empty($_POST) && isset($_POST['action']) && $_POST['action'] == 'data_preventa') {
+    require_once('class-preventas.php');
+    $id = $_POST['id'] ?? '';
+    if ($id) {
+        $p = new Preventas($id);
+        if($p->Id_Preventa) {
+            echo json_encode(['status' => 'success', 'data' => $p]);
+        } else {
+            echo json_encode(['status' => 'error', 'message' => 'No encontrado']);
+        }
+    }
+    die();
+}
+
+if (!empty($_POST) && isset($_POST['action']) && $_POST['action'] == 'update_estado_preventa') {
+    require_once('class-preventas.php');
+    $id = $_POST['id'] ?? '';
+    $estado = $_POST['estado'] ?? '0';
+
+    if ($id) {
+        $p = new Preventas();
+        $p->updateEstado($id, $estado);
+        echo json_encode(['status' => 'success']);
+    } else {
+        echo json_encode(['status' => 'error', 'message' => 'ID inválido']);
+    }
+    die();
+}
+
+if (!empty($_POST) && isset($_POST['action']) && $_POST['action'] == 'delete_preventa') {
+    require_once('class-preventas.php');
+    $id = $_POST['id'] ?? '';
+    
+    if ($id) {
+        $p = new Preventas();
+        $archivo = $p->deletePreventa($id);
+        if ($archivo && file_exists("../../fotos/preventas/" . $archivo)) {
+            unlink("../../fotos/preventas/" . $archivo);
+        }
+        echo json_encode(['status' => 'success']);
+    } else {
+        echo json_encode(['status' => 'error', 'message' => 'ID inválido']);
+    }
+    die();
+}
+
+/**
+ * PREVENTAS - FRONTEND FORM SUBMIT
+ */
+
+if (!empty($_POST) && isset($_POST['action']) && $_POST['action'] == 'submit_preventa') {
+    require_once('class-preventas.php');
+    
+    $nombre = $_POST['nombre'] ?? '';
+    $email = $_POST['email'] ?? '';
+    $telefono = $_POST['telefono'] ?? '';
+    $mensaje = $_POST['mensaje'] ?? '';
+    $id_marca = $_POST['id_marca'] ?? '';
+    $id_cliente = $_SESSION['Id_Cliente'] ?? null;
+    $archivo_nombre = null;
+
+    if (isset($_FILES['archivo_imagen']['name']) && $_FILES['archivo_imagen']['name'] != '') {
+        $dir = "../../fotos/preventas/";
+        if (!is_dir($dir)) mkdir($dir, 0777, true);
+        
+        $filename = $_FILES['archivo_imagen']['name'];
+        $extension = strtolower(pathinfo($filename, PATHINFO_EXTENSION));
+        // Validar que sea imagen (User req: "si que puedan subir imagenes, no archivos")
+        $valid_img = ['jpg', 'jpeg', 'png', 'webp', 'gif'];
+
+        if (in_array($extension, $valid_img)) {
+            $prefijo = time();
+            $archivo_nombre = "prev_" . $prefijo . "_" . str_replace(" ", "-", $filename);
+            move_uploaded_file($_FILES['archivo_imagen']['tmp_name'], $dir . $archivo_nombre);
+        } else {
+            echo json_encode(['status' => 'error', 'message' => 'El archivo adjunto debe ser una imagen válida.']);
+            die();
+        }
+    }
+
+    $p = new Preventas();
+    $id_preventa = $p->insertPreventa($id_cliente, $id_marca, $nombre, $email, $telefono, $mensaje, $archivo_nombre);
+
+    // Enviar Correos (Admin y Cliente)
+    $pol = new Polirubro();
+    
+    $correoAdmin = getenv('SMTP_EMAIL_DESTINO');
+    // Cuerpo Email Admin
+    $cuerpoAdmin = "<h3>Nuevo Encargo de Preventa (#{$id_preventa})</h3>";
+    $cuerpoAdmin .= "<p><b>Cliente:</b> {$nombre} ({$email})</p>";
+    $cuerpoAdmin .= "<p><b>Teléfono:</b> {$telefono}</p>";
+    $cuerpoAdmin .= "<p><b>Mensaje:</b><br>" . nl2br($mensaje) . "</p>";
+    if($archivo_nombre) {
+        $urlImg = "http://" . $_SERVER['HTTP_HOST'] . "/fotos/preventas/" . $archivo_nombre;
+        $cuerpoAdmin .= "<p><b>Imagen Adjunta:</b> <a href='{$urlImg}'>Ver Imagen</a></p>";
+    }
+    
+    // Correo Cliente Confimarción
+    $cuerpoCliente = "<h3>Recibimos tu encargo de preventa exitosamente!</h3>";
+    $cuerpoCliente .= "<p>Hola {$nombre}, hemos registrado tu encargo de preventa #{$id_preventa} bajo la marca seleccionada.<br>Nos contactaremos contigo en breve a tu teléfono {$telefono}.</p>";
+
+    // Se asume que el método puede recibir $asunto / $cuerpo, 
+    // pero sendMail firma: sendMail($id_pedido, $emailCopia, $cuerpo)
+    // Para no adulterar Polirubro, enviaremos "PREV-"
+    $pol->sendMail("PREVENTA-".$id_preventa, $email, $cuerpoAdmin);
+
+    echo json_encode(['status' => 'success', 'msg' => 'Formulario enviado correctamente']);
+    die();
+}
