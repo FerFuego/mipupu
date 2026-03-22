@@ -16,8 +16,8 @@
 <!-- Hero Section End -->
 
 <!-- Slider Begin -->
-<?php if ($_SERVER['REQUEST_URI'] === '/' || $_SERVER['REQUEST_URI'] === '/index.php' || $_SERVER['REQUEST_URI'] === '/nuevo/' || $_SERVER['REQUEST_URI'] === '/nuevo/index.php') :
-    require_once('inc/parts/slider.php'); 
+<?php if ($_SERVER['REQUEST_URI'] === '/' || $_SERVER['REQUEST_URI'] === '/index.php' || $_SERVER['REQUEST_URI'] === '/nuevo/' || $_SERVER['REQUEST_URI'] === '/nuevo/index.php'):
+    require_once('inc/parts/slider.php');
 endif; ?>
 <!-- Slider End -->
 
@@ -43,16 +43,16 @@ endif; ?>
 <!-- Categories Section End -->
 
 <!-- Categories Section Begin -->
-<?php require_once('inc/parts/left-right-mipupu.php'); ?>
+<?php //require_once('inc/parts/left-right-mipupu.php'); ?>
+<!-- Categories Section End -->
+
+<!-- Categories Section Begin -->
+<?php require_once('inc/parts/left-right-tiktokers.php'); ?>
 <!-- Categories Section End -->
 
 <!-- Banner Shopping Begin -->
 <?php require_once('inc/parts/banner-tiktokers.php'); ?>
 <!-- Banner End -->
-
-<!-- Categories Section Begin -->
-<?php require_once('inc/parts/left-right-tiktokers.php'); ?>
-<!-- Categories Section End -->
 
 <!-- Featured Section Begin -->
 <?php //require_once('inc/parts/featured-products-section.php'); ?>
@@ -71,8 +71,8 @@ endif; ?>
 <!-- Blog Section End -->
 
 <!-- Instagram Section Begin -->
-<?php if ($general->show_instagram) : ?>
-<?php require_once('inc/parts/instagram-section.php'); ?>
+<?php if ($general->show_instagram): ?>
+    <?php require_once('inc/parts/instagram-section.php'); ?>
 <?php endif; ?>
 <!-- Instagram Section End -->
 

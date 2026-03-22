@@ -13,7 +13,9 @@ $search = (isset($_GET['s']) && $_GET['s'] != '') ? $_GET['s'] : null;
 
 <div class="sidebar">
     <div class="sidebar__item">
-        <h4>Precio</h4>
+        <?php $show_precio = (isset($minamount) || isset($maxamount)) ? 'show' : ''; ?>
+        <h4 data-toggle="collapse" data-target="#collapsePrecio" role="button" aria-expanded="<?php echo $show_precio ? 'true' : 'false'; ?>" aria-controls="collapsePrecio" style="cursor:pointer;" class="d-flex justify-content-between align-items-center">Precio <i class="fa fa-angle-down"></i></h4>
+        <div class="collapse <?php echo $show_precio; ?>" id="collapsePrecio">
         <div class="price-range-wrap">
             <div class="price-range ui-slider ui-corner-all ui-slider-horizontal ui-widget ui-widget-content"
                 data-min="10" data-max="100000">
@@ -55,10 +57,13 @@ $search = (isset($_GET['s']) && $_GET['s'] != '') ? $_GET['s'] : null;
 
             </div>
         </div>
+        </div>
     </div>
 
     <div class="sidebar__item d-none d-sm-block">
-        <h4>Marcas</h4>
+        <?php $show_marcas = isset($id_marca) && !empty($id_marca) ? 'show' : ''; ?>
+        <h4 data-toggle="collapse" data-target="#collapseMarcas" role="button" aria-expanded="<?php echo $show_marcas ? 'true' : 'false'; ?>" aria-controls="collapseMarcas" style="cursor:pointer;" class="d-flex justify-content-between align-items-center">Marcas <i class="fa fa-angle-down"></i></h4>
+        <div class="collapse <?php echo $show_marcas; ?>" id="collapseMarcas">
         <ul>
             <?php
             $marcas = new Marcas();
@@ -84,10 +89,13 @@ $search = (isset($_GET['s']) && $_GET['s'] != '') ? $_GET['s'] : null;
                 </li>
             <?php endwhile; ?>
         </ul>
+        </div>
     </div>
 
     <div class="sidebar__item d-none d-sm-block">
-        <h4>Talles</h4>
+        <?php $show_talles = isset($id_talle) && !empty($id_talle) ? 'show' : ''; ?>
+        <h4 data-toggle="collapse" data-target="#collapseTalles" role="button" aria-expanded="<?php echo $show_talles ? 'true' : 'false'; ?>" aria-controls="collapseTalles" style="cursor:pointer;" class="d-flex justify-content-between align-items-center">Talles <i class="fa fa-angle-down"></i></h4>
+        <div class="collapse <?php echo $show_talles; ?>" id="collapseTalles">
         <ul>
             <?php
             $talle_obj = new Talles();
@@ -113,10 +121,13 @@ $search = (isset($_GET['s']) && $_GET['s'] != '') ? $_GET['s'] : null;
                 </li>
             <?php endwhile; ?>
         </ul>
+        </div>
     </div>
 
     <div class="sidebar__item d-none d-sm-block">
-        <h4>Tipos</h4>
+        <?php $show_tipos = isset($id_clasificacion) && !empty($id_clasificacion) ? 'show' : ''; ?>
+        <h4 data-toggle="collapse" data-target="#collapseTipos" role="button" aria-expanded="<?php echo $show_tipos ? 'true' : 'false'; ?>" aria-controls="collapseTipos" style="cursor:pointer;" class="d-flex justify-content-between align-items-center">Tipos <i class="fa fa-angle-down"></i></h4>
+        <div class="collapse <?php echo $show_tipos; ?>" id="collapseTipos">
         <ul>
             <?php
             $clasificaciones = new Clasificaciones();
@@ -142,10 +153,13 @@ $search = (isset($_GET['s']) && $_GET['s'] != '') ? $_GET['s'] : null;
                 </li>
             <?php endwhile; ?>
         </ul>
+        </div>
     </div>
 
     <div class="sidebar__item d-none d-sm-block">
-        <h4>Categorías</h4>
+        <?php $show_categorias = isset($id_rubro) && !empty($id_rubro) ? 'show' : ''; ?>
+        <h4 data-toggle="collapse" data-target="#collapseCategorias" role="button" aria-expanded="<?php echo $show_categorias ? 'true' : 'false'; ?>" aria-controls="collapseCategorias" style="cursor:pointer;" class="d-flex justify-content-between align-items-center">Categorías <i class="fa fa-angle-down"></i></h4>
+        <div class="collapse <?php echo $show_categorias; ?>" id="collapseCategorias">
         <ul>
             <?php
             $rubros = new Rubros();
@@ -170,6 +184,7 @@ $search = (isset($_GET['s']) && $_GET['s'] != '') ? $_GET['s'] : null;
                 </li>
             <?php endwhile; ?>
         </ul>
+        </div>
     </div>
 
     <?php
