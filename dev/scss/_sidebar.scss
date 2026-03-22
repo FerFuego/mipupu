@@ -2,7 +2,7 @@
   Sidebar
 -----------------------*/
 .sidebar__item {
-    margin-bottom: 35px;
+    margin-bottom: 20px;
 
     &.sidebar__item__color--option {
         overflow: hidden;
@@ -44,13 +44,14 @@
                 &:hover {
                     color: $primary-color;
                 }
-    
+
                 span {
                     display: block;
                     position: relative;
                     height: 40px;
                     width: 37px;
                     z-index: 9;
+
                     &::after {
                         display: block;
                         position: absolute;
@@ -74,8 +75,8 @@
                     border: 0.15em solid $black-color;
                     border-radius: 0.15em;
                     transform: translateY(-0.075em);
-                     display: grid;
-                     place-content: center;
+                    display: grid;
+                    place-content: center;
                 }
 
                 input[type="checkbox"]::before {
@@ -86,7 +87,7 @@
                     transition: 120ms transform ease-in-out;
                     box-shadow: inset 1em 1em var($primary-color);
                 }
-                
+
                 input[type="checkbox"]:checked::before {
                     transform: scale(1);
                     background-color: $primary-color;
@@ -99,11 +100,13 @@
                 padding-left: 15px;
                 padding-top: 10px;
                 padding-bottom: 12px;
+
                 .sub-item {
                     font-size: 16px;
                     line-height: 39px;
                     display: flex;
                     position: relative;
+
                     &:hover {
                         color: #7fad39;
                     }
@@ -308,6 +311,7 @@
     .sidebar-container {
         background-color: #7fad39;
         height: 100%;
+
         ul {
             li {
                 a {
@@ -316,9 +320,11 @@
                     padding-right: 15px;
                     padding-left: 15px;
                 }
+
                 &:hover {
                     background-color: rgba(#000, .2);
                 }
+
                 .active {
                     background-color: rgba(#000, .2);
                 }

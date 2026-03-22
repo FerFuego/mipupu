@@ -12,178 +12,194 @@ $search = (isset($_GET['s']) && $_GET['s'] != '') ? $_GET['s'] : null;
 ?>
 
 <div class="sidebar">
+    <h3 class="mb-5">Filtros</h3>
     <div class="sidebar__item">
         <?php $show_precio = (isset($minamount) || isset($maxamount)) ? 'show' : ''; ?>
-        <h4 data-toggle="collapse" data-target="#collapsePrecio" role="button" aria-expanded="<?php echo $show_precio ? 'true' : 'false'; ?>" aria-controls="collapsePrecio" style="cursor:pointer;" class="d-flex justify-content-between align-items-center">Precio <i class="fa fa-angle-down"></i></h4>
+        <h4 data-toggle="collapse" data-target="#collapsePrecio" role="button"
+            aria-expanded="<?php echo $show_precio ? 'true' : 'false'; ?>" aria-controls="collapsePrecio"
+            style="cursor:pointer;" class="d-flex justify-content-between align-items-center">Precio <i
+                class="fa fa-angle-down"></i></h4>
         <div class="collapse <?php echo $show_precio; ?>" id="collapsePrecio">
-        <div class="price-range-wrap">
-            <div class="price-range ui-slider ui-corner-all ui-slider-horizontal ui-widget ui-widget-content"
-                data-min="10" data-max="100000">
-                <div class="ui-slider-range ui-corner-all ui-widget-header"></div>
-                <span tabindex="0" class="ui-slider-handle ui-corner-all ui-state-default"></span>
-                <span tabindex="0" class="ui-slider-handle ui-corner-all ui-state-default"></span>
-            </div>
-            <div class="range-slider">
-                <form action="productos.php" method="GET">
-                    <input type="hidden" name="id_subrubro" value="<?php echo $id_subrubro; ?>">
-                    <input type="hidden" name="id_grupo" value="<?php echo $id_grupo; ?>">
-                    <input type="hidden" name="order" value="<?php echo $order; ?>">
-                    <input type="hidden" name="s" value="<?php echo $search; ?>">
-                    <?php
-                    if (is_array($id_rubro))
-                        foreach ($id_rubro as $v)
-                            echo '<input type="hidden" name="id_rubro[]" value="' . $v . '">';
-                    if (is_array($id_marca))
-                        foreach ($id_marca as $v)
-                            echo '<input type="hidden" name="id_marca[]" value="' . $v . '">';
-                    if (is_array($id_clasificacion))
-                        foreach ($id_clasificacion as $v)
-                            echo '<input type="hidden" name="id_clasificacion[]" value="' . $v . '">';
-                    if (is_array($id_talle))
-                        foreach ($id_talle as $v)
-                            echo '<input type="hidden" name="id_talle[]" value="' . $v . '">';
-                    ?>
-                    <div class="price-input">
-                        <input type="text" name="minamount" id="minamount" value="<?php echo $minamount; ?>">
-                        <input type="text" name="maxamount" id="maxamount" value="<?php echo $maxamount; ?>">
-                    </div>
-                </form>
+            <div class="price-range-wrap">
+                <div class="price-range ui-slider ui-corner-all ui-slider-horizontal ui-widget ui-widget-content"
+                    data-min="10" data-max="100000">
+                    <div class="ui-slider-range ui-corner-all ui-widget-header"></div>
+                    <span tabindex="0" class="ui-slider-handle ui-corner-all ui-state-default"></span>
+                    <span tabindex="0" class="ui-slider-handle ui-corner-all ui-state-default"></span>
+                </div>
+                <div class="range-slider">
+                    <form action="productos.php" method="GET">
+                        <input type="hidden" name="id_subrubro" value="<?php echo $id_subrubro; ?>">
+                        <input type="hidden" name="id_grupo" value="<?php echo $id_grupo; ?>">
+                        <input type="hidden" name="order" value="<?php echo $order; ?>">
+                        <input type="hidden" name="s" value="<?php echo $search; ?>">
+                        <?php
+                        if (is_array($id_rubro))
+                            foreach ($id_rubro as $v)
+                                echo '<input type="hidden" name="id_rubro[]" value="' . $v . '">';
+                        if (is_array($id_marca))
+                            foreach ($id_marca as $v)
+                                echo '<input type="hidden" name="id_marca[]" value="' . $v . '">';
+                        if (is_array($id_clasificacion))
+                            foreach ($id_clasificacion as $v)
+                                echo '<input type="hidden" name="id_clasificacion[]" value="' . $v . '">';
+                        if (is_array($id_talle))
+                            foreach ($id_talle as $v)
+                                echo '<input type="hidden" name="id_talle[]" value="' . $v . '">';
+                        ?>
+                        <div class="price-input">
+                            <input type="text" name="minamount" id="minamount" value="<?php echo $minamount; ?>">
+                            <input type="text" name="maxamount" id="maxamount" value="<?php echo $maxamount; ?>">
+                        </div>
+                    </form>
 
-                <?php if (isset($minamount) || isset($maxamount)): ?>
-                    <p class="mt-3 mb-0 text-success">Filtrado de $<?php echo $minamount; ?> a
-                        $<?php echo $maxamount; ?>.-
-                    </p>
-                <?php endif; ?>
+                    <?php if (isset($minamount) || isset($maxamount)): ?>
+                        <p class="mt-3 mb-0 text-success">Filtrado de $<?php echo $minamount; ?> a
+                            $<?php echo $maxamount; ?>.-
+                        </p>
+                    <?php endif; ?>
 
+                </div>
             </div>
-        </div>
         </div>
     </div>
 
     <div class="sidebar__item d-none d-sm-block">
         <?php $show_marcas = isset($id_marca) && !empty($id_marca) ? 'show' : ''; ?>
-        <h4 data-toggle="collapse" data-target="#collapseMarcas" role="button" aria-expanded="<?php echo $show_marcas ? 'true' : 'false'; ?>" aria-controls="collapseMarcas" style="cursor:pointer;" class="d-flex justify-content-between align-items-center">Marcas <i class="fa fa-angle-down"></i></h4>
+        <h4 data-toggle="collapse" data-target="#collapseMarcas" role="button"
+            aria-expanded="<?php echo $show_marcas ? 'true' : 'false'; ?>" aria-controls="collapseMarcas"
+            style="cursor:pointer;" class="d-flex justify-content-between align-items-center">Marcas <i
+                class="fa fa-angle-down"></i></h4>
         <div class="collapse <?php echo $show_marcas; ?>" id="collapseMarcas">
-        <ul>
-            <?php
-            $marcas = new Marcas();
-            $result_m = $marcas->getMarcas();
+            <ul>
+                <?php
+                $marcas = new Marcas();
+                $result_m = $marcas->getMarcas();
 
-            while ($m = $result_m->fetch_object()):
-                $is_active_m = false;
-                if (is_array($id_marca)) {
-                    if (in_array($m->Id_Marca, $id_marca))
-                        $is_active_m = true;
-                } else {
-                    if ($id_marca == $m->Id_Marca)
-                        $is_active_m = true;
-                }
-                ?>
-                <li>
-                    <a href="<?php echo Polirubro::buildFilterUrl('id_marca', $m->Id_Marca); ?>"
-                        class="item <?php echo $is_active_m ? 'active' : ''; ?>">
-                        <input type="checkbox" <?php echo $is_active_m ? 'checked' : ''; ?> onclick="window.location.href='
+                while ($m = $result_m->fetch_object()):
+                    $is_active_m = false;
+                    if (is_array($id_marca)) {
+                        if (in_array($m->Id_Marca, $id_marca))
+                            $is_active_m = true;
+                    } else {
+                        if ($id_marca == $m->Id_Marca)
+                            $is_active_m = true;
+                    }
+                    ?>
+                    <li>
+                        <a href="<?php echo Polirubro::buildFilterUrl('id_marca', $m->Id_Marca); ?>"
+                            class="item <?php echo $is_active_m ? 'active' : ''; ?>">
+                            <input type="checkbox" <?php echo $is_active_m ? 'checked' : ''; ?> onclick="window.location.href='
                     <?php echo Polirubro::buildFilterUrl('id_marca', $m->Id_Marca); ?>'; event.stopPropagation();">
-                        <?php echo $m->Nombre; ?>
-                    </a>
-                </li>
-            <?php endwhile; ?>
-        </ul>
+                            <?php echo $m->Nombre; ?>
+                        </a>
+                    </li>
+                <?php endwhile; ?>
+            </ul>
         </div>
     </div>
 
     <div class="sidebar__item d-none d-sm-block">
         <?php $show_talles = isset($id_talle) && !empty($id_talle) ? 'show' : ''; ?>
-        <h4 data-toggle="collapse" data-target="#collapseTalles" role="button" aria-expanded="<?php echo $show_talles ? 'true' : 'false'; ?>" aria-controls="collapseTalles" style="cursor:pointer;" class="d-flex justify-content-between align-items-center">Talles <i class="fa fa-angle-down"></i></h4>
+        <h4 data-toggle="collapse" data-target="#collapseTalles" role="button"
+            aria-expanded="<?php echo $show_talles ? 'true' : 'false'; ?>" aria-controls="collapseTalles"
+            style="cursor:pointer;" class="d-flex justify-content-between align-items-center">Talles <i
+                class="fa fa-angle-down"></i></h4>
         <div class="collapse <?php echo $show_talles; ?>" id="collapseTalles">
-        <ul>
-            <?php
-            $talle_obj = new Talles();
-            $result_t = $talle_obj->getTalles();
+            <ul>
+                <?php
+                $talle_obj = new Talles();
+                $result_t = $talle_obj->getTalles();
 
-            while ($t = $result_t->fetch_object()):
-                $is_active_t = false;
-                if (is_array($id_talle)) {
-                    if (in_array($t->Id_Talle, $id_talle))
-                        $is_active_t = true;
-                } else {
-                    if ($id_talle == $t->Id_Talle)
-                        $is_active_t = true;
-                }
-                ?>
-                <li>
-                    <a href="<?php echo Polirubro::buildFilterUrl('id_talle', $t->Id_Talle); ?>"
-                        class="item <?php echo $is_active_t ? 'active' : ''; ?>">
-                        <input type="checkbox" <?php echo $is_active_t ? 'checked' : ''; ?>
-                            onclick="window.location.href='<?php echo Polirubro::buildFilterUrl('id_talle', $t->Id_Talle); ?>'; event.stopPropagation();">
-                        <?php echo $t->Nombre; ?>
-                    </a>
-                </li>
-            <?php endwhile; ?>
-        </ul>
+                while ($t = $result_t->fetch_object()):
+                    $is_active_t = false;
+                    if (is_array($id_talle)) {
+                        if (in_array($t->Id_Talle, $id_talle))
+                            $is_active_t = true;
+                    } else {
+                        if ($id_talle == $t->Id_Talle)
+                            $is_active_t = true;
+                    }
+                    ?>
+                    <li>
+                        <a href="<?php echo Polirubro::buildFilterUrl('id_talle', $t->Id_Talle); ?>"
+                            class="item <?php echo $is_active_t ? 'active' : ''; ?>">
+                            <input type="checkbox" <?php echo $is_active_t ? 'checked' : ''; ?>
+                                onclick="window.location.href='<?php echo Polirubro::buildFilterUrl('id_talle', $t->Id_Talle); ?>'; event.stopPropagation();">
+                            <?php echo $t->Nombre; ?>
+                        </a>
+                    </li>
+                <?php endwhile; ?>
+            </ul>
         </div>
     </div>
 
     <div class="sidebar__item d-none d-sm-block">
         <?php $show_tipos = isset($id_clasificacion) && !empty($id_clasificacion) ? 'show' : ''; ?>
-        <h4 data-toggle="collapse" data-target="#collapseTipos" role="button" aria-expanded="<?php echo $show_tipos ? 'true' : 'false'; ?>" aria-controls="collapseTipos" style="cursor:pointer;" class="d-flex justify-content-between align-items-center">Tipos <i class="fa fa-angle-down"></i></h4>
+        <h4 data-toggle="collapse" data-target="#collapseTipos" role="button"
+            aria-expanded="<?php echo $show_tipos ? 'true' : 'false'; ?>" aria-controls="collapseTipos"
+            style="cursor:pointer;" class="d-flex justify-content-between align-items-center">Tipos <i
+                class="fa fa-angle-down"></i></h4>
         <div class="collapse <?php echo $show_tipos; ?>" id="collapseTipos">
-        <ul>
-            <?php
-            $clasificaciones = new Clasificaciones();
-            $result_c = $clasificaciones->getClasificaciones();
+            <ul>
+                <?php
+                $clasificaciones = new Clasificaciones();
+                $result_c = $clasificaciones->getClasificaciones();
 
-            while ($c = $result_c->fetch_object()):
-                $is_active_c = false;
-                if (is_array($id_clasificacion)) {
-                    if (in_array($c->Id_Clasificacion, $id_clasificacion))
-                        $is_active_c = true;
-                } else {
-                    if ($id_clasificacion == $c->Id_Clasificacion)
-                        $is_active_c = true;
-                }
-                ?>
-                <li>
-                    <a href="<?php echo Polirubro::buildFilterUrl('id_clasificacion', $c->Id_Clasificacion); ?>"
-                        class="item <?php echo $is_active_c ? 'active' : ''; ?>">
-                        <input type="checkbox" <?php echo $is_active_c ? 'checked' : ''; ?>
-                            onclick="window.location.href='<?php echo Polirubro::buildFilterUrl('id_clasificacion', $c->Id_Clasificacion); ?>'; event.stopPropagation();">
-                        <?php echo $c->Nombre; ?>
-                    </a>
-                </li>
-            <?php endwhile; ?>
-        </ul>
+                while ($c = $result_c->fetch_object()):
+                    $is_active_c = false;
+                    if (is_array($id_clasificacion)) {
+                        if (in_array($c->Id_Clasificacion, $id_clasificacion))
+                            $is_active_c = true;
+                    } else {
+                        if ($id_clasificacion == $c->Id_Clasificacion)
+                            $is_active_c = true;
+                    }
+                    ?>
+                    <li>
+                        <a href="<?php echo Polirubro::buildFilterUrl('id_clasificacion', $c->Id_Clasificacion); ?>"
+                            class="item <?php echo $is_active_c ? 'active' : ''; ?>">
+                            <input type="checkbox" <?php echo $is_active_c ? 'checked' : ''; ?>
+                                onclick="window.location.href='<?php echo Polirubro::buildFilterUrl('id_clasificacion', $c->Id_Clasificacion); ?>'; event.stopPropagation();">
+                            <?php echo $c->Nombre; ?>
+                        </a>
+                    </li>
+                <?php endwhile; ?>
+            </ul>
         </div>
     </div>
 
     <div class="sidebar__item d-none d-sm-block">
         <?php $show_categorias = isset($id_rubro) && !empty($id_rubro) ? 'show' : ''; ?>
-        <h4 data-toggle="collapse" data-target="#collapseCategorias" role="button" aria-expanded="<?php echo $show_categorias ? 'true' : 'false'; ?>" aria-controls="collapseCategorias" style="cursor:pointer;" class="d-flex justify-content-between align-items-center">Categorías <i class="fa fa-angle-down"></i></h4>
+        <h4 data-toggle="collapse" data-target="#collapseCategorias" role="button"
+            aria-expanded="<?php echo $show_categorias ? 'true' : 'false'; ?>" aria-controls="collapseCategorias"
+            style="cursor:pointer;" class="d-flex justify-content-between align-items-center">Categorías <i
+                class="fa fa-angle-down"></i></h4>
         <div class="collapse <?php echo $show_categorias; ?>" id="collapseCategorias">
-        <ul>
-            <?php
-            $rubros = new Rubros();
-            $result = $rubros->getRubros();
+            <ul>
+                <?php
+                $rubros = new Rubros();
+                $result = $rubros->getRubros();
 
-            while ($rubro = $result->fetch_object()):
-                $is_active = false;
-                if (is_array($id_rubro)) {
-                    if (in_array($rubro->Id_Rubro, $id_rubro))
-                        $is_active = true;
-                } else {
-                    if ($id_rubro == $rubro->Id_Rubro)
-                        $is_active = true;
-                } ?>
-                <li>
-                    <a href="<?php echo Polirubro::buildFilterUrl('id_rubro', $rubro->Id_Rubro); ?>"
-                        class="item <?php echo $is_active ? 'active' : ''; ?>">
-                        <input type="checkbox" <?php echo $is_active ? 'checked' : ''; ?>
-                            onclick="window.location.href='<?php echo Polirubro::buildFilterUrl('id_rubro', $rubro->Id_Rubro); ?>'; event.stopPropagation();">
-                        <?php echo $rubro->Nombre; ?>
-                    </a>
-                </li>
-            <?php endwhile; ?>
-        </ul>
+                while ($rubro = $result->fetch_object()):
+                    $is_active = false;
+                    if (is_array($id_rubro)) {
+                        if (in_array($rubro->Id_Rubro, $id_rubro))
+                            $is_active = true;
+                    } else {
+                        if ($id_rubro == $rubro->Id_Rubro)
+                            $is_active = true;
+                    } ?>
+                    <li>
+                        <a href="<?php echo Polirubro::buildFilterUrl('id_rubro', $rubro->Id_Rubro); ?>"
+                            class="item <?php echo $is_active ? 'active' : ''; ?>">
+                            <input type="checkbox" <?php echo $is_active ? 'checked' : ''; ?>
+                                onclick="window.location.href='<?php echo Polirubro::buildFilterUrl('id_rubro', $rubro->Id_Rubro); ?>'; event.stopPropagation();">
+                            <?php echo $rubro->Nombre; ?>
+                        </a>
+                    </li>
+                <?php endwhile; ?>
+            </ul>
         </div>
     </div>
 
