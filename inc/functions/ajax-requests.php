@@ -957,9 +957,11 @@ if (!empty($_POST) && isset($_POST['action']) && $_POST['action'] == 'save_catal
     $id_catalogo = $_POST['id_catalogo'] ?? '';
     $id_marca = $_POST['id_marca'] ?? '';
     $titulo = $_POST['titulo'] ?? '';
+    $texto = $_POST['texto'] ?? '';
 
     $catalogo = new Catalogos();
     $pdf_name = null;
+    $imagen_name = null;
 
     if (isset($_FILES['archivo_pdf']['name']) && $_FILES['archivo_pdf']['name'] != '') {
         $dir = "../../fotos/catalogos/";
@@ -981,15 +983,35 @@ if (!empty($_POST) && isset($_POST['action']) && $_POST['action'] == 'save_catal
         }
     }
 
+    if (isset($_FILES['archivo_imagen']['name']) && $_FILES['archivo_imagen']['name'] != '') {
+        $dir = "../../fotos/catalogos/";
+        if (!is_dir($dir)) mkdir($dir, 0777, true);
+        
+        $filename = $_FILES['archivo_imagen']['name'];
+        $extension = strtolower(pathinfo($filename, PATHINFO_EXTENSION));
+        $valid_img = ['jpg', 'jpeg', 'png', 'webp'];
+
+        if (in_array($extension, $valid_img)) {
+            $prefijo = time();
+            $newFilename = "img_" . $prefijo . "_" . str_replace(" ", "-", $filename);
+            if (move_uploaded_file($_FILES['archivo_imagen']['tmp_name'], $dir . $newFilename)) {
+                $imagen_name = $newFilename;
+            }
+        } else {
+            echo json_encode(['status' => 'error', 'message' => 'El archivo de imagen no es válido.']);
+            die();
+        }
+    }
+
     if ($type == 'new') {
         if (!$pdf_name) {
             echo json_encode(['status' => 'error', 'message' => 'Debe subir un archivo PDF.']);
             die();
         }
-        $catalogo->insertCatalogo($id_marca, $titulo, $pdf_name);
+        $catalogo->insertCatalogo($id_marca, $titulo, $imagen_name, $texto, $pdf_name);
         echo json_encode(['status' => 'success']);
     } else {
-        $catalogo->updateCatalogo($id_catalogo, $id_marca, $titulo, $pdf_name);
+        $catalogo->updateCatalogo($id_catalogo, $id_marca, $titulo, $imagen_name, $texto, $pdf_name);
         echo json_encode(['status' => 'success']);
     }
     die();
@@ -1000,9 +1022,12 @@ if (!empty($_POST) && isset($_POST['action']) && $_POST['action'] == 'delete_cat
     $id = $_POST['id'] ?? '';
     if ($id) {
         $c = new Catalogos();
-        $archivo = $c->deleteCatalogo($id);
-        if ($archivo && file_exists("../../fotos/catalogos/" . $archivo)) {
-            unlink("../../fotos/catalogos/" . $archivo);
+        $archivos = $c->deleteCatalogo($id);
+        if ($archivos['pdf'] && file_exists("../../fotos/catalogos/" . $archivos['pdf'])) {
+            unlink("../../fotos/catalogos/" . $archivos['pdf']);
+        }
+        if ($archivos['imagen'] && file_exists("../../fotos/catalogos/" . $archivos['imagen'])) {
+            unlink("../../fotos/catalogos/" . $archivos['imagen']);
         }
         echo json_encode(['status' => 'success']);
     } else {

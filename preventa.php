@@ -42,22 +42,31 @@ if (isset($_SESSION["Id_Cliente"]) && $_SESSION["Id_Cliente"] > 0) {
             if ($catalogos && $catalogos->num_rows > 0):
                 while ($c = $catalogos->fetch_object()):
                     ?>
-                    <div class="col-lg-3 col-md-4 col-sm-6 mb-4">
-                        <div class="card h-100 shadow-sm border-0"
-                            style="border-radius: 12px; overflow: hidden; transition: transform 0.3s ease;"
-                            onmouseover="this.style.transform='translateY(-5px)'"
-                            onmouseout="this.style.transform='translateY(0)'">
-                            <div class="card-body text-center d-flex flex-column justify-content-between p-4">
-                                <div>
-                                    <div class="mb-3">
-                                        <i class="fa fa-file-pdf-o text-danger" style="font-size: 48px;"></i>
-                                    </div>
-                                    <h5 class="font-weight-bold mb-2"><?php echo $c->Marca_Nombre; ?></h5>
-                                    <p class="text-muted small mb-3"><?php echo $c->Titulo; ?></p>
-                                </div>
+                    <div class="col-lg-12 mb-4">
+                        <div class="card shadow-sm border-0 d-flex flex-column flex-md-row align-items-center"
+                            style="border-radius: 12px; overflow: hidden; padding: 20px;">
+                            
+                            <!-- Imagen Tapa -->
+                            <div style="width: 100%; max-width: 200px; height: 200px; background: #f8f9fa; border-radius: 8px; display: flex; align-items: center; justify-content: center; overflow: hidden; margin-bottom: 15px;" class="mb-md-0 mr-md-4">
+                                <?php if($c->Imagen): ?>
+                                    <img src="fotos/catalogos/<?php echo $c->Imagen; ?>" alt="Tapa Catálogo" style="width: 100%; height: 100%; object-fit: cover;">
+                                <?php else: ?>
+                                    <i class="fa fa-file-pdf-o text-danger" style="font-size: 64px;"></i>
+                                <?php endif; ?>
+                            </div>
+
+                            <!-- Contenido -->
+                            <div class="flex-grow-1 text-center text-md-left mb-3 mb-md-0">
+                                <h3 class="font-weight-bold mb-2 text-dark" style="font-family: 'Cairo', sans-serif;"><?php echo $c->Marca_Nombre; ?></h3>
+                                <h6 class="text-secondary mb-3" style="font-weight: 600; font-size: 1.1rem; text-transform: uppercase; letter-spacing: 1px; color: #e61b52 !important;"><?php echo $c->Titulo; ?></h6>
+                                <p class="text-muted mb-0" style="font-size: 15px; max-width: 800px;"><?php echo nl2br($c->Texto); ?></p>
+                            </div>
+
+                            <!-- Boton -->
+                            <div class="ml-md-auto text-center" style="min-width: 200px;">
                                 <a href="fotos/catalogos/<?php echo $c->Archivo_PDF; ?>" target="_blank" class="site-btn w-100"
-                                    style="padding: 10px 15px; font-size: 14px;">
-                                    <i class="fa fa-download"></i> Descargar
+                                    style="padding: 12px 25px; font-size: 16px; border-radius: 30px;">
+                                    <i class="fa fa-download mb-1 mr-1"></i> DESCARGAR
                                 </a>
                             </div>
                         </div>

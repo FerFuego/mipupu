@@ -14,6 +14,7 @@
             data-id="<?php echo $cat->Id_Catalogo; ?>" 
             data-marca="<?php echo $cat->Id_Marca; ?>" 
             data-titulo="<?php echo $cat->Titulo; ?>"
+            data-texto="<?php echo htmlspecialchars($cat->Texto ?? ''); ?>"
             onclick="editCatalogoModal(this);">
             <i class="fa fa-pencil"></i>
         </a>

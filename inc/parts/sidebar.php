@@ -138,33 +138,31 @@ $search = (isset($_GET['s']) && $_GET['s'] != '') ? $_GET['s'] : null;
         <?php $show_tipos = isset($id_clasificacion) && !empty($id_clasificacion) ? 'show' : ''; ?>
         <h4 data-toggle="collapse" data-target="#collapseTipos" role="button"
             aria-expanded="<?php echo $show_tipos ? 'true' : 'false'; ?>" aria-controls="collapseTipos"
-            style="cursor:pointer;" class="d-flex justify-content-between align-items-center">Tipos <i
+            style="cursor:pointer;" class="d-flex justify-content-between align-items-center">Género <i
                 class="fa fa-angle-down"></i></h4>
         <div class="collapse <?php echo $show_tipos; ?>" id="collapseTipos">
             <ul>
-                <?php
-                $clasificaciones = new Clasificaciones();
-                $result_c = $clasificaciones->getClasificaciones();
-
-                while ($c = $result_c->fetch_object()):
-                    $is_active_c = false;
-                    if (is_array($id_clasificacion)) {
-                        if (in_array($c->Id_Clasificacion, $id_clasificacion))
-                            $is_active_c = true;
-                    } else {
-                        if ($id_clasificacion == $c->Id_Clasificacion)
-                            $is_active_c = true;
-                    }
-                    ?>
-                    <li>
-                        <a href="<?php echo Polirubro::buildFilterUrl('id_clasificacion', $c->Id_Clasificacion); ?>"
-                            class="item <?php echo $is_active_c ? 'active' : ''; ?>">
-                            <input type="checkbox" <?php echo $is_active_c ? 'checked' : ''; ?>
-                                onclick="window.location.href='<?php echo Polirubro::buildFilterUrl('id_clasificacion', $c->Id_Clasificacion); ?>'; event.stopPropagation();">
-                            <?php echo $c->Nombre; ?>
-                        </a>
-                    </li>
-                <?php endwhile; ?>
+                <li>
+                    <a href="/productos.php?id_clasificacion%5B0%5D=7" class="item ">
+                        <input type="checkbox"
+                            onclick="window.location.href='productos.php?id_clasificacion%5B0%5D=7'; event.stopPropagation();">
+                        UNISEX
+                    </a>
+                </li>
+                <li>
+                    <a href="/productos.php?id_clasificacion%5B0%5D=2" class="item ">
+                        <input type="checkbox"
+                            onclick="window.location.href='productos.php?id_clasificacion%5B0%5D=2'; event.stopPropagation();">
+                        MUJERES
+                    </a>
+                </li>
+                <li>
+                    <a href="/productos.php?id_clasificacion%5B0%5D=3" class="item ">
+                        <input type="checkbox"
+                            onclick="window.location.href='productos.php?id_clasificacion%5B0%5D=3'; event.stopPropagation();">
+                        VARONES
+                    </a>
+                </li>
             </ul>
         </div>
     </div>

@@ -32,6 +32,17 @@
 					</div>
 
                     <div class="form-group">
+                        <label for="texto_catalogo">Texto / Descripción</label>
+                        <textarea name="texto" id="texto_catalogo" class="form-control" rows="3"></textarea>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="archivo_imagen_catalogo">Imagen de Tapa</label>
+                        <input type="file" name="archivo_imagen" id="archivo_imagen_catalogo" class="form-control-file" accept="image/png, image/jpeg, image/webp">
+                        <small class="form-text text-muted">Imagen de portada para el catálogo (si edita, déjelo vacío para conservar).</small>
+                    </div>
+
+                    <div class="form-group">
                         <label for="archivo_pdf">Archivo PDF</label>
                         <input type="file" name="archivo_pdf" id="archivo_pdf_catalogo" class="form-control-file" accept="application/pdf">
                         <small class="form-text text-muted">Sólo se aceptan archivos PDF. Si está editando, déjelo vacío para mantener el archivo actual.</small>
@@ -59,11 +70,13 @@
         var id = $(el).data('id');
         var marca = $(el).data('marca');
         var titulo = $(el).data('titulo');
+        var texto = $(el).data('texto');
 
         $('#type_catalogo').val('edit');
         $('#id_catalogo').val(id);
         $('#id_marca_catalogo').val(marca);
         $('#titulo_catalogo').val(titulo);
+        $('#texto_catalogo').val(texto);
     }
 
     function submitCatalogoForm() {
