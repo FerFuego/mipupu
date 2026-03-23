@@ -179,8 +179,17 @@ class Polirubro
         $mail->IsSMTP();
         $mail->SMTPAuth = true;
         $mail->Port = getenv('SMTP_PORT');
+        
+        // Hostinger (y en general puerto 465) require SMTPSecure = 'ssl'
+        // Si no se define, PHPMailer se queda trabado esperando saludo SMTP
+        if (getenv('SMTP_PORT') == 465) {
+            $mail->SMTPSecure = 'ssl';
+        } elseif (getenv('SMTP_PORT') == 587) {
+            $mail->SMTPSecure = 'tls';
+        }
+
         $mail->IsHTML(true);
-        $mail->SMTPDebug = 2;
+        $mail->SMTPDebug = 0; // Importante apagar para que no rompa el JSON en AJAX
         $mail->CharSet = "utf-8";
 
         $mail->Host = $smtpHost;
