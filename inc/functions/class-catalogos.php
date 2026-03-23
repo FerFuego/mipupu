@@ -52,8 +52,12 @@ class Catalogos
     public function insertCatalogo($id_marca, $titulo, $imagen, $texto, $archivo_pdf)
     {
         $this->obj = new sQuery();
-        $titulo = addslashes($titulo);
-        $texto = addslashes($texto);
+        $id_marca = (int)$id_marca;
+        $titulo = $this->obj->escapeString($titulo);
+        $texto = $this->obj->escapeString($texto);
+        $imagen = $this->obj->escapeString($imagen);
+        $archivo_pdf = $this->obj->escapeString($archivo_pdf);
+        
         $this->obj->executeQuery("INSERT INTO catalogos (Id_Marca, Titulo, Imagen, Texto, Archivo_PDF) VALUES ('$id_marca', '$titulo', '$imagen', '$texto', '$archivo_pdf')");
         return $this->obj->getIDAffect();
     }
@@ -61,14 +65,18 @@ class Catalogos
     public function updateCatalogo($id_catalogo, $id_marca, $titulo, $imagen = null, $texto = null, $archivo_pdf = null)
     {
         $this->obj = new sQuery();
-        $titulo = addslashes($titulo);
-        $texto = addslashes($texto);
+        $id_catalogo = (int)$id_catalogo;
+        $id_marca = (int)$id_marca;
+        $titulo = $this->obj->escapeString($titulo);
+        $texto = $this->obj->escapeString($texto);
         
         $sql = "UPDATE catalogos SET Id_Marca = '$id_marca', Titulo = '$titulo', Texto = '$texto'";
         if ($imagen) {
+            $imagen = $this->obj->escapeString($imagen);
             $sql .= ", Imagen = '$imagen'";
         }
         if ($archivo_pdf) {
+            $archivo_pdf = $this->obj->escapeString($archivo_pdf);
             $sql .= ", Archivo_PDF = '$archivo_pdf'";
         }
         $sql .= " WHERE Id_Catalogo = '$id_catalogo'";

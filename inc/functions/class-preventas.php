@@ -52,9 +52,13 @@ class Preventas
     {
         $this->obj = new sQuery();
         
-        // Evitamos inyección básica si no se usó prepare (escondido en sQuery)
-        $id_cliente = $id_cliente ? "'$id_cliente'" : "NULL";
-        $archivo_val = $archivo_imagen ? "'$archivo_imagen'" : "NULL";
+        $id_cliente = $id_cliente ? (int)$id_cliente : "NULL";
+        $id_marca   = (int)$id_marca;
+        $nombre     = $this->obj->escapeString($nombre);
+        $email      = $this->obj->escapeString($email);
+        $telefono   = $this->obj->escapeString($telefono);
+        $mensaje    = $this->obj->escapeString($mensaje);
+        $archivo_val = $archivo_imagen ? "'" . $this->obj->escapeString($archivo_imagen) . "'" : "NULL";
         
         $query = "INSERT INTO preventas (Id_Cliente, Id_Marca, Nombre, Email, Telefono, Mensaje, Archivo_Imagen, Fecha, Estado) 
                   VALUES ($id_cliente, '$id_marca', '$nombre', '$email', '$telefono', '$mensaje', $archivo_val, NOW(), 0)";

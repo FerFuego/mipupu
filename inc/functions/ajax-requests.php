@@ -5,6 +5,34 @@ Ajax Requests
 -----------------------*/
 require('class-polirubro.php');
 
+// Verificación de Seguridad Global para Acciones de Administrador
+$admin_actions = [
+    'finallyOrderAdmin',
+    'deleteOrderAdmin',
+    'dataClient',
+    'operationClient',
+    'dataProduct',
+    'operationProduct',
+    'dataBanner',
+    'operationBanner',
+    'operationConfiguration',
+    'operationRemovePromoBanner',
+    'dataCateg',
+    'operationCateg',
+    'dataOrders',
+    'save_catalogo',
+    'delete_catalogo',
+    'data_preventa',
+    'update_estado_preventa',
+    'delete_preventa'
+];
+
+if (isset($_POST['action']) && in_array($_POST['action'], $admin_actions)) {
+    if (!Polirubro::is_Admin()) {
+        die(json_encode(['status' => 'error', 'message' => 'Prohibido: Acceso no autorizado']));
+    }
+}
+
 /**
  * Request of Login
  */
@@ -965,15 +993,16 @@ if (!empty($_POST) && isset($_POST['action']) && $_POST['action'] == 'save_catal
 
     if (isset($_FILES['archivo_pdf']['name']) && $_FILES['archivo_pdf']['name'] != '') {
         $dir = "../../fotos/catalogos/";
-        if (!is_dir($dir)) mkdir($dir, 0777, true);
-        
+        if (!is_dir($dir))
+            mkdir($dir, 0777, true);
+
         $filename = $_FILES['archivo_pdf']['name'];
         $extension = strtolower(pathinfo($filename, PATHINFO_EXTENSION));
 
         if ($extension == 'pdf') {
             $prefijo = time();
             $newFilename = $prefijo . "_" . str_replace(" ", "-", $filename);
-            
+
             if (move_uploaded_file($_FILES['archivo_pdf']['tmp_name'], $dir . $newFilename)) {
                 $pdf_name = $newFilename;
             }
@@ -985,8 +1014,9 @@ if (!empty($_POST) && isset($_POST['action']) && $_POST['action'] == 'save_catal
 
     if (isset($_FILES['archivo_imagen']['name']) && $_FILES['archivo_imagen']['name'] != '') {
         $dir = "../../fotos/catalogos/";
-        if (!is_dir($dir)) mkdir($dir, 0777, true);
-        
+        if (!is_dir($dir))
+            mkdir($dir, 0777, true);
+
         $filename = $_FILES['archivo_imagen']['name'];
         $extension = strtolower(pathinfo($filename, PATHINFO_EXTENSION));
         $valid_img = ['jpg', 'jpeg', 'png', 'webp'];
@@ -1045,7 +1075,7 @@ if (!empty($_POST) && isset($_POST['action']) && $_POST['action'] == 'data_preve
     $id = $_POST['id'] ?? '';
     if ($id) {
         $p = new Preventas($id);
-        if($p->Id_Preventa) {
+        if ($p->Id_Preventa) {
             echo json_encode(['status' => 'success', 'data' => $p]);
         } else {
             echo json_encode(['status' => 'error', 'message' => 'No encontrado']);
@@ -1072,7 +1102,7 @@ if (!empty($_POST) && isset($_POST['action']) && $_POST['action'] == 'update_est
 if (!empty($_POST) && isset($_POST['action']) && $_POST['action'] == 'delete_preventa') {
     require_once('class-preventas.php');
     $id = $_POST['id'] ?? '';
-    
+
     if ($id) {
         $p = new Preventas();
         $archivo = $p->deletePreventa($id);
@@ -1092,7 +1122,7 @@ if (!empty($_POST) && isset($_POST['action']) && $_POST['action'] == 'delete_pre
 
 if (!empty($_POST) && isset($_POST['action']) && $_POST['action'] == 'submit_preventa') {
     require_once('class-preventas.php');
-    
+
     $nombre = $_POST['nombre'] ?? '';
     $email = $_POST['email'] ?? '';
     $telefono = $_POST['telefono'] ?? '';
@@ -1103,8 +1133,9 @@ if (!empty($_POST) && isset($_POST['action']) && $_POST['action'] == 'submit_pre
 
     if (isset($_FILES['archivo_imagen']['name']) && $_FILES['archivo_imagen']['name'] != '') {
         $dir = "../../fotos/preventas/";
-        if (!is_dir($dir)) mkdir($dir, 0777, true);
-        
+        if (!is_dir($dir))
+            mkdir($dir, 0777, true);
+
         $filename = $_FILES['archivo_imagen']['name'];
         $extension = strtolower(pathinfo($filename, PATHINFO_EXTENSION));
         // Validar que sea imagen (User req: "si que puedan subir imagenes, no archivos")
@@ -1125,18 +1156,18 @@ if (!empty($_POST) && isset($_POST['action']) && $_POST['action'] == 'submit_pre
 
     // Enviar Correos (Admin y Cliente)
     $pol = new Polirubro();
-    
+
     $correoAdmin = getenv('SMTP_EMAIL_DESTINO');
     // Cuerpo Email Admin
     $cuerpoAdmin = "<h3>Nuevo Encargo de Preventa (#{$id_preventa})</h3>";
     $cuerpoAdmin .= "<p><b>Cliente:</b> {$nombre} ({$email})</p>";
     $cuerpoAdmin .= "<p><b>Teléfono:</b> {$telefono}</p>";
     $cuerpoAdmin .= "<p><b>Mensaje:</b><br>" . nl2br($mensaje) . "</p>";
-    if($archivo_nombre) {
+    if ($archivo_nombre) {
         $urlImg = "http://" . $_SERVER['HTTP_HOST'] . "/fotos/preventas/" . $archivo_nombre;
         $cuerpoAdmin .= "<p><b>Imagen Adjunta:</b> <a href='{$urlImg}'>Ver Imagen</a></p>";
     }
-    
+
     // Correo Cliente Confimarción
     $cuerpoCliente = "<h3>Recibimos tu encargo de preventa exitosamente!</h3>";
     $cuerpoCliente .= "<p>Hola {$nombre}, hemos registrado tu encargo de preventa #{$id_preventa} bajo la marca seleccionada.<br>Nos contactaremos contigo en breve a tu teléfono {$telefono}.</p>";
@@ -1144,7 +1175,7 @@ if (!empty($_POST) && isset($_POST['action']) && $_POST['action'] == 'submit_pre
     // Se asume que el método puede recibir $asunto / $cuerpo, 
     // pero sendMail firma: sendMail($id_pedido, $emailCopia, $cuerpo)
     // Para no adulterar Polirubro, enviaremos "PREV-"
-    $pol->sendMail("PREVENTA-".$id_preventa, $email, $cuerpoAdmin);
+    $pol->sendMail("PREVENTA-" . $id_preventa, $email, $cuerpoAdmin);
 
     echo json_encode(['status' => 'success', 'msg' => 'Formulario enviado correctamente']);
     die();
